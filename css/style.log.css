@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.title h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #000000;
+  font-variant: normal;
+  margin-top: 20px;
+}
+
+
+hr{
+	border-top: 1px solid #8c8b8b;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+
+#box{
+  width: 300px;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	background: #FBFCFC;
+  text-align: center;
+  padding: 0px 0px;
+}
+.box-shadow {
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8)  ;
+	-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+	-moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+.box-log-container {
+  transition: 0.25s;
+}
+
+.data:empty {
+  background: none;
+}
+.data {
+  background: none;
+  width: 225px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: left;
+  border: none;
+  border-bottom: 2px solid rgb(0,110,255,0.5);
+  padding: 15px 5px;
+  outline: none;
+  color: black;
+  transition: 0.25s;
+}
+.data:valid {
+  background: rgb(0,110,255,0.2);
+}
+.data:focus {
+  width: 240px;
+  border-bottom: 2px solid rgb(0,110,255,1);
+}
+
+
+.singin {
+  background: none;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  text-align: center;
+  border: 2px solid rgb(0,110,255,1);
+  background-color: rgb(0,110,255,1);
+  color: #FBFCFC;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  padding: 10px 5px;
+  width: 235px;
+  outline: none;
+  transition: 0.25s;
+}
+.singin:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+}
+.singin:active {
+  background-color: rgba(0,110,255,1);
+  color: black;
+  transition: 0s;
+}
+
+.register {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.register a {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  letter-spacing: -0.5px;
+  word-spacing: 2px;
+  color: black;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: normal;
+}
+.register a:hover {
+  text-decoration: underline;
+  color: blue;
+}
+.register a:active {
+  text-decoration: underline;
+  color: black;
+}
+
+.errore {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  letter-spacing: -0.5px;
+  word-spacing: 2px;
+  color: red;
+  text-decoration: underline;
+  margin-top: 0px;
+}
+
+.show-pass {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+.show-pass input {
+  margin: 5px 0;
+  border: 5px solid red;
+}

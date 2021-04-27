@@ -1,0 +1,5 @@
+creare pagine checkoutEffettuato e dire se acquisto andato bene o no rispetto alla stringa passata
+
+
+
+

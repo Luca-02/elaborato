@@ -1,0 +1,118 @@
+.container-nel-carrello {
+  width: 100%;
+  margin: 50px 0;
+  padding: 0 50px;
+}
+
+.nel-carrello {
+  display: flex;
+  justify-content: flex-start;
+  background: #FBFCFC;
+  color: black;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 0 8px 25px 2px rgba(0, 0, 0, 0.8),
+              0 8px 25px 2px rgba(0, 0, 0, 0.79);
+}
+
+.nel-carrello img {
+  display: block;
+  max-width: 102px;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2),
+              0 8px 10px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.agg-al-carrello {
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #7d7d7d;
+}
+.agg-al-carrello nobr {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.prodotto-nel-carrello-info {
+  /* background: red; */
+  padding: 0 20px;
+  border-right: 1px solid #7d7d7d;
+  width: 100%;
+}
+
+.prodotto-nel-carrello-info-prodotto {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(125,125,125,0.5)
+}
+
+.prodotto-nel-carrello-info-subt {
+  width: 100%;
+  text-align: right;
+}
+
+.prodotto-nel-carrello-info h1 {
+  text-transform: capitalize;
+  font-size: 16px;
+}
+.prodotto-nel-carrello-info h2 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.prodotto-nel-carrello-info h3 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.prodotto-nel-carrello-info h4 {
+  font-size: 16px;
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+.prodotto-nel-carrello-info b {
+  font-size: 16px;
+}
+
+.tot-articoli-carrello-nel-carrello {
+  font-weight: normal;
+}
+
+.prezzo-tot-carrello-nel-carrello {
+  font-weight: bold;
+  color: rgba(0,110,255,1);
+  text-decoration: underline;
+}
+
+.btn-nel-carrello {
+  /* background: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  margin-right: 0 auto;
+}
+
+.go-to-carrello {
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FBFCFC;
+  text-decoration: none;
+  background-color: rgba(0,110,255,1);
+  border: 2px solid rgba(0,110,255,1);
+  cursor: pointer;
+  outline: none;
+}
+.go-to-carrello:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+  border: 2px solid rgba(0,110,255,1);
+}
+.go-to-carrello:active {
+  background-color: rgba(0,110,255,1);
+  color: #FBFCFC;
+  transition: 0s;
+}

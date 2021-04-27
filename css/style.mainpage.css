@@ -1,0 +1,571 @@
+::-webkit-scrollbar{
+  background: rgba(24,25,28);
+  width: 7.5px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: rgba(251,252,252,0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+
+li, a{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #FBFCFC;
+  text-decoration: none;
+}
+
+    /* intestazione */
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10.5px 12.5%;
+  background: rgba(24,25,28,0.75);
+  backdrop-filter: blur(20px);
+  /* border-bottom: 1px solid #FBFCFC; */
+}
+
+.button {
+  padding: 10px 25px;
+  margin-left: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #FBFCFC;
+  text-decoration: none;
+  background-color: rgba(0,110,255,1);
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  outline: none;
+}
+.button:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+}
+.button:active{
+  text-decoration: underline;
+  background-color: rgba(0,110,255,1);
+  transition: 0s;
+}
+
+.avatar {
+  margin-left: 20px;
+  cursor: pointer;
+  border-radius: 100px;
+  max-width: 34.09px;
+}
+.avatar:hover {
+  opacity: 0.5;
+}
+
+.logo{
+  margin-right: auto;
+}
+.logo img{
+  vertical-align: middle;
+}
+
+.shortcut {
+  list-style: none;
+}
+.shortcut li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+.shortcut li a{
+  color: #FBFCFC;
+  font-weight: bold;
+}
+.shortcut li a:hover {
+  transition: 0.25s;
+  color: rgba(0,110,255,1);
+}
+
+
+
+    /* Intera pagina */
+
+.entire-page {
+  /* background: #24252A; */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.hero {
+  /* background: #24252A; */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: table;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.sticky-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 0px 12.5%; */
+  background: #FBFCFC;
+  border-bottom: 1px solid #FBFCFC;
+  border-top: 1px solid #FBFCFC;
+}
+
+.shortcut2 {
+  list-style: none;
+  margin-left: 8px;
+}
+.shortcut2 li {
+  display: inline-block;
+  margin-left: -4px;
+  padding: 0px 0px;
+  color: black;
+  font-weight: bold;
+}
+
+.button2-a {
+  width: 100%;
+}
+
+.button2 {
+  padding: 10px 20px;
+  width: 100%;
+  margin-left: 0px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  background-color: #FBFCFC;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition: 0.25s;
+  color: black;
+}
+
+.nolog:hover {
+  background-color: rgba(0,0,0,0.25);
+  color: #FBFCFC;
+}
+
+.logged:hover {
+  background-color: rgb(0,110,255);
+  color: #FBFCFC;
+}
+
+
+.button2-uomo-active {
+  background-color: rgba(0,110,255,1);
+  border-top: none;
+  text-decoration: underline;
+}
+.button2-donna-active {
+  background-color: rgba(255,105,160,1);
+  border-top: none;
+  text-decoration: underline;
+}
+
+
+.drone {
+  margin-left: 2px;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.drone img{
+  width: 100%;
+  display: block;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.8),
+              0 8px 20px 0 rgba(0, 0, 0, 0.79);
+}
+.drone:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+  background-color: black;
+  opacity: 0.8;
+  display: flex;
+}
+
+.text-overlay {
+  width: 75%;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  word-wrap: break-word;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text-overlay-text {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: 30px;
+  -moz-column-gap: 30px;
+  column-gap: 30px;
+  -webkit-column-rule: 1px solid rgba(255,255,255,0.5);
+  -moz-column-rule: 1px solid rgba(255,255,255,0.5);
+  column-rule: 1px solid rgba(255,255,255,0.5);
+  margin: 30px 0px;
+}
+
+.text-overlay h1 {
+  background-color: white;
+  color: black;
+  font-size: 60px;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  mix-blend-mode: screen;
+}
+.text-column {
+  font-size: 18px;
+}
+
+.special {
+  font-size: 28px;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+
+
+.img-home-header {
+  /* margin-bottom: 20px; */
+  /* background: url("../immagini/home/Retail-store-2098x1049.jpg"); */
+  /* background: url("../immagini/home/158-758x426.jpeg"); */
+  background: url("../immagini/how-much-does-ecommerce-site-cost.jpg");
+  width: 100%;
+  height: 600px;
+  text-align: center;
+  -ms-align-items: center;
+  align-items: center;
+  display: flex;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.8),
+              0 5px 10px 0 rgba(0, 0, 0, 0.79);
+}
+.img-home-header-carrello {
+  /* margin-bottom: 20px; */
+  /* background: url("../immagini/home/Retail-store-2098x1049.jpg"); */
+  /* background: url("../immagini/home/158-758x426.jpeg"); */
+  background: url("../immagini/how-much-does-ecommerce-site-cost.jpg");
+  width: 100%;
+  height: auto;
+  -ms-align-items: center;
+  align-items: center;
+  display: flex;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.8),
+              0 5px 10px 0 rgba(0, 0, 0, 0.79);
+}
+
+.container-img-home-header {
+  padding: 0;
+  margin: 0;
+  /* background: red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.img-home {
+  border-radius: 100%;
+  box-shadow: 0 8px 25px 2px rgba(0, 0, 0, 0.8),
+              0 8px 25px 2px rgba(0, 0, 0, 0.79);
+}
+
+.about-us {
+  word-wrap: break-word;
+  overflow: hidden;
+  text-align: center;
+  padding: 50px;
+  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.75);
+}
+
+.c-about-us {
+  width: 50%;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  word-wrap: break-word;
+  overflow: hidden;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-align: center;
+}
+.c-about-us h1 {
+  background-color: white;
+  color: rgba(0,0,0,0.85);
+  backdrop-filter: blur(7px);
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  mix-blend-mode: screen;
+}
+
+.home-box {
+  background: #FBFCFC;
+  font-family: "Montserrat", sans-serif;
+  padding: 14px;
+  text-align: center;
+  color: black;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.8),
+              0 8px 20px 0 rgba(0, 0, 0, 0.79);
+}
+.home-box h1 {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  margin: 0px 10px;
+  text-decoration: underline;
+}
+.home-box a {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 0px 10px;
+  transition: 0.2s;
+}
+.margin-arrow-hover:hover {
+  margin: 0px 25px;
+  color: rgba(0,110,255,1);
+}
+
+.home-box a {
+  padding: 0;
+  margin: 0;
+}
+.home-box button {
+  padding: 10px;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #FBFCFC;
+  text-decoration: none;
+  background-color: rgba(0,110,255,1);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border: 2px solid rgba(0,110,255,1);
+}
+.home-box button:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+}
+.home-box button:active {
+  background-color: rgba(0,110,255,1);
+  color: #FBFCFC;
+  transition: 0s;
+}
+
+.arrow-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.arrow-text2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.arrow1 {
+  transform: rotate(180deg);
+}
+
+.margin-home-box {
+  margin-top: 20px;
+}
+
+.prodotti-ul-home {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.ultimi-arrivi {
+  padding: 0px 12.5%;
+}
+
+.aggiunto-true {
+  color: #099700;
+}
+.aggiunto-false {
+  color: red;
+}
+
+
+
+  /* Footer */
+
+.footer {
+  background: rgba(24,25,28,0.5);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid #eeeeee;
+  bottom: 0;
+  position: relative;
+  width: 100%;
+  align-items: center;
+}
+.footer nav {
+  margin-right: auto;
+}
+.footer ul {
+  list-style: none;
+}
+.footer li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.footer p {
+  color: #999;
+}
+
+
+.footer-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12.5%;
+}
+
+@media (max-width: 800px) {
+  .footer-content {
+    display: block;
+    text-align: center;
+  }
+  .footer-content img {
+    display: none;
+  }
+  .footer-content ul {
+    padding: 12.79px;
+  }
+}
+
+.footer-email a{
+  color: rgb(0,110,255);
+  text-decoration: underline;
+}
+.footer-email a:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.footer-esci {
+  padding: 0px 5px;
+  color: white;
+  text-decoration: underline;
+}
+.footer-esci:hover {
+  cursor: pointer;
+  color: rgba(0,110,255,1)
+}
+
+.icon {
+  margin-right: auto;
+  vertical-align: middle;
+}
+
+.icon2 {
+  vertical-align: middle;
+}
+
+.footer-button {
+  padding: 10px 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #eeeeee;
+  text-decoration: none;
+  background-color: rgba(0,110,255,1);
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  outline: none;
+}
+.footer-button:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+}
+.footer-button:active{
+  text-decoration: underline;
+  background-color: rgba(0,110,255,1);
+  transition: 0s;
+}
+
+.copyright{
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  color: #999;
+  font-size: 14px;
+  background: rgb(24,25,28);
+  padding: 5px 0px;
+  text-align: center;
+}
+.footer-space {
+  margin-left: 80px;
+}
+
+@media screen and (max-width: 995px) {
+  .ultimi-arrivi {
+    padding: 0;
+  }
+}

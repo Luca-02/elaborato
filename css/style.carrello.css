@@ -1,0 +1,223 @@
+.container-carrello {
+  width: 100%;
+  color: black;
+  margin-top: 50px;
+}
+
+.header-carrello {
+  background: #FBFCFC;
+  padding: 25px 0;
+  text-align: center;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.8),
+              0 8px 20px 0 rgba(0, 0, 0, 0.79);
+}
+.header-carrello h1 {
+  font-size: 32px;
+}
+
+
+
+.footer-carrello {
+  margin-top: 25px;
+  margin-bottom: 50px;
+  background: #FBFCFC;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.8),
+              0 8px 20px 0 rgba(0, 0, 0, 0.79);
+}
+
+.footer-carrello button {
+  margin-top: 25px;
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FBFCFC;
+  text-decoration: none;
+  background-color: rgba(0,110,255,1);
+  border: 2px solid rgba(0,110,255,1);
+  cursor: pointer;
+  outline: none;
+}
+.footer-carrello button:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+  border: 2px solid rgba(0,110,255,1);
+}
+.footer-carrello button:active{
+  background-color: rgba(0,110,255,1);
+  color: #FBFCFC;
+  transition: 0s;
+}
+
+.tot-articoli-carrello-carrello {
+  font-weight: normal;
+}
+
+.prezzo-tot-carrello-nel-carrello {
+  font-weight: bold;
+  color: rgba(0,110,255,1);
+  text-decoration: underline;
+}
+
+
+
+.prodotti-carrello {
+  margin-top: 25px;
+}
+
+.prodotti-carrello ul {
+  list-style: none;
+  padding: 0 50px;
+}
+
+.prodotti-carrello li {
+  background: #FBFCFC;
+  padding: 10px;
+  color: black;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.5),
+              0 8px 20px 0 rgba(0, 0, 0, 0.49);
+  margin-bottom: 12.5px;
+}
+
+.prodotto-carrello-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.prodotto-carrello-container img {
+  display: block;
+  max-height: 154px;
+  margin-right: 20px;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2),
+              0 8px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.info-prodotto-carrello {
+  /* background: red; */
+  width: 100%;
+}
+.info-prodotto-carrello h1 {
+  text-transform: capitalize;
+  font-size: 20px;
+}
+.info-prodotto-carrello h2 {
+  text-transform: capitalize;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.info-prodotto-carrello h3 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.text-prezzo-carrello {
+  float: right;
+  font-size: 24px;
+  color: black;
+}
+.text-prezzo-carrello p {
+  padding: 10px 20px;
+  background-color: #FBFCFC;
+  border: 2px solid rgba(0,110,255,1);
+  color: black;
+}
+
+.colore-prodotto-carrello input {
+  text-align: center;
+  outline: none;
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  border-radius: 40px;
+  cursor: context-menu;
+}
+.colore-prodotto-carrello input:nth-child(1) {
+}
+
+.btn-quantita-rimuovi {
+  margin-top: 10px;
+}
+.btn-quantita-rimuovi input {
+  text-align: center;
+  font-size: 16px;
+  padding: 6px;
+  outline: none;
+  border: 1px solid black;
+  width: 50px;
+  cursor: context-menu;
+}
+.btn-quantita-rimuovi input::-webkit-outer-spin-button,
+.btn-quantita-rimuovi input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.btn-quantita-rimuovi input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.btn-quantita-rimuovi .btn-rimuovi {
+  padding: 5px 10px;
+  width: 200px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FBFCFC;
+  text-decoration: none;
+  background-color: rgba(0,110,255,1);
+  border: 2px solid rgba(0,110,255,1);
+  cursor: pointer;
+  outline: none;
+}
+.btn-quantita-rimuovi .btn-rimuovi:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+  border: 2px solid rgba(0,110,255,1);
+}
+.btn-quantita-rimuovi .btn-rimuovi:active{
+  background-color: rgba(0,110,255,1);
+  color: #FBFCFC;
+  transition: 0s;
+}
+
+.empty-cart {
+  background: #FBFCFC;
+  padding: 25px;
+  color: black;
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 50%), 0 8px 20px 0 rgb(0 0 0 / 49%);
+  margin-bottom: 25px;
+}
+.empty-cart p {
+  text-align: center;
+  font-size: 24px;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.btn-agg-rim-btn {
+  background: rgba(175,175,175,0.5);
+  margin-bottom: 2px;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+  padding: 6px;
+  outline: none;
+  border: 1px solid black;
+  width: 32px;
+  transition: 0.1s;
+}
+.btn-agg-rim-btn:hover {
+  background: rgba(175,175,175,1);
+}
+.btn-agg-rim-btn:active {
+  background: rgba(175,175,175,0.5);
+}
+
+.btn-agg-rim-btn1 {
+  margin-right: -5px;
+}
+.btn-agg-rim-btn2 {
+  margin-left: -5px;
+}
