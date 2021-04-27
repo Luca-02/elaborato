@@ -240,7 +240,7 @@
               <div class="stima-recensioni">
 
                 <div class="scrivi-recensione">
-                  <?php echo "<a href=./scriviRecensione.php?IDprodotto={$IDprodotto} name=scrivi_recensione title=Scrivi una recensione>"; ?>
+                  <?php echo "<a href=./scriviRecensione.php?IDprodotto={$IDprodotto} name=scrivi_recensione title='Scrivi una recensione'>"; ?>
                     Scrivi una recensione
                   </a>
                 </div>

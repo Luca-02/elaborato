@@ -117,7 +117,7 @@
                                                   <div class="metodiP">
                                                     <input type="radio" name="metodo-pagamento" checked="checked" value="<?php echo $row_selectmetodi["IDmetodo_pagamento"] ?>">
                                                     Metodo <?php echo $count_metodi ?>
-                                                    <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo $row_selectmetodi["numero_carta"] ?>
+                                                    <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo "**** **** **** "; echo substr($row_selectmetodi["numero_carta"], -4); ?>
                                                     <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo "{$row_selectmetodi["cognome_intestatario"]} {$row_selectmetodi["nome_intestatario"]}" ?>
                                                   </div>
                                                 <?php
@@ -127,7 +127,7 @@
                                                   <div class="metodiP">
                                                     <input type="radio" name="metodo-pagamento" value="<?php echo $row_selectmetodi["IDmetodo_pagamento"] ?>">
                                                     Metodo <?php echo $count_metodi ?>
-                                                    <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo $row_selectmetodi["numero_carta"] ?>
+                                                    <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo "**** **** **** "; echo substr($row_selectmetodi["numero_carta"], -4); ?>
                                                     <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo "{$row_selectmetodi["cognome_intestatario"]} {$row_selectmetodi["nome_intestatario"]}" ?>
                                                   </div>
                                                 <?php

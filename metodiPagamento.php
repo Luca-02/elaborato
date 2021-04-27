@@ -81,7 +81,7 @@
                   ?>
                     <div class="elenco-metodo-pagamento">
                       Metodo <?php echo $count_metodi ?>
-                      <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo $row_selectmetodi["numero_carta"] ?>
+                      <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo "**** **** **** "; echo substr($row_selectmetodi["numero_carta"], -4); ?>
                       <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo "{$row_selectmetodi["cognome_intestatario"]} {$row_selectmetodi["nome_intestatario"]}" ?>
                       <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
                       <button type="submit" class="btn-elimina-metodo-pagamento" value="<?php echo $row_selectmetodi["IDmetodo_pagamento"] ?>" name="elimina-metodo-pagamento"> Elimina </button>
@@ -92,7 +92,7 @@
                   ?>
                     <div class="elenco-metodo-pagamento">
                       Metodo <?php echo $count_metodi ?>
-                      <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo $row_selectmetodi["numero_carta"] ?>
+                      <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo "**** **** **** "; echo substr($row_selectmetodi["numero_carta"], -4); ?>
                       <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i> <?php echo "{$row_selectmetodi["cognome_intestatario"]} {$row_selectmetodi["nome_intestatario"]}" ?>
                       <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
                       <button type="submit" class="btn-elimina-metodo-pagamento" value="<?php echo $row_selectmetodi["IDmetodo_pagamento"] ?>" name="elimina-metodo-pagamento"> Elimina </button>

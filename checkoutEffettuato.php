@@ -9,54 +9,11 @@
 
     include 'dbConfig.php';
 
-    $IDprodotto = $_SESSION['IDprodotto'];
-    $quantita = $_SESSION['quantita'];
-    $id_taglia = $_SESSION['id_taglia'];
     $str_errore = $_SESSION['str_errore'];
     $indirizzo_ck = $_SESSION['indirizzo_ck'];
     $citta_ck = $_SESSION['citta_ck'];
     $provincia_ck = $_SESSION['provincia_ck'];
     $cap_ck = $_SESSION['cap_ck'];
-
-    // $sql = "SELECT * FROM prodotto
-    //         INNER JOIN $colore_prodotto
-    //         ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
-    //         INNER JOIN $produttore_prodotto
-    //         ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-    //         INNER JOIN $immagine_prodotto
-    //         ON $prodotto.idimmagine_prodotto  = $immagine_prodotto.IDimmagine_prodotto
-    //         INNER JOIN $oggetto
-    //         ON $prodotto.idoggetto = $oggetto.IDoggetto
-    //         WHERE IDprodotto = $IDprodotto";
-    //         $result = $conn->query($sql);
-    //         $row = $result->fetch_assoc();
-    //         $imageURL = 'uploads/'.$row["file_name"];
-    //
-    // $email = $_SESSION['email'];
-    // $sql_user = "SELECT * FROM $utenti WHERE email = '$email'";
-    //              $result_user = $conn->query($sql_user);
-    //              $row_user = $result_user->fetch_assoc();
-    //              $IDutente = $row_user["IDutente"];
-    //
-    // $sql_selectPT = "SELECT * FROM $prodotto_taglia WHERE idprodotto = $IDprodotto
-    //                  AND idtaglia IN (
-    //                  SELECT IDtaglia FROM $taglia WHERE IDtaglia = '$id_taglia'
-    //                  )";
-    //                  $result_selectPT = $conn->query($sql_selectPT);
-    //                  $row_selectPT = $result_selectPT->fetch_assoc();
-    //                  $IDprodotto_taglia = $row_selectPT["IDprodotto_taglia"];
-    //
-    // $sql_taglia = "SELECT * FROM $taglia WHERE IDtaglia = $id_taglia";
-    //                $result_taglia = $conn->query($sql_taglia);
-    //                $row_taglia = $result_taglia->fetch_assoc();
-    //
-    // $sql_sum_prodotti_carrello = "SELECT SUM(quantita_carrello) as sum_prodotti_carrello FROM $carrello
-    //                               WHERE idutente = $IDutente";
-    //                               $result_sum_prodotti_carrello = $conn->query($sql_sum_prodotti_carrello);
-    //                               $row_sum_prodotti_carrello = $result_sum_prodotti_carrello->fetch_assoc();
-    //                               $sum_prodotti_carrello = $row_sum_prodotti_carrello["sum_prodotti_carrello"];
-    //
-    // $prezzo_inserimento_prodotto = $row["costo"] * $quantita;
   ?>
 
   <head>
@@ -116,14 +73,16 @@
                 <?php
                   if ($str_errore == 'Acquisto andato a buon fine!') {
                     echo "<h1 class=aggiunto-true> $str_errore </h1>";
+                    ?>
+                      <h2> Il pacco verrà consegnato all'indirizzo <?php echo "$indirizzo_ck, $provincia_ck - $citta_ck (CAP: $cap_ck)" ?> </h2>
+                      <p> Grazie per aver acquistato da noi! </p>
+                      <a href="./cronologiaAcquisti.php"> <button type="button" name="button"> I miei acquisti </button> </a>
+                    <?php
                   }
                   else {
                     echo "<h1 class=aggiunto-false> $str_errore </h1>";
                   }
                  ?>
-                <h2> Il pacco verrà consegnato all'indirizzo <?php echo "$indirizzo_ck, $provincia_ck - $citta_ck (CAP: $cap_ck)" ?> </h2>
-                <p> Grazie per aver acquistato da noi! </p>
-                <a href="./cronologiaAcquisti.php"> <button type="button" name="button"> I miei acquisti </button> </a>
               </div>
             </div>
           </div>

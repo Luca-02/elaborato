@@ -1,5 +1,3 @@
-creare pagine checkoutEffettuato e dire se acquisto andato bene o no rispetto alla stringa passata
-
-
+creare tabella nel db con i fondi dell'azienda che guadagna
 
 

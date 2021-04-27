@@ -1,0 +1,170 @@
+.container-acquisti {
+  width: 100%;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.div-acquisti {
+  /* background: red; */
+}
+
+.center-item {
+  margin-left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.div-acquisti ul {
+  list-style: none;
+}
+
+.div-acquisti li {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #FBFCFC;
+  color: black;
+  display: flex;
+  justify-content: flex-start;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.5),
+              0 8px 20px 0 rgba(0, 0, 0, 0.49);
+}
+
+.btn-noprodottiA {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FBFCFC;
+  text-decoration: none;
+  background-color: rgba(0,110,255,1);
+  border: 2px solid rgba(0,110,255,1);
+  cursor: pointer;
+  outline: none;
+}
+.btn-noprodottiA:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+  border: 2px solid rgba(0,110,255,1);
+}
+.btn-noprodottiA:active{
+  background-color: rgba(0,110,255,1);
+  color: #FBFCFC;
+  transition: 0s;
+}
+
+.img-acquisto {
+  display: flex;
+  align-items: center;
+}
+
+.img-acquisto img {
+  display: block;
+  float: left;
+  max-height: 225px;
+  margin-right: 20px;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2),
+              0 8px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.c-info-acquisto {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.container-info-acquisto {
+  /* background: red; */
+}
+
+.container-info-acquisto h5 {
+  font-size: 16px;
+  color: #7d7d7d;
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.container-info-acquisto h1 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.container-info-acquisto h2 {
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+.container-info-acquisto h3 {
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+.container-info-acquisto h4 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.container-info-acquisto h6 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.container-info-acquisto p {
+  font-size: 16px;
+  font-weight: normal;
+}
+.container-info-acquisto p span {
+  font-weight: bold;
+  color: rgba(0,110,255,1);
+  text-decoration: underline;
+}
+
+.buttons-acquisto {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border-left: 1px solid #7d7d7d;
+}
+
+.container-buttons-acquisto {
+  /* background: green; */
+  text-align: center;
+}
+
+.margin-buttons-acquisto {
+  margin-bottom: 20px;
+}
+
+.buttons-acquisto button {
+  padding: 10px;
+  width: 250px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FBFCFC;
+  text-decoration: none;
+  background-color: rgba(0,110,255,1);
+  border: 2px solid rgba(0,110,255,1);
+  cursor: pointer;
+  outline: none;
+}
+.buttons-acquisto button:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+  border: 2px solid rgba(0,110,255,1);
+}
+.buttons-acquisto button:active{
+  background-color: rgba(0,110,255,1);
+  color: #FBFCFC;
+  transition: 0s;
+}
+
+.anno-mese-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+.anno-mese-container p {
+  margin: 0 10px;
+}
