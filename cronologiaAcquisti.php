@@ -66,6 +66,8 @@
             <a href="./mainPageTop10P.php" class="button2-a"> <button class="button2 logged" name="button2-Top10"> Top 10 più venduti </button> </a>
           </div>
 
+          <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+
                     <?php
                       $sql_cont = "SELECT count(*) as cont_prodotti_acquistati FROM acquisto WHERE idutente = $IDutente";
                                    $result_cont = $conn->query($sql_cont);
@@ -191,15 +193,13 @@
                                 <details>
                                   <summary> Anno </summary>
                                   <ul>
-                                    <li>
-                                      <button name="1anno-acquisto" value="2021"> 2021 </button>
-                                      <button name="1anno-acquisto" value="2020"> 2020 </button>
-                                      <button name="1anno-acquisto" value="2019"> 2019 </button>
-                                      <button name="1anno-acquisto" value="2018"> 2018 </button>
-                                      <button name="1anno-acquisto" value="2017"> 2017 </button>
-                                      <button name="1anno-acquisto" value="2016"> 2016 </button>
-                                      <button name="1anno-acquisto" value="2015"> 2015 </button>
-                                    </li>
+                                    <li> <button name="1anno-acquisto" value="2021"> 2021 </button> </li>
+                                    <li> <button name="1anno-acquisto" value="2020"> 2020 </button> </li>
+                                    <li> <button name="1anno-acquisto" value="2019"> 2019 </button> </li>
+                                    <li> <button name="1anno-acquisto" value="2018"> 2018 </button> </li>
+                                    <li> <button name="1anno-acquisto" value="2017"> 2017 </button> </li>
+                                    <li> <button name="1anno-acquisto" value="2016"> 2016 </button> </li>
+                                    <li> <button name="1anno-acquisto" value="2015"> 2015 </button> </li>
                                   </ul>
                                 </details>
 
@@ -220,23 +220,25 @@
                                         <p> / </p>
                                         <select name="2mese-acquisto">
                                           <option value="" selected disabled> Mese </option>
-                                          <option value="1"> Gennaio </option>
-                                          <option value="2"> Febbraio </option>
-                                          <option value="3"> Marzo </option>
-                                          <option value="4"> Aprile </option>
-                                          <option value="5"> Maggio </option>
-                                          <option value="6"> Giugno </option>
-                                          <option value="7"> Luglio </option>
-                                          <option value="8"> Agosto </option>
-                                          <option value="9"> Settembre </option>
-                                          <option value="10"> Ottobre </option>
-                                          <option value="11"> Novembre </option>
-                                          <option value="12"> Dicembre </option>
+                                          <option value="-01-01"> Gennaio </option>
+                                          <option value="-02-01"> Febbraio </option>
+                                          <option value="-03-01"> Marzo </option>
+                                          <option value="-04-01"> Aprile </option>
+                                          <option value="-05-01"> Maggio </option>
+                                          <option value="-06-01"> Giugno </option>
+                                          <option value="-07-01"> Luglio </option>
+                                          <option value="-08-01"> Agosto </option>
+                                          <option value="-09-01"> Settembre </option>
+                                          <option value="-10-01"> Ottobre </option>
+                                          <option value="-11-01"> Novembre </option>
+                                          <option value="-12-01"> Dicembre </option>
                                         </select>
                                       </div>
-                                      <li> <button name="prezzo"> Cerca </button> </li>
+                                      <li> <button name="mese-anno-acquisto"> Cerca </button> </li>
                                   </ul>
                                 </details>
+
+                                <button name="resetta-filtri"> Resetta </button>
 
                               </div>
                             </div>
@@ -246,8 +248,21 @@
 
                           <ul>
                         <?php
-                        $sql = "SELECT * FROM acquisto WHERE idutente = $IDutente ORDER BY data_acquisto";
-                                $result = $conn->query($sql);
+
+                        if ((!isset($_POST["1anno-acquisto"])) || (isset($_POST["resetta-filtri"]))) {
+                          $sql = "SELECT * FROM acquisto WHERE idutente = $IDutente";
+                        }
+                        if ((isset($_POST["1anno-acquisto"]))) {
+                          $a1 = $_POST["1anno-acquisto"];
+                          $a2 = $_POST["1anno-acquisto"] + 1;
+                          $s = "-01-01";
+                          $anno1 = $a1.$s;
+                          $anno2 = $a2.$s;
+
+                          $sql = "SELECT * FROM acquisto WHERE idutente = $IDutente AND data_acquisto >= '$anno1 = $a1.$s' AND data_acquisto < '$anno2 = $a2.$s'";
+                        }
+
+                        $result = $conn->query($sql);
 
                         while ($row = $result->fetch_assoc()) {
                           $idprodotto_taglia = $row["idprodotto_taglia"];
@@ -276,7 +291,6 @@
                             <img src="<?php echo $imageURL; ?>" title="<?php echo $row['titolo']; ?>">
                           </a>
                         </div>
-
                         <div class="c-info-acquisto">
                           <div class="container-info-acquisto">
                             <h5> <?php echo $row["data_acquisto"] ?> </h5>
@@ -285,10 +299,9 @@
                             <h3> Destinatario: <?php echo "{$row["nome_spedizione"]} {$row["cognome_spedizione"]}" ?> </h3>
                             <h4> Taglia: <?php echo $row_taglia["taglia"] ?> </h4>
                             <h6> Quantita: <?php echo $row["quantita_acquisto"] ?> </h6>
-                            <p> Spesa totale: <span> <?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </span> </p>
+                            <p> Spesa totale: <span> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </span> </p>
                           </div>
                         </div>
-
                         <div class="buttons-acquisto">
                           <div class="container-buttons-acquisto">
                             <?php echo "<a href=./scriviRecensione.php?IDprodotto={$IDprodotto} name=recensisci-acquisto title='Scrivi una recensione'>"; ?>
@@ -303,14 +316,15 @@
                     <?php
                         }
                         ?>
-                              </ul>
-                            </div>
+                          </ul>
                           </div>
-                        </div>
+                          </div>
+                          </div>
                         <?php
                       }
                     ?>
 
+          </form>
         </div>
 
         <footer class="footer">
