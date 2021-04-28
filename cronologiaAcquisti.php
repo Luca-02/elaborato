@@ -288,7 +288,7 @@
                       <li>
                         <div class="img-acquisto">
                           <?php echo "<a href=./pageProdotto.php?IDprodotto={$IDprodotto} name=compra-di-nuovo title='Scrivi una recensione'>"; ?>
-                            <img src="<?php echo $imageURL; ?>" title="<?php echo $row['titolo']; ?>">
+                            <img src="<?php echo $imageURL; ?>">
                           </a>
                         </div>
                         <div class="c-info-acquisto">

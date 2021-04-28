@@ -1,8 +1,8 @@
--- MariaDB dump 10.17  Distrib 10.4.14-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.18  Distrib 10.4.17-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: elaboratoluca
 -- ------------------------------------------------------
--- Server version	10.4.14-MariaDB
+-- Server version	10.4.17-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `acquisto`;
 CREATE TABLE `acquisto` (
   `IDacquisto` int(11) NOT NULL AUTO_INCREMENT,
   `quantita_acquisto` int(11) DEFAULT NULL,
-  `data_acquisto` datetime DEFAULT NULL,
+  `data_acquisto` date DEFAULT NULL,
   `nome_spedizione` varchar(30) DEFAULT NULL,
   `cognome_spedizione` varchar(30) DEFAULT NULL,
   `email_spedizione` varchar(80) DEFAULT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `acquisto` (
   KEY `idprodotto_taglia` (`idprodotto_taglia`),
   CONSTRAINT `acquisto_ibfk_1` FOREIGN KEY (`idutente`) REFERENCES `utenti` (`IDutente`),
   CONSTRAINT `acquisto_ibfk_2` FOREIGN KEY (`idprodotto_taglia`) REFERENCES `prodotto_taglia` (`IDprodotto_taglia`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,7 @@ CREATE TABLE `acquisto` (
 
 LOCK TABLES `acquisto` WRITE;
 /*!40000 ALTER TABLE `acquisto` DISABLE KEYS */;
-INSERT INTO `acquisto` VALUES (26,1,'2021-04-27 00:03:26','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,8),(27,1,'2021-04-27 00:03:26','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,9);
+INSERT INTO `acquisto` VALUES (26,1,'2021-04-27','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,8),(27,1,'2021-04-27','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,9),(28,1,'2020-04-28','Luca','Milanesi','milanesiluca2002@gmail.com','Via pima strada, 5','milano','lainate',20045,38,30);
 /*!40000 ALTER TABLE `acquisto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +100,7 @@ CREATE TABLE `carrello` (
   KEY `idprodotto_taglia` (`idprodotto_taglia`),
   CONSTRAINT `carrello_ibfk_1` FOREIGN KEY (`idutente`) REFERENCES `utenti` (`IDutente`),
   CONSTRAINT `carrello_ibfk_2` FOREIGN KEY (`idprodotto_taglia`) REFERENCES `prodotto_taglia` (`IDprodotto_taglia`)
-) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=215 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +109,6 @@ CREATE TABLE `carrello` (
 
 LOCK TABLES `carrello` WRITE;
 /*!40000 ALTER TABLE `carrello` DISABLE KEYS */;
-INSERT INTO `carrello` VALUES (213,1,38,30);
 /*!40000 ALTER TABLE `carrello` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,7 +192,7 @@ CREATE TABLE `metodo_pagamento` (
 
 LOCK TABLES `metodo_pagamento` WRITE;
 /*!40000 ALTER TABLE `metodo_pagamento` DISABLE KEYS */;
-INSERT INTO `metodo_pagamento` VALUES (15,'Luca','Milanesi','1111-2222-3333-4444',4,2028,123,38,9940.02);
+INSERT INTO `metodo_pagamento` VALUES (15,'Luca','Milanesi','1111-2222-3333-4444',4,2028,123,38,9660.02);
 /*!40000 ALTER TABLE `metodo_pagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,7 +287,7 @@ CREATE TABLE `prodotto_taglia` (
 
 LOCK TABLES `prodotto_taglia` WRITE;
 /*!40000 ALTER TABLE `prodotto_taglia` DISABLE KEYS */;
-INSERT INTO `prodotto_taglia` VALUES (8,98,1,1),(9,98,2,1),(10,100,3,1),(12,99,4,1),(13,99,5,1),(14,0,1,2),(15,9,2,2),(16,50,3,2),(17,28,4,2),(18,0,5,2),(19,0,1,3),(20,14,2,3),(21,48,3,3),(22,0,4,3),(23,64,5,3),(24,45,1,4),(25,0,2,4),(26,21,3,4),(27,30,4,4),(28,15,5,4),(29,0,1,5),(30,15,2,5),(31,20,3,5),(32,0,4,5),(33,40,5,5),(34,0,1,6),(35,10,2,6),(36,50,3,6),(37,42,4,6),(38,0,5,6);
+INSERT INTO `prodotto_taglia` VALUES (8,98,1,1),(9,98,2,1),(10,100,3,1),(12,99,4,1),(13,99,5,1),(14,0,1,2),(15,9,2,2),(16,50,3,2),(17,28,4,2),(18,0,5,2),(19,0,1,3),(20,14,2,3),(21,48,3,3),(22,0,4,3),(23,64,5,3),(24,45,1,4),(25,0,2,4),(26,21,3,4),(27,30,4,4),(28,15,5,4),(29,0,1,5),(30,14,2,5),(31,20,3,5),(32,0,4,5),(33,40,5,5),(34,0,1,6),(35,10,2,6),(36,50,3,6),(37,42,4,6),(38,0,5,6);
 /*!40000 ALTER TABLE `prodotto_taglia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -460,4 +459,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-27 18:21:21
+-- Dump completed on 2021-04-28 13:02:03
