@@ -41,7 +41,7 @@ CREATE TABLE `acquisto` (
   KEY `idprodotto_taglia` (`idprodotto_taglia`),
   CONSTRAINT `acquisto_ibfk_1` FOREIGN KEY (`idutente`) REFERENCES `utenti` (`IDutente`),
   CONSTRAINT `acquisto_ibfk_2` FOREIGN KEY (`idprodotto_taglia`) REFERENCES `prodotto_taglia` (`IDprodotto_taglia`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `acquisto` (
 
 LOCK TABLES `acquisto` WRITE;
 /*!40000 ALTER TABLE `acquisto` DISABLE KEYS */;
-INSERT INTO `acquisto` VALUES (32,1,'2021-03-26','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,35,'**** **** **** 4444'),(37,1,'2021-04-28','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,8,'**** **** **** 4444'),(38,2,'2021-04-28','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,31,'**** **** **** 9999');
+INSERT INTO `acquisto` VALUES (32,1,'2021-03-26','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,35,'**** **** **** 4444'),(37,1,'2021-04-28','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,8,'**** **** **** 4444'),(38,2,'2021-04-28','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,31,'**** **** **** 9999'),(39,1,'2021-04-29','Mario','Rossi','mario.rossi@gmail.com','Via Torino, 5','Milano','Milano',20123,39,35,'**** **** **** 1212');
 /*!40000 ALTER TABLE `acquisto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +101,7 @@ CREATE TABLE `carrello` (
   KEY `idprodotto_taglia` (`idprodotto_taglia`),
   CONSTRAINT `carrello_ibfk_1` FOREIGN KEY (`idutente`) REFERENCES `utenti` (`IDutente`),
   CONSTRAINT `carrello_ibfk_2` FOREIGN KEY (`idprodotto_taglia`) REFERENCES `prodotto_taglia` (`IDprodotto_taglia`)
-) ENGINE=InnoDB AUTO_INCREMENT=236 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=238 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,6 +110,7 @@ CREATE TABLE `carrello` (
 
 LOCK TABLES `carrello` WRITE;
 /*!40000 ALTER TABLE `carrello` DISABLE KEYS */;
+INSERT INTO `carrello` VALUES (237,1,39,8);
 /*!40000 ALTER TABLE `carrello` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +186,7 @@ CREATE TABLE `metodo_pagamento` (
   UNIQUE KEY `numero_carta_2` (`numero_carta`),
   KEY `idutente` (`idutente`),
   CONSTRAINT `metodo_pagamento_ibfk_1` FOREIGN KEY (`idutente`) REFERENCES `utenti` (`IDutente`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +195,7 @@ CREATE TABLE `metodo_pagamento` (
 
 LOCK TABLES `metodo_pagamento` WRITE;
 /*!40000 ALTER TABLE `metodo_pagamento` DISABLE KEYS */;
-INSERT INTO `metodo_pagamento` VALUES (15,'Luca','Milanesi','1111-2222-3333-4444',4,2028,123,38,8770.08),(16,'Luca','Milanesi','9999-9999-9999-9999',3,2058,555,38,9040.01);
+INSERT INTO `metodo_pagamento` VALUES (15,'Luca','Milanesi','1111-2222-3333-4444',4,2028,123,38,8770.08),(16,'Luca','Milanesi','9999-9999-9999-9999',3,2058,555,38,9040.01),(17,'Mario','Rossi','1212-1212-1212-1212',5,2028,987,39,9600.01);
 /*!40000 ALTER TABLE `metodo_pagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,7 +290,7 @@ CREATE TABLE `prodotto_taglia` (
 
 LOCK TABLES `prodotto_taglia` WRITE;
 /*!40000 ALTER TABLE `prodotto_taglia` DISABLE KEYS */;
-INSERT INTO `prodotto_taglia` VALUES (8,94,1,1),(9,96,2,1),(10,100,3,1),(12,99,4,1),(13,99,5,1),(14,0,1,2),(15,9,2,2),(16,50,3,2),(17,28,4,2),(18,0,5,2),(19,0,1,3),(20,13,2,3),(21,48,3,3),(22,0,4,3),(23,64,5,3),(24,45,1,4),(25,0,2,4),(26,21,3,4),(27,30,4,4),(28,15,5,4),(29,0,1,5),(30,12,2,5),(31,18,3,5),(32,0,4,5),(33,40,5,5),(34,0,1,6),(35,9,2,6),(36,50,3,6),(37,42,4,6),(38,0,5,6);
+INSERT INTO `prodotto_taglia` VALUES (8,94,1,1),(9,96,2,1),(10,100,3,1),(12,99,4,1),(13,99,5,1),(14,0,1,2),(15,9,2,2),(16,50,3,2),(17,28,4,2),(18,0,5,2),(19,0,1,3),(20,13,2,3),(21,48,3,3),(22,0,4,3),(23,64,5,3),(24,45,1,4),(25,0,2,4),(26,21,3,4),(27,30,4,4),(28,15,5,4),(29,0,1,5),(30,12,2,5),(31,18,3,5),(32,0,4,5),(33,40,5,5),(34,0,1,6),(35,8,2,6),(36,50,3,6),(37,42,4,6),(38,0,5,6);
 /*!40000 ALTER TABLE `prodotto_taglia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +338,7 @@ CREATE TABLE `recensioni` (
   KEY `idprodotto` (`idprodotto`),
   CONSTRAINT `recensioni_ibfk_1` FOREIGN KEY (`idutente`) REFERENCES `utenti` (`IDutente`),
   CONSTRAINT `recensioni_ibfk_2` FOREIGN KEY (`idprodotto`) REFERENCES `prodotto` (`IDprodotto`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,7 +347,7 @@ CREATE TABLE `recensioni` (
 
 LOCK TABLES `recensioni` WRITE;
 /*!40000 ALTER TABLE `recensioni` DISABLE KEYS */;
-INSERT INTO `recensioni` VALUES (48,'Ottimo prodotto, consigliato ','Ottimo',5,'2021-04-12 00:37:06',37,3),(49,'Consigliato per tutti','Buon prodotto',4,'2021-04-12 15:32:31',38,5),(50,'Prodotto discreto, buoni materiali','Discreto',3,'2021-04-12 15:34:11',38,4),(51,'Ottimi materiali e ottimo prodotto','Buonissimi materiali',4,'2021-04-12 15:36:04',38,3),(52,'ottimo acquisto','consigliato',4,'2021-04-14 10:43:07',38,2),(56,'Buoni materiali e buon prodotto rispetto al prezzo','Buona qualità prezzo',3,'2021-04-28 18:32:35',38,1);
+INSERT INTO `recensioni` VALUES (48,'Ottimo prodotto, consigliato ','Ottimo',5,'2021-04-12 00:37:06',37,3),(49,'Consigliato per tutti','Buon prodotto',4,'2021-04-12 15:32:31',38,5),(50,'Prodotto discreto, buoni materiali','Discreto',3,'2021-04-12 15:34:11',38,4),(51,'Ottimi materiali e ottimo prodotto','Buonissimi materiali',4,'2021-04-12 15:36:04',38,3),(52,'ottimo acquisto','consigliato',4,'2021-04-14 10:43:07',38,2),(56,'Buoni materiali e buon prodotto rispetto al prezzo','Buona qualità prezzo',3,'2021-04-28 18:32:35',38,1),(57,'Ottimi materiali ','Uno dei migliori di sempre ',5,'2021-04-29 00:36:57',39,6);
 /*!40000 ALTER TABLE `recensioni` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,7 +440,7 @@ CREATE TABLE `utenti` (
   PRIMARY KEY (`IDutente`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -448,7 +449,7 @@ CREATE TABLE `utenti` (
 
 LOCK TABLES `utenti` WRITE;
 /*!40000 ALTER TABLE `utenti` DISABLE KEYS */;
-INSERT INTO `utenti` VALUES (37,'provaNome','provaCognome','prova@gmail.com','provausername','$2y$10$Sfxywxkei9Splvu6z9i.meC4PBzU83YCtnMXuCRGIRt3hlKthj2zW'),(38,'Luca','Milanesi','milanesiluca2002@gmail.com','mrluca','$2y$10$oetU1Y1TEpu5X/8FmuTeZeZZhabU/yR4XQ2s3CdY.GBqpg2S1.vN.');
+INSERT INTO `utenti` VALUES (37,'provaNome','provaCognome','prova@gmail.com','provausername','$2y$10$Sfxywxkei9Splvu6z9i.meC4PBzU83YCtnMXuCRGIRt3hlKthj2zW'),(38,'Luca','Milanesi','milanesiluca2002@gmail.com','mrluca','$2y$10$oetU1Y1TEpu5X/8FmuTeZeZZhabU/yR4XQ2s3CdY.GBqpg2S1.vN.'),(39,'Mario','Rossi','mario.rossi@gmail.com','mario12','$2y$10$UaZm1LkbbV8ZtfjGI72IMecgpfx/bLxZ4E26sLCktNDVqgx.wqJVi');
 /*!40000 ALTER TABLE `utenti` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -461,4 +462,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-29  0:03:01
+-- Dump completed on 2021-04-29  0:52:38
