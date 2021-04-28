@@ -43,14 +43,10 @@
                 {
 
                     //acquisizione dati dal form HTML
-                    $email = strtolower($_POST["email"]);
-                    $password =  $_POST["password"];
+                    $_email = strtolower($_POST["email"]);
+                    $email = mysqli_real_escape_string($conn, $_email);
 
-                    //protezione per SQL Injection (attacco)
-                    $email = stripslashes($email);
-                    $password = stripslashes($password);
-                    $email = $conn->real_escape_string($email);
-                    $password = $conn->real_escape_string($password);
+                    $password = mysqli_real_escape_string($conn, $_POST['password']);
 
                     //lettura della tabella utenti
                     $controllo = false;

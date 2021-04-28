@@ -101,8 +101,8 @@
                 if (isset($_POST["bottone-insert-recensione"])) {
 
                   $valutazione = $_POST['seleziona-stelle'];
-                  $txt = $_POST['testo-recensione'];
-                  $titolo = $_POST['titolo-recensione'];
+                  $txt = mysqli_real_escape_string($conn, $_POST['testo-recensione']);
+                  $titolo = mysqli_real_escape_string($conn, $_POST['titolo-recensione']);
 
                   $email = $_SESSION['email'];
                   $sql = "SELECT * from $utenti WHERE email = '$email'";

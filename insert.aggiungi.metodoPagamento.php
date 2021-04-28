@@ -15,12 +15,17 @@
     $row_user = $result_user->fetch_assoc();
     $IDutente = $row_user["IDutente"];
 
-    $nome_intestatario_ck = $_POST["nome-intestatario-ck"];
-    $cognome_intestatario_ck = $_POST["cognome-intestatario-ck"];
-    $numero_carta_ck = $_POST["numero-carta-ck"];
-    $mese_scadenza_ck = $_POST["mese-scadenza-ck"];
-    $anno_scadenza_ck = $_POST["anno-scadenza-ck"];
-    $cvv_ck = $_POST["cvv-ck"];
+    $nome_intestatario_ck = mysqli_real_escape_string($conn, $_POST["nome-intestatario-ck"]);
+
+    $cognome_intestatario_ck = mysqli_real_escape_string($conn, $_POST["cognome-intestatario-ck"]);
+
+    $numero_carta_ck = mysqli_real_escape_string($conn, $_POST["numero-carta-ck"]);
+
+    $mese_scadenza_ck = mysqli_real_escape_string($conn, $_POST["mese-scadenza-ck"]);
+
+    $anno_scadenza_ck = mysqli_real_escape_string($conn, $_POST["anno-scadenza-ck"]);
+
+    $cvv_ck = mysqli_real_escape_string($conn, $_POST["cvv-ck"]);
 
     $sql_insert = "INSERT INTO metodo_pagamento (nome_intestatario, cognome_intestatario, numero_carta, anno_scadenza, mese_scadenza, cvv, idutente, saldo_carta)
     VALUES ('$nome_intestatario_ck', '$cognome_intestatario_ck', '$numero_carta_ck', '$mese_scadenza_ck', '$anno_scadenza_ck', '$cvv_ck', '$IDutente', '10000')";

@@ -11,15 +11,15 @@
 
     $IDutente = $_POST["btn-conferma-checkout"];
 
-    $nome_completo_ck = $_POST["nome-completo-ck"];
-    $cognome_completo_ck = $_POST["cognome-completo-ck"];
-    $email_ck = $_POST["email-ck"];
-    $indirizzo_ck = $_POST["indirizzo-ck"];
-    $citta_ck = $_POST["citta-ck"];
-    $provincia_ck = $_POST["provincia-ck"];
-    $cap_ck = $_POST["cap-ck"];
-    $IDmetodo_pagamento = $_POST["metodo-pagamento"];
-    $saldo_speso = $_POST["costo_spesa"];
+    $nome_completo_ck = mysqli_real_escape_string($conn, $_POST["nome-completo-ck"]);
+    $cognome_completo_ck = mysqli_real_escape_string($conn, $_POST["cognome-completo-ck"]);
+    $email_ck = mysqli_real_escape_string($conn, $_POST["email-ck"]);
+    $indirizzo_ck = mysqli_real_escape_string($conn, $_POST['indirizzo-ck']);
+    $citta_ck = mysqli_real_escape_string($conn, $_POST['citta-ck']);
+    $provincia_ck = mysqli_real_escape_string($conn, $_POST['provincia-ck']);
+    $cap_ck = mysqli_real_escape_string($conn, $_POST['cap-ck']);
+    $IDmetodo_pagamento = mysqli_real_escape_string($conn, $_POST['metodo-pagamento']);
+    $saldo_speso = mysqli_real_escape_string($conn, $_POST['costo_spesa']);
 
     $sql_saldoCarta = "SELECT saldo_carta FROM metodo_pagamento WHERE IDmetodo_pagamento = $IDmetodo_pagamento";
                        $result_saldoCarta = $conn->query($sql_saldoCarta);

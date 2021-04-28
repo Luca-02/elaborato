@@ -169,7 +169,7 @@
                         "<input type=range min=1 max={$max_costo_arrot} value=1 name=prezzo-slider id=myRange>";
                         ?>
                         <div class="container-max-prezzo">
-                          <p> MAX € </p> <textarea name="max-prezzo" minlength="1" maxlength="4" rows="1" cols="3" id=maxP></textarea>
+                          <p> MAX € </p> <textarea name="max-prezzo" minlength="1" maxlength="4" rows="1" cols="3" id=maxP readonly></textarea>
                         </div>
                       </div>
                       <li> <button name="prezzo"> Cerca </button> </li>
@@ -333,7 +333,8 @@
 
 
                 if (isset($_POST["btn-cerca-str"])) {
-                  $str_cerca = strtolower($_POST["cerca-str"]);
+                  $_str_cerca = strtolower($_POST["cerca-str"]);
+                  $str_cerca = mysqli_real_escape_string($conn, $_str_cerca);
 
                   $sql = "SELECT * FROM $prodotto INNER JOIN $colore_prodotto
                           ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto

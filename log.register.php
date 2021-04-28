@@ -47,12 +47,19 @@
                   if(isset($_POST["registrati"])) {
 
                     //acquisizione dati dal form
-                    $nome = $_POST["nome"];
-                    $cognome = $_POST["cognome"];
-                    $email = strtolower($_POST["email"]);
+                    $nome = mysqli_real_escape_string($conn, $_POST['nome']);
+
+                    $cognome = mysqli_real_escape_string($conn, $_POST['cognome']);
+
+                    $_email = strtolower($_POST["email"]);
+                    $email = mysqli_real_escape_string($conn, $_email);
+
                     $username = strtolower($_POST["username"]);
-                    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-                    $Rpassword = $_POST["Rpassword"];
+
+                    $_password = mysqli_real_escape_string($conn, $_POST['password']);
+                    $password = password_hash($_password, PASSWORD_DEFAULT);
+
+                    $Rpassword = mysqli_real_escape_string($conn, $_POST['Rpassword']);
 
                     $sql = "INSERT into utenti (nome, cognome, email, username, password) VALUES ('$nome', '$cognome', '$email', '$username', '$password')";
 
