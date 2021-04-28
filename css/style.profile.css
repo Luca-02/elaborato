@@ -5,6 +5,8 @@
   color: #000000;
   font-variant: normal;
   margin-top: 10px;
+  max-width: 500px;
+  word-wrap: break-word;
 }
 
 .title h3 {
@@ -19,8 +21,7 @@
   color: black;
   margin-bottom: 10px;
   text-align: center;
-  margin-left: 37.5px;
-  margin-right: 37.5px;
+
   border: 2px solid rgba(0,110,255,1);
   background-color: white;
   font-family: "Montserrat", sans-serif;
@@ -57,6 +58,7 @@
 
 
 #box-metodi{
+  padding: 0 20px;
   min-width: 300px;
 	position: absolute;
   top: 50%;
@@ -64,7 +66,6 @@
   transform: translate(-50%, -50%);
 	background: #FBFCFC;
   text-align: center;
-  padding: 0px 0px;
 }
 .box-shadow {
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8)  ;
@@ -74,7 +75,6 @@
 
 .container-elenco-metodi-pagamento {
   font-family: "Montserrat", sans-serif;
-  padding: 0 37.5px;
 }
 
 .elenco-metodo-pagamento {

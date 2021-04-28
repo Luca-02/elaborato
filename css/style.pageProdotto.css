@@ -445,10 +445,7 @@
   animation-name: zoom;
   animation-duration: 0.5s;
 }
-@keyframes zoom {
-  from {transform: scale(0.1)}
-  to {transform: scale(1)}
-}
+
 .close {
   position: absolute;
   top: 88px;

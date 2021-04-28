@@ -493,7 +493,22 @@ input[type=number] {
   overflow: hidden;
 }
 
-@media screen and (max-width: 1480px) {
+.empty-prodotti {
+  text-align: center;
+  background: #FBFCFC;
+  padding: 25px;
+  color: black;
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 50%), 0 8px 20px 0 rgb(0 0 0 / 49%);
+  margin-top: 25px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.empty-prodotti p {
+    text-align: center;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 1400px) {
   .prodotti {
     width: 100%;
   }

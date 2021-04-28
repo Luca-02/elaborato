@@ -41,14 +41,14 @@
     <div class="background"></div>
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      <div class="box-shadow" id=box>
+      <div class="box-shadow" id=box-metodi>
 
           <div class="profile-img">
             <img src="./immagini/img_avatar.png" alt="logo">
           </div>
 
           <div class="title">
-            <h2> <?php echo "$nome $cognome"; ?> </h2>
+            <h2> <?php echo "$nome $cognome" ?> </h2>
             <h3> <?php echo $user; ?> </h3>
           </div>
         <hr>

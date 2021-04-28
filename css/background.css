@@ -8,8 +8,9 @@
   filter: brightness(80%); -webkit-filter: brightness(80%);
 }
 
-html {
+* {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 #myBtn {

@@ -25,6 +25,11 @@
                        $result_saldoCarta = $conn->query($sql_saldoCarta);
                        $row_saldoCarta = $result_saldoCarta->fetch_assoc();
 
+   $sql_selectmetodi = "SELECT * FROM metodo_pagamento WHERE IDmetodo_pagamento = $IDmetodo_pagamento";
+                        $result_selectmetodi = $conn->query($sql_selectmetodi);
+                        $row_selectmetodi = $result_selectmetodi->fetch_assoc();
+                        $str_carta = '**** **** **** '.substr($row_selectmetodi["numero_carta"], -4);
+
     $controllo_saldo_disponibile = $row_saldoCarta["saldo_carta"] - $saldo_speso;
 
     if ($controllo_saldo_disponibile < 0) //controllo del saldo
@@ -51,10 +56,10 @@
 
         $sql_insert = "INSERT INTO acquisto
         (quantita_acquisto, data_acquisto, idutente, idprodotto_taglia, nome_spedizione, cognome_spedizione,
-          email_spedizione, indirizzo, citta, provincia, cap)
+          email_spedizione, indirizzo, citta, provincia, cap, numero_carta_utilizzata)
           VALUES
           ('$quantita_acquisto', NOW(), '$IDutente', '$idprodotto_taglia', '$nome_completo_ck', '$cognome_completo_ck',
-          '$email_ck', '$indirizzo_ck', '$citta_ck', '$provincia_ck', '$cap_ck')";
+          '$email_ck', '$indirizzo_ck', '$citta_ck', '$provincia_ck', '$cap_ck', '$str_carta')";
 
           if ($conn->query($sql_insert))
           {

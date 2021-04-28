@@ -193,13 +193,17 @@
                                 <details>
                                   <summary> Anno </summary>
                                   <ul>
-                                    <li> <button name="1anno-acquisto" value="2021"> 2021 </button> </li>
-                                    <li> <button name="1anno-acquisto" value="2020"> 2020 </button> </li>
-                                    <li> <button name="1anno-acquisto" value="2019"> 2019 </button> </li>
-                                    <li> <button name="1anno-acquisto" value="2018"> 2018 </button> </li>
-                                    <li> <button name="1anno-acquisto" value="2017"> 2017 </button> </li>
-                                    <li> <button name="1anno-acquisto" value="2016"> 2016 </button> </li>
-                                    <li> <button name="1anno-acquisto" value="2015"> 2015 </button> </li>
+                                    <?php
+                                      $now = new DateTime();
+                                      $year_now = $now->format('Y');
+
+                                      $a = 0;
+                                      while ($a<5) {
+                                        echo "<li> <button name=1anno-acquisto value=$year_now> $year_now </button> </li>";
+                                        $year_now--;
+                                        $a++;
+                                      }
+                                     ?>
                                   </ul>
                                 </details>
 
@@ -208,122 +212,166 @@
                                   <ul>
                                       <div class="anno-mese-container">
                                         <select name="2anno-acquisto">
-                                          <option value="" selected disabled> Anno </option>
-                                          <option value="2021"> 2021 </option>
-                                          <option value="2020"> 2020 </option>
-                                          <option value="2019"> 2019 </option>
-                                          <option value="2018"> 2018 </option>
-                                          <option value="2017"> 2017 </option>
-                                          <option value="2016"> 2016 </option>
-                                          <option value="2015"> 2015 </option>
+                                          <?php
+                                            $now = new DateTime();
+                                            $year_now = $now->format('Y');
+
+                                            $a = 0;
+                                            while ($a<5) {
+                                              echo "<option value=$year_now> $year_now </option>";
+                                              $year_now--;
+                                              $a++;
+                                            }
+                                           ?>
                                         </select>
-                                        <p> / </p>
+                                      <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
                                         <select name="2mese-acquisto">
-                                          <option value="" selected disabled> Mese </option>
-                                          <option value="-01-01"> Gennaio </option>
-                                          <option value="-02-01"> Febbraio </option>
-                                          <option value="-03-01"> Marzo </option>
-                                          <option value="-04-01"> Aprile </option>
-                                          <option value="-05-01"> Maggio </option>
-                                          <option value="-06-01"> Giugno </option>
-                                          <option value="-07-01"> Luglio </option>
-                                          <option value="-08-01"> Agosto </option>
-                                          <option value="-09-01"> Settembre </option>
-                                          <option value="-10-01"> Ottobre </option>
-                                          <option value="-11-01"> Novembre </option>
-                                          <option value="-12-01"> Dicembre </option>
+                                          <option value="-01"> Gennaio </option>
+                                          <option value="-02"> Febbraio </option>
+                                          <option value="-03"> Marzo </option>
+                                          <option value="-04"> Aprile </option>
+                                          <option value="-05"> Maggio </option>
+                                          <option value="-06"> Giugno </option>
+                                          <option value="-07"> Luglio </option>
+                                          <option value="-08"> Agosto </option>
+                                          <option value="-09"> Settembre </option>
+                                          <option value="-10"> Ottobre </option>
+                                          <option value="-11"> Novembre </option>
+                                          <option value="-12"> Dicembre </option>
                                         </select>
                                       </div>
                                       <li> <button name="mese-anno-acquisto"> Cerca </button> </li>
                                   </ul>
                                 </details>
-
-                                <button name="resetta-filtri"> Resetta </button>
-
                               </div>
+
+                              <div class=container-option-ordina>
+                                <button name="resetta-filtri" class="btn-resetta-filtri-acquisti"> Resetta filtri </button>
+                              </div>
+
                             </div>
 
                             <div class="container-acquisti">
                               <div class="div-acquisti">
+                                <ul>
+                                  <?php
 
-                          <ul>
-                        <?php
+                                    if ((!isset($_POST["1anno-acquisto"])) || (!isset($_POST["mese-anno-acquisto"])) || (isset($_POST["resetta-filtri"]))) {
+                                      $sql="SELECT * FROM acquisto WHERE idutente = '$IDutente' ORDER BY data_acquisto DESC";
+                                    }
 
-                        if ((!isset($_POST["1anno-acquisto"])) || (isset($_POST["resetta-filtri"]))) {
-                          $sql = "SELECT * FROM acquisto WHERE idutente = $IDutente";
-                        }
-                        if ((isset($_POST["1anno-acquisto"]))) {
-                          $a1 = $_POST["1anno-acquisto"];
-                          $a2 = $_POST["1anno-acquisto"] + 1;
-                          $s = "-01-01";
-                          $anno1 = $a1.$s;
-                          $anno2 = $a2.$s;
+                                    if ((isset($_POST["1anno-acquisto"]))) {
+                                      $a1 = $_POST["1anno-acquisto"];
+                                      $a2 = $_POST["1anno-acquisto"] + 1;
+                                      $s = "-01-01";
+                                      $anno1 = $a1.$s;
+                                      $anno2 = $a2.$s;
+                                      $sql = "SELECT * FROM acquisto WHERE idutente = $IDutente AND data_acquisto >= '$anno1 = $a1.$s' AND data_acquisto < '$anno2 = $a2.$s' ORDER BY data_acquisto DESC";
 
-                          $sql = "SELECT * FROM acquisto WHERE idutente = $IDutente AND data_acquisto >= '$anno1 = $a1.$s' AND data_acquisto < '$anno2 = $a2.$s'";
-                        }
+                                      $strerr = "nel $a1";
+                                    }
 
-                        $result = $conn->query($sql);
+                                    if (isset($_POST["mese-anno-acquisto"])) {
+                                      $annoS = $_POST["2anno-acquisto"];
+                                      $meseS = $_POST["2mese-acquisto"];
+                                      $s01 = "-01";
+                                      $s31 = "-31";
+                                      $am01 = $annoS.$meseS.$s01;
+                                      $am31 = $annoS.$meseS.$s31;
+                                      $sql = "SELECT * FROM acquisto WHERE idutente = $IDutente AND data_acquisto >= '$am01' AND data_acquisto <= '$am31' ORDER BY data_acquisto DESC";
 
-                        while ($row = $result->fetch_assoc()) {
-                          $idprodotto_taglia = $row["idprodotto_taglia"];
+                                      if ($meseS == '-01') { $mm = 'Gennaio'; }
+                                      if ($meseS == '-02') { $mm = 'Febbraio'; }
+                                      if ($meseS == '-03') { $mm = 'Marzo'; }
+                                      if ($meseS == '-04') { $mm = 'Aprile'; }
+                                      if ($meseS == '-05') { $mm = 'Maggio'; }
+                                      if ($meseS == '-06') { $mm = 'Giugno'; }
+                                      if ($meseS == '-07') { $mm = 'Luglio'; }
+                                      if ($meseS == '-08') { $mm = 'Agosto'; }
+                                      if ($meseS == '-09') { $mm = 'Settembre'; }
+                                      if ($meseS == '-10') { $mm = 'Ottobre'; }
+                                      if ($meseS == '-11') { $mm = 'Novembre'; }
+                                      if ($meseS == '-12') { $mm = 'Dicembre'; }
 
-                          $sql_P = "SELECT * FROM $prodotto_taglia
-                                   INNER JOIN $prodotto
-                                   ON $prodotto_taglia.idprodotto = $prodotto.IDprodotto
-                                   INNER JOIN $produttore_prodotto
-                                   ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-                                   INNER JOIN $immagine_prodotto
-                                   ON $prodotto.idimmagine_prodotto  = $immagine_prodotto.IDimmagine_prodotto
-                                   WHERE IDprodotto_taglia = $idprodotto_taglia";
-                                   $result_P = $conn->query($sql_P);
-                                   $row_P = $result_P->fetch_assoc();
-                                   $imageURL = 'uploads/'.$row_P["file_name"];
-                                   $IDprodotto = $row_P["IDprodotto"];
+                                      $strerr = "nel $annoS il mese di $mm";
+                                    }
 
-                          $sql_taglia = "SELECT * FROM taglia WHERE IDtaglia IN (
-                                         SELECT idtaglia FROM prodotto_taglia WHERE IDprodotto_taglia = $idprodotto_taglia)";
-                                         $result_taglia = $conn->query($sql_taglia);
-                                         $row_taglia = $result_taglia->fetch_assoc();
-                    ?>
-                      <li>
-                        <div class="img-acquisto">
-                          <?php echo "<a href=./pageProdotto.php?IDprodotto={$IDprodotto} name=compra-di-nuovo title='Scrivi una recensione'>"; ?>
-                            <img src="<?php echo $imageURL; ?>">
-                          </a>
-                        </div>
-                        <div class="c-info-acquisto">
-                          <div class="container-info-acquisto">
-                            <h5> <?php echo $row["data_acquisto"] ?> </h5>
-                            <h1> <?php echo $row_P["titolo"] ?> </h1>
-                            <h2> Indirizzo: <?php echo "{$row["indirizzo"]}, {$row["provincia"]} ({$row["citta"]})" ?> </h2>
-                            <h3> Destinatario: <?php echo "{$row["nome_spedizione"]} {$row["cognome_spedizione"]}" ?> </h3>
-                            <h4> Taglia: <?php echo $row_taglia["taglia"] ?> </h4>
-                            <h6> Quantita: <?php echo $row["quantita_acquisto"] ?> </h6>
-                            <p> Spesa totale: <span> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </span> </p>
-                          </div>
-                        </div>
-                        <div class="buttons-acquisto">
-                          <div class="container-buttons-acquisto">
-                            <?php echo "<a href=./scriviRecensione.php?IDprodotto={$IDprodotto} name=recensisci-acquisto title='Scrivi una recensione'>"; ?>
-                              <button type="button" class="margin-buttons-acquisto" name="recensisci"> Recensisci </button>
-                            </a>
-                            <?php echo "<a href=./pageProdotto.php?IDprodotto={$IDprodotto} name=compra-di-nuovo title='Scrivi una recensione'>"; ?>
-                              <button type="button" name="compra-di-nuovo"> Compralo di nuovo </button>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                    <?php
-                        }
-                        ?>
-                          </ul>
-                          </div>
-                          </div>
-                          </div>
-                        <?php
-                      }
-                    ?>
+                                    $result = $conn->query($sql);
+                                    $num_rows = mysqli_num_rows($result);
 
+                                    if ($num_rows == 0) {
+                                      ?>
+                                        <div class="empty-cart">
+                                          <p> Non hai effettuato alcun ordine <span> <?php echo $strerr ?> </span> </p>
+                                        </div>
+                                      <?php
+                                    }
+                                    else {
+
+                                      while ($row = $result->fetch_assoc()) {
+                                        $idprodotto_taglia = $row["idprodotto_taglia"];
+
+                                        $sql_P = "SELECT * FROM $prodotto_taglia
+                                                 INNER JOIN $prodotto
+                                                 ON $prodotto_taglia.idprodotto = $prodotto.IDprodotto
+                                                 INNER JOIN $produttore_prodotto
+                                                 ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
+                                                 INNER JOIN $immagine_prodotto
+                                                 ON $prodotto.idimmagine_prodotto  = $immagine_prodotto.IDimmagine_prodotto
+                                                 WHERE IDprodotto_taglia = $idprodotto_taglia";
+                                                 $result_P = $conn->query($sql_P);
+                                                 $row_P = $result_P->fetch_assoc();
+                                                 $imageURL = 'uploads/'.$row_P["file_name"];
+                                                 $IDprodotto = $row_P["IDprodotto"];
+
+                                        $sql_taglia = "SELECT * FROM taglia WHERE IDtaglia IN (
+                                                       SELECT idtaglia FROM prodotto_taglia WHERE IDprodotto_taglia = $idprodotto_taglia)";
+                                                       $result_taglia = $conn->query($sql_taglia);
+                                                       $row_taglia = $result_taglia->fetch_assoc();
+                              ?>
+                                <li>
+                                  <div class="img-acquisto">
+                                    <?php echo "<a href=./pageProdotto.php?IDprodotto={$IDprodotto} name=compra-di-nuovo>"; ?>
+                                      <img src="<?php echo $imageURL; ?>">
+                                    </a>
+                                  </div>
+                                  <div class="c-info-acquisto">
+                                    <div class="container-info-acquisto">
+                                      <h5> Acquistato il
+                                        <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
+                                        <?php echo $row["data_acquisto"] ?>
+                                      </h5>
+                                      <h1> <?php echo $row_P["titolo"] ?> </h1>
+                                      <h4> Taglia: <?php echo $row_taglia["taglia"] ?> </h4>
+                                      <h6> Quantita: <?php echo $row["quantita_acquisto"] ?> </h6>
+                                      <p> Spesa totale: <span> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </span> </p>
+                                      <?php echo "<a href=./info.dettagliOrdine.php?IDacquisto={$row["IDacquisto"]} name=compra-di-nuovo title='Scrivi una recensione'>"; ?>
+                                        <button type="button" class="btn-dettagli-ordine" name="button"> Dettagli dell'ordine </button>
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="buttons-acquisto">
+                                    <div class="container-buttons-acquisto">
+                                      <?php echo "<a href=./scriviRecensione.php?IDprodotto={$IDprodotto} name=recensisci-acquisto title='Scrivi una recensione'>"; ?>
+                                        <button type="button" class="margin-buttons-acquisto" name="recensisci"> Recensisci </button>
+                                      </a>
+                                      <?php echo "<a href=./pageProdotto.php?IDprodotto={$IDprodotto} name=compra-di-nuovo title='Scrivi una recensione'>"; ?>
+                                        <button type="button" name="compra-di-nuovo"> Compralo di nuovo </button>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              <?php
+                                    }
+                                  }
+                                  ?>
+                                    </ul>
+                                    </div>
+                                    </div>
+                                    </div>
+                                  <?php
+                                }
+                              ?>
           </form>
         </div>
 

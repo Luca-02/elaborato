@@ -10,13 +10,9 @@
   /* background: red; */
 }
 
-.center-item {
-  margin-left: 50%;
-  transform: translate(-50%, 0%);
-}
-
 .div-acquisti ul {
   list-style: none;
+  padding: 0 50px;
 }
 
 .div-acquisti li {
@@ -63,7 +59,7 @@
 .img-acquisto img {
   display: block;
   float: left;
-  max-height: 225px;
+  max-height: 200px;
   margin-right: 20px;
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2),
               0 8px 10px 0 rgba(0, 0, 0, 0.19);
@@ -83,7 +79,6 @@
   color: #7d7d7d;
   font-weight: normal;
   font-style: italic;
-  margin-bottom: 10px;
 }
 .container-info-acquisto h1 {
   font-size: 32px;
@@ -98,10 +93,10 @@
 .container-info-acquisto h3 {
   font-size: 16px;
   font-weight: normal;
-  margin-bottom: 10px;
   text-transform: capitalize;
 }
 .container-info-acquisto h4 {
+  margin-top: 10px;
   font-size: 16px;
   font-weight: normal;
 }
@@ -113,6 +108,34 @@
   font-size: 16px;
   font-weight: normal;
 }
+
+.btn-dettagli-ordine {
+  padding: 5px;
+  width: 200px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FBFCFC;
+  text-decoration: none;
+  background-color: rgba(0,110,255,1);
+  border: 2px solid rgba(0,110,255,1);
+  cursor: pointer;
+  outline: none;
+  margin-top: 10px;
+}
+.btn-dettagli-ordine:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+  border: 2px solid rgba(0,110,255,1);
+}
+.btn-dettagli-ordine:active{
+  background-color: rgba(0,110,255,1);
+  color: #FBFCFC;
+  transition: 0s;
+}
+
+
+
 .container-info-acquisto p span {
   font-weight: bold;
   color: rgba(0,110,255,1);
@@ -137,7 +160,7 @@
 
 .buttons-acquisto button {
   padding: 10px;
-  width: 250px;
+  width: 100%;
   font-size: 16px;
   font-weight: bold;
   color: #FBFCFC;
@@ -159,12 +182,116 @@
   transition: 0s;
 }
 
+
+
 .anno-mese-container {
   display: flex;
   justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
   padding: 20px;
   border-bottom: 1px solid #ccc;
 }
 .anno-mese-container p {
   margin: 0 10px;
+}
+
+.anno-mese-container select, .anno-mese-container p {
+  font-size: 16px;
+}
+
+.btn-resetta-filtri-acquisti {
+  padding: 14px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FBFCFC;
+  text-decoration: none;
+  background-color: rgba(0,110,255,1);
+  border: 2px solid rgba(0,110,255,1);
+  cursor: pointer;
+  outline: none;
+}
+.btn-resetta-filtri-acquisti:hover {
+  background-color: rgb(255,255,255);
+  color: black;
+  transition: 0.2s;
+  border: 2px solid rgba(0,110,255,1);
+}
+.btn-resetta-filtri-acquisti:active{
+  background-color: rgba(0,110,255,1);
+  color: #FBFCFC;
+  transition: 0s;
+}
+
+
+.dettagliOrdine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%, -50%);
+  font-family: "Montserrat", sans-serif;
+}
+
+@media screen and (max-width: 700px) {
+  .dettagliOrdine {
+    width: 100%;
+    left: 0;
+    transform: translate(0%,-50%);
+    -ms-transform: translate(0%, -50%);
+    padding: 0 20px;
+  }
+}
+
+.container-dettagliOrdine {
+  background: #FBFCFC;
+  color: black;
+  padding: 25px;
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 80%), 0 8px 20px 0 rgb(0 0 0 / 79%);
+}
+.container-dettagliOrdine hr {
+  border-top: 1px solid #8c8b8b;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 40px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.container-dettagliOrdine h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.container-dettagliOrdine h2 {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.text-info-ordine {
+  display: flex;
+  justify-content: flex-start;
+}
+.text-IO1 {
+  width: 100%;
+}
+.text-mod-color {
+  color: #7d7d7d;
+}
+.text-IO2 {
+}
+
+.text-IO10 {
+  margin-right: 10px;
+}
+
+.img-prodotto-dettagli-ordine {
+  max-width: 100px;
+  box-shadow: 0 4px 5px 0 rgb(0 0 0 / 20%),
+              0 4px 5px 0 rgb(0 0 0 / 19%);
+}
+
+.prezzo-ordine {
+  font-weight: bold;
+  color: rgba(0,110,255,1);
+  text-decoration: underline;
 }

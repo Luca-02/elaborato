@@ -50,7 +50,7 @@
           </div>
 
           <div class="title">
-            <h2> <?php echo "$nome $cognome"; ?> </h2>
+            <h2> <?php echo "$nome $cognome" ?> </h2>
             <h3> <?php echo $user; ?> </h3>
           </div>
         <hr>

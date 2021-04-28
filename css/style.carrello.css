@@ -191,8 +191,9 @@
 .empty-cart p {
   text-align: center;
   font-size: 24px;
+}
+.empty-cart p span {
   text-decoration: underline;
-  font-style: italic;
 }
 
 .btn-agg-rim-btn {

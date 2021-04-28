@@ -274,16 +274,14 @@ li, a{
 
 
 .img-home-header {
-  /* margin-bottom: 20px; */
-  /* background: url("../immagini/home/Retail-store-2098x1049.jpg"); */
-  /* background: url("../immagini/home/158-758x426.jpeg"); */
   background: url("../immagini/how-much-does-ecommerce-site-cost.jpg");
-  width: 100%;
+  min-width: 100%;
   height: 600px;
   text-align: center;
   -ms-align-items: center;
   align-items: center;
   display: flex;
+  background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -291,15 +289,13 @@ li, a{
               0 5px 10px 0 rgba(0, 0, 0, 0.79);
 }
 .img-home-header-carrello {
-  /* margin-bottom: 20px; */
-  /* background: url("../immagini/home/Retail-store-2098x1049.jpg"); */
-  /* background: url("../immagini/home/158-758x426.jpeg"); */
   background: url("../immagini/how-much-does-ecommerce-site-cost.jpg");
   width: 100%;
   height: auto;
   -ms-align-items: center;
   align-items: center;
   display: flex;
+  background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -321,6 +317,23 @@ li, a{
               0 8px 25px 2px rgba(0, 0, 0, 0.79);
 }
 
+@media screen and (max-width: 1200px) {
+  .img-home-header {
+    height: 450px;
+  }
+  .img-home {
+    width: 250px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .img-home-header {
+    height: 300px;
+  }
+  .img-home {
+    width: 200px;
+  }
+}
+
 .about-us {
   word-wrap: break-word;
   overflow: hidden;
@@ -340,6 +353,12 @@ li, a{
   transform: translate(-50%, 0%);
   text-align: center;
 }
+@media screen and (max-width: 1248px) {
+  .c-about-us {
+    width: 100%;
+  }
+}
+
 .c-about-us h1 {
   background-color: white;
   color: rgba(0,0,0,0.85);
@@ -564,7 +583,7 @@ li, a{
   margin-left: 80px;
 }
 
-@media screen and (max-width: 995px) {
+@media screen and (max-width: 1000px) {
   .ultimi-arrivi {
     padding: 0;
   }

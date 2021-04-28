@@ -238,7 +238,7 @@
                 </div>
               </div>
 
-            <ul class="prodotti-ul">
+            <!-- <ul class="prodotti-ul"> -->
               <?php
 
                 if ((!isset($_POST["bottone-prodotti"])) || (isset($_POST["tutti-i-prodotti-tutto"]))) {
@@ -378,82 +378,96 @@
                     }
 
                       $result = $conn->query($sql);
+                      $num_rows = mysqli_num_rows($result);
 
-                      while($row = $result->fetch_assoc()) {
-
-                        $imageURL = 'uploads/'.$row["file_name"];
-                        $IDoggetto = $row['idoggetto'];
-                        $IDprodotto = $row['IDprodotto'];
-
-                        $sql2 = "SELECT * FROM $taglia WHERE IDtaglia IN (
-                                 SELECT idtaglia FROM $prodotto_taglia WHERE idprodotto = $IDprodotto AND quantita > 0)";
-                                 $result2 = $conn->query($sql2);
-
-                        $sql_calzatura = "SELECT * FROM $tipo_calzatura
-                                          WHERE $tipo_calzatura.IDtipo_calzatura IN (
-                                          SELECT idtipo_calzatura FROM $calzatura_oggetto WHERE IDcalzatura_oggetto IN (
-                                          SELECT idcalzatura_oggetto FROM $oggetto WHERE IDoggetto = $IDoggetto
-                                          ))";
-                                          $result_calzatura = $conn->query($sql_calzatura);
-                                          $row_calzatura = $result_calzatura->fetch_assoc();
-                        $sql_media_recensioni = "SELECT AVG(valutazione) as media_valutazione FROM $recensioni WHERE idprodotto = $IDprodotto";
-                                                 $result_media_recensioni = $conn->query($sql_media_recensioni);
-                                                 $row_media_recensioni = $result_media_recensioni->fetch_assoc();
-                                                 $media_recensioni = number_format($row_media_recensioni["media_valutazione"], 1);
-
-                          echo "
-                              <li class = prodotti-li title='{$row['titolo']}'>
-                              <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']}>
-                              <div class = container-prodotti>
-                              <div class = img-prodotto>
-                              <img src=$imageURL alt = product-image class = img-product>
-                              </div>
-
-                              <div class = overlay-prodotti>
-                              <div class = over-img>
-                              <button type = button name = valutation>
-                              <img src=./immagini/star.png alt=stars style='filter: saturate(4);' width=16px> $media_recensioni
-                              </button>
-                              </div>
-                              <div class=text-overlay-prodotti>
-                              <label> Taglie disponibili </label>
-                              <ul>
-                              ";
-                              while($row2 = $result2->fetch_assoc()) {
-                                echo "
-                                <li> <p> {$row2['taglia']} </p> </li>
-                                ";
-                              }
-                              echo "
-                              </ul>
-                              <br>
-                              <label> Colore principale </label>
-                              <ul class=colors>
-                              <li style = 'background: {$row['codice_colore']}'></li>
-                              </ul>
-                              <br>
-                              </div>
-                              <div class=btn-visualizza-prodotto>
-                                <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']} class=btn-visualizza-prodotto-a> Visualizza prodotto </a>
-                              </div>
-                            </div>
-                            <div class = bottom>
-                              <div class=bottom-content>
-                                <div class = bottom-title>
-                                  <h2> {$row['produttore']} <span> ({$row_calzatura['tipo']}) </span> </h2>
-                                  <span> €{$row['costo']} </span>
-                                </div>
-                                <p> {$row['titolo']} </p>
-                              </div>
-                            </div>
+                      if ($num_rows == 0) {
+                        ?>
+                          <div class="empty-prodotti">
+                            <p> Non sono presenti prodotti su questo filtro </p>
                           </div>
-                        </a>
-                      </li>";
+                        <?php
+                      }
+                      else {
+                        ?>
+                          <ul class="prodotti-ul">
+                        <?php
+                        while($row = $result->fetch_assoc()) {
 
+                          $imageURL = 'uploads/'.$row["file_name"];
+                          $IDoggetto = $row['idoggetto'];
+                          $IDprodotto = $row['IDprodotto'];
+
+                          $sql2 = "SELECT * FROM $taglia WHERE IDtaglia IN (
+                                   SELECT idtaglia FROM $prodotto_taglia WHERE idprodotto = $IDprodotto AND quantita > 0)";
+                                   $result2 = $conn->query($sql2);
+
+                          $sql_calzatura = "SELECT * FROM $tipo_calzatura
+                                            WHERE $tipo_calzatura.IDtipo_calzatura IN (
+                                            SELECT idtipo_calzatura FROM $calzatura_oggetto WHERE IDcalzatura_oggetto IN (
+                                            SELECT idcalzatura_oggetto FROM $oggetto WHERE IDoggetto = $IDoggetto
+                                            ))";
+                                            $result_calzatura = $conn->query($sql_calzatura);
+                                            $row_calzatura = $result_calzatura->fetch_assoc();
+                          $sql_media_recensioni = "SELECT AVG(valutazione) as media_valutazione FROM $recensioni WHERE idprodotto = $IDprodotto";
+                                                   $result_media_recensioni = $conn->query($sql_media_recensioni);
+                                                   $row_media_recensioni = $result_media_recensioni->fetch_assoc();
+                                                   $media_recensioni = number_format($row_media_recensioni["media_valutazione"], 1);
+
+                            echo "
+                                <li class = prodotti-li title='{$row['titolo']}'>
+                                <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']}>
+                                <div class = container-prodotti>
+                                <div class = img-prodotto>
+                                <img src=$imageURL alt = product-image class = img-product>
+                                </div>
+
+                                <div class = overlay-prodotti>
+                                <div class = over-img>
+                                <button type = button name = valutation>
+                                <img src=./immagini/star.png alt=stars style='filter: saturate(4);' width=16px> $media_recensioni
+                                </button>
+                                </div>
+                                <div class=text-overlay-prodotti>
+                                <label> Taglie disponibili </label>
+                                <ul>
+                                ";
+                                while($row2 = $result2->fetch_assoc()) {
+                                  echo "
+                                  <li> <p> {$row2['taglia']} </p> </li>
+                                  ";
+                                }
+                                echo "
+                                </ul>
+                                <br>
+                                <label> Colore principale </label>
+                                <ul class=colors>
+                                <li style = 'background: {$row['codice_colore']}'></li>
+                                </ul>
+                                <br>
+                                </div>
+                                <div class=btn-visualizza-prodotto>
+                                  <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']} class=btn-visualizza-prodotto-a> Visualizza prodotto </a>
+                                </div>
+                              </div>
+                              <div class = bottom>
+                                <div class=bottom-content>
+                                  <div class = bottom-title>
+                                    <h2> {$row['produttore']} <span> ({$row_calzatura['tipo']}) </span> </h2>
+                                    <span> €{$row['costo']} </span>
+                                  </div>
+                                  <p> {$row['titolo']} </p>
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                        </li>";
+
+                  }
+                ?>
+                  </ul>
+                <?php
                 }
-
               ?>
-             </ul>
 
           </div>
         </form>
