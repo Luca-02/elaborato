@@ -2,7 +2,7 @@
 
 Sistema gestionale E-Commerce  & Fly (sistema E-Commerce con consegna a domicilio dei abbigliamento, borse, calzature, accessori)
 
-
+/
 
 Traccia parte informatica:  
 
@@ -10,7 +10,7 @@ Si progetti un sistema software&hardware per la gestione delle informazioni di u
 
 Il sistema deve prevedere una gestione dell’anagrafica clienti, dei singoli articoli in warehouse e degli ordini. Un ordine può essere cumulativo in quanto può contenere 1 o più articoli. Il sistema deve prevedere la consegna a domicilio da un drone aereo tramite un sistema innovativo di coordinate terrestri. Il Cliente potrà monitorare in una mappa 2D il percorso (automatico o manuale) del drone e riceverà un'email quando la consegna sarà imminente.
 
-
+/
 
 Traccia parte Sistemi e Reti: 
 
