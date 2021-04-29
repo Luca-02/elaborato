@@ -7,7 +7,7 @@
       header("Location: ./log.php");
     }
 
-    include 'dbConfig.php';
+    include './dbConfig/dbConfig.php';
 
     $str_errore = $_SESSION['str_errore'];
     $indirizzo_ck = $_SESSION['indirizzo_ck'];

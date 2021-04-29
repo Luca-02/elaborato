@@ -7,7 +7,7 @@
       header("Location: ./log.php");
     }
 
-    include 'dbConfig.php';
+    include './dbConfig/dbConfig.php';
 
     $email = $_SESSION['email'];
     $sql_user = "SELECT * FROM $utenti WHERE email = '$email'";

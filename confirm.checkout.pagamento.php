@@ -4,7 +4,7 @@
     header("Location: ./log.php");
   }
 
-  include 'dbConfig.php';
+  include './dbConfig/dbConfig.php';
 
     $IDmetodo_pagamento = $_SESSION['IDmetodo_pagamento'];
     $saldo_speso = $_SESSION['saldo_speso'];

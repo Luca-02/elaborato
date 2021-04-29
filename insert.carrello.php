@@ -4,7 +4,7 @@
     header("Location: ./log.php");
   }
 
-  include 'dbConfig.php';
+  include './dbConfig/dbConfig.php';
 
   if (isset($_POST["add-to-cart"])) {
     $IDprodotto = $_POST["add-to-cart"];

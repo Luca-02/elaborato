@@ -2,7 +2,7 @@
 <html>
 
 <?php
-  include 'dbConfig.php';
+  include './dbConfig/dbConfig.php';
 
   $sql2 = "SELECT * FROM $prodotto";
            $result2 = $conn->query($sql2);

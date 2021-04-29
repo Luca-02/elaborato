@@ -4,6 +4,7 @@
     $password = "";
     $database = "elaboratoluca";
 
+    //tabelle
     $utenti = "utenti";
     $tipo_calzatura = "tipo_calzatura";
     $tipo_oggetto = "tipo_oggetto";

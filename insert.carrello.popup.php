@@ -7,7 +7,7 @@
       header("Location: ./log.php");
     }
 
-    include 'dbConfig.php';
+    include './dbConfig/dbConfig.php';
 
     $IDprodotto = $_SESSION['IDprodotto'];
     $quantita = $_SESSION['quantita'];

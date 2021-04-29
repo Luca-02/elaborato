@@ -7,7 +7,7 @@
       header("Location: ./log.php");
     }
 
-    include 'dbConfig.php';
+    include './dbConfig/dbConfig.php';
 
     $sql_max_costo = "SELECT MAX(costo) as max_costo FROM $prodotto";
     $result_max_costo = $conn->query($sql_max_costo);

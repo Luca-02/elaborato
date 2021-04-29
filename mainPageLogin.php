@@ -7,7 +7,7 @@
       header("Location: ./log.php");
     }
 
-    include 'dbConfig.php';
+    include './dbConfig/dbConfig.php';
 
     // //conta visite con cookie
     // if (isset($_COOKIE['visite'])) {

@@ -2,7 +2,7 @@
 <html>
 
   <?php
-    include 'dbConfig.php';
+    include './dbConfig/dbConfig.php';
   ?>
 
   <head>
