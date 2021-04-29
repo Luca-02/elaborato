@@ -1,4 +1,4 @@
-# elaborato per esame di stato
+# Elaborato per esame di stato
 
 Sistema gestionale E-Commerce  & Fly (sistema E-Commerce con consegna a domicilio dei abbigliamento, borse, calzature, accessori)
 
