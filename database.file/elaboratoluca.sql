@@ -1,8 +1,8 @@
--- MariaDB dump 10.17  Distrib 10.4.14-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.18-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: elaboratoluca
 -- ------------------------------------------------------
--- Server version	10.4.14-MariaDB
+-- Server version	10.4.18-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,23 +25,14 @@ DROP TABLE IF EXISTS `acquisto`;
 CREATE TABLE `acquisto` (
   `IDacquisto` int(11) NOT NULL AUTO_INCREMENT,
   `quantita_acquisto` int(11) DEFAULT NULL,
-  `data_acquisto` date DEFAULT NULL,
-  `nome_spedizione` varchar(30) DEFAULT NULL,
-  `cognome_spedizione` varchar(30) DEFAULT NULL,
-  `email_spedizione` varchar(80) DEFAULT NULL,
-  `indirizzo` varchar(100) DEFAULT NULL,
-  `citta` varchar(30) DEFAULT NULL,
-  `provincia` varchar(30) DEFAULT NULL,
-  `cap` int(11) DEFAULT NULL,
-  `idutente` int(11) DEFAULT NULL,
   `idprodotto_taglia` int(11) DEFAULT NULL,
-  `numero_carta_utilizzata` varchar(19) NOT NULL,
+  `idordine` int(11) DEFAULT NULL,
   PRIMARY KEY (`IDacquisto`),
-  KEY `idutente` (`idutente`),
   KEY `idprodotto_taglia` (`idprodotto_taglia`),
-  CONSTRAINT `acquisto_ibfk_1` FOREIGN KEY (`idutente`) REFERENCES `utenti` (`IDutente`),
-  CONSTRAINT `acquisto_ibfk_2` FOREIGN KEY (`idprodotto_taglia`) REFERENCES `prodotto_taglia` (`IDprodotto_taglia`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
+  KEY `idordine` (`idordine`),
+  CONSTRAINT `acquisto_ibfk_1` FOREIGN KEY (`idprodotto_taglia`) REFERENCES `prodotto_taglia` (`IDprodotto_taglia`),
+  CONSTRAINT `acquisto_ibfk_2` FOREIGN KEY (`idordine`) REFERENCES `ordine` (`IDordine`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +41,7 @@ CREATE TABLE `acquisto` (
 
 LOCK TABLES `acquisto` WRITE;
 /*!40000 ALTER TABLE `acquisto` DISABLE KEYS */;
-INSERT INTO `acquisto` VALUES (32,1,'2021-03-26','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,35,'**** **** **** 4444'),(37,1,'2021-04-28','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,8,'**** **** **** 4444'),(38,2,'2021-04-28','Luca','Milanesi','milanesiluca2002@gmail.com','Via Asiago 55','Milano','Baranzate',20021,38,31,'**** **** **** 9999'),(39,1,'2021-04-29','Mario','Rossi','mario.rossi@gmail.com','Via Torino, 5','Milano','Milano',20123,39,35,'**** **** **** 1212');
+INSERT INTO `acquisto` VALUES (6,1,20,7),(7,1,30,7);
 /*!40000 ALTER TABLE `acquisto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +92,7 @@ CREATE TABLE `carrello` (
   KEY `idprodotto_taglia` (`idprodotto_taglia`),
   CONSTRAINT `carrello_ibfk_1` FOREIGN KEY (`idutente`) REFERENCES `utenti` (`IDutente`),
   CONSTRAINT `carrello_ibfk_2` FOREIGN KEY (`idprodotto_taglia`) REFERENCES `prodotto_taglia` (`IDprodotto_taglia`)
-) ENGINE=InnoDB AUTO_INCREMENT=238 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,7 +186,7 @@ CREATE TABLE `metodo_pagamento` (
 
 LOCK TABLES `metodo_pagamento` WRITE;
 /*!40000 ALTER TABLE `metodo_pagamento` DISABLE KEYS */;
-INSERT INTO `metodo_pagamento` VALUES (15,'Luca','Milanesi','1111-2222-3333-4444',4,2028,123,38,8770.08),(16,'Luca','Milanesi','9999-9999-9999-9999',3,2058,555,38,9040.01),(17,'Mario','Rossi','1212-1212-1212-1212',5,2028,987,39,9600.01);
+INSERT INTO `metodo_pagamento` VALUES (15,'Luca','Milanesi','1111-2222-3333-4444',4,2028,123,38,9570.00),(16,'Luca','Milanesi','9999-9999-9999-9999',3,2058,555,38,10000.00),(17,'Mario','Rossi','1212-1212-1212-1212',5,2028,987,39,10000.00);
 /*!40000 ALTER TABLE `metodo_pagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,6 +215,41 @@ LOCK TABLES `oggetto` WRITE;
 /*!40000 ALTER TABLE `oggetto` DISABLE KEYS */;
 INSERT INTO `oggetto` VALUES (1,'Giacche e Cappotti',1),(2,'Abiti',1),(3,'Camicie',1),(4,'Maglieria',1),(5,'T-shirts e Polo',1),(6,'Felpe',1),(7,'Pantaloni',1),(8,'Jeans',1),(9,'Abbigliamento Sportivo',1),(10,'Abbigliamento Mare',1),(11,'Intimo e Calze',1),(12,'Accappatoi',1),(13,'Zaini',2),(14,'Marsupi',2),(15,'Sneakers',3),(16,'Mocassini',3),(17,'Stivali',3),(18,'Scarpe Sportive',3),(19,'Sandali e Ciabatte',3),(20,'Cinture',4),(21,'Portafogli',4),(22,'Occhiali da Sole',4),(23,'Gioielli',4),(24,'Orologi',4),(25,'Cravatte e Sciarpe',4),(26,'Cappelli e Guanti',4),(27,'Profumi',4),(28,'Giacche e Cappotti',5),(29,'Abiti',5),(31,'Camicie e Top',5),(32,'Maglieria',5),(33,'T-Shirts e Felpe',5),(34,'Gonne',5),(35,'Pantaloni e Shorts',5),(36,'Jeans',5),(37,'Abbigliamento Sportivo',5),(38,'Abbigliamento Mare',5),(39,'Intimo e Calze',5),(40,'Accappatoi',5),(45,'Borsa a spalla',6),(46,'Borsa a mano',6),(47,'Pochette',6),(48,'Zaini e Marsupi',6),(49,'Sandali',7),(50,'Stivali',7),(51,'Décolleté',7),(52,'Sneakers',7),(53,'Ballerine',7),(54,'Scarpe sportive',7),(55,'Cinture',8),(56,'Portafogli',8),(57,'Occhiali da Sole',8),(58,'Gioielli',8),(59,'Orologi',8),(60,'Foulard e Sciarpe',8),(61,'Cappelli e Guanti',8),(62,'Profumi',8);
 /*!40000 ALTER TABLE `oggetto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ordine`
+--
+
+DROP TABLE IF EXISTS `ordine`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ordine` (
+  `IDordine` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_destinatario` varchar(30) DEFAULT NULL,
+  `cognome_destinatario` varchar(30) DEFAULT NULL,
+  `email_destinatario` varchar(80) DEFAULT NULL,
+  `indirizzo` varchar(100) DEFAULT NULL,
+  `citta` varchar(30) DEFAULT NULL,
+  `provincia` varchar(30) DEFAULT NULL,
+  `cap` int(11) DEFAULT NULL,
+  `numero_carta_utilizzata` varchar(19) DEFAULT NULL,
+  `data_ordine` date DEFAULT NULL,
+  `idutente` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IDordine`),
+  KEY `idutente` (`idutente`),
+  CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`idutente`) REFERENCES `utenti` (`IDutente`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ordine`
+--
+
+LOCK TABLES `ordine` WRITE;
+/*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
+INSERT INTO `ordine` VALUES (7,'luca','milanesi','milanesiluca2002@gmail.com','Via asiago, 55','Milano','Baranzate ',20021,'**** **** **** 4444','2021-04-29',38);
+/*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -290,7 +316,7 @@ CREATE TABLE `prodotto_taglia` (
 
 LOCK TABLES `prodotto_taglia` WRITE;
 /*!40000 ALTER TABLE `prodotto_taglia` DISABLE KEYS */;
-INSERT INTO `prodotto_taglia` VALUES (8,94,1,1),(9,96,2,1),(10,100,3,1),(12,99,4,1),(13,99,5,1),(14,0,1,2),(15,9,2,2),(16,50,3,2),(17,28,4,2),(18,0,5,2),(19,0,1,3),(20,13,2,3),(21,48,3,3),(22,0,4,3),(23,64,5,3),(24,45,1,4),(25,0,2,4),(26,21,3,4),(27,30,4,4),(28,15,5,4),(29,0,1,5),(30,12,2,5),(31,18,3,5),(32,0,4,5),(33,40,5,5),(34,0,1,6),(35,8,2,6),(36,50,3,6),(37,42,4,6),(38,0,5,6);
+INSERT INTO `prodotto_taglia` VALUES (8,94,1,1),(9,96,2,1),(10,99,3,1),(12,99,4,1),(13,99,5,1),(14,0,1,2),(15,9,2,2),(16,50,3,2),(17,28,4,2),(18,0,5,2),(19,0,1,3),(20,11,2,3),(21,48,3,3),(22,0,4,3),(23,64,5,3),(24,45,1,4),(25,0,2,4),(26,21,3,4),(27,30,4,4),(28,15,5,4),(29,0,1,5),(30,10,2,5),(31,18,3,5),(32,0,4,5),(33,40,5,5),(34,0,1,6),(35,7,2,6),(36,50,3,6),(37,32,4,6),(38,0,5,6);
 /*!40000 ALTER TABLE `prodotto_taglia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -462,4 +488,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-29  0:52:38
+-- Dump completed on 2021-04-29 10:01:12

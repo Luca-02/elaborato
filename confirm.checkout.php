@@ -43,66 +43,82 @@
       $_SESSION['cap_ck'] = $cap_ck;
       header("Location: ./checkoutEffettuato.php");
     }
+
     else
     {
       $str_errore = 'Acquisto andato a buon fine!';
 
-      $sql = "SELECT * FROM carrello WHERE idutente = $IDutente";
-      $result = $conn->query($sql);
+      $sql_insert_ordine = "INSERT INTO ordine
+                            (nome_destinatario, cognome_destinatario, email_destinatario, indirizzo, citta, provincia, cap, numero_carta_utilizzata, data_ordine, idutente)
+                            VALUES
+                            ('$nome_completo_ck', '$cognome_completo_ck', '$email_ck', '$indirizzo_ck', '$citta_ck', '$provincia_ck', '$cap_ck', '$str_carta', NOW(), '$IDutente')";
 
-      while ($row = $result->fetch_assoc()) {
-        $quantita_acquisto = $row["quantita_carrello"];
-        $idprodotto_taglia = $row["idprodotto_taglia"];
+      if ($conn->query($sql_insert_ordine)) {
 
-        $sql_insert = "INSERT INTO acquisto
-        (quantita_acquisto, data_acquisto, idutente, idprodotto_taglia, nome_spedizione, cognome_spedizione,
-          email_spedizione, indirizzo, citta, provincia, cap, numero_carta_utilizzata)
-          VALUES
-          ('$quantita_acquisto', NOW(), '$IDutente', '$idprodotto_taglia', '$nome_completo_ck', '$cognome_completo_ck',
-          '$email_ck', '$indirizzo_ck', '$citta_ck', '$provincia_ck', '$cap_ck', '$str_carta')";
+        $sql_ordine_desc = "SELECT * FROM ordine where idutente = '$IDutente' order by data_ordine DESC LIMIT 1";
+                            $result_ordine_desc = $conn->query($sql_ordine_desc);
+                            $row_ordine_desc = $result_ordine_desc->fetch_assoc();
+                            $IDordine = $row_ordine_desc["IDordine"];
 
-          if ($conn->query($sql_insert))
-          {
+        $sql = "SELECT * FROM carrello WHERE idutente = '$IDutente'";
+        $result = $conn->query($sql);
 
-            $sql_quantitaPT = "SELECT * FROM prodotto_taglia WHERE IDprodotto_taglia = $idprodotto_taglia";
-            $result_quantitaPT = $conn->query($sql_quantitaPT);
-            $row_quantitaPT = $result_quantitaPT->fetch_assoc();
+        while ($row = $result->fetch_assoc()) {
+          $quantita_acquisto = $row["quantita_carrello"];
+          $idprodotto_taglia = $row["idprodotto_taglia"];
 
-            $quantita_aggiornata = $row_quantitaPT["quantita"] - $quantita_acquisto;
+          $sql_insert = "INSERT INTO acquisto
+                         (quantita_acquisto, idprodotto_taglia, idordine)
+                         VALUES
+                         ('$quantita_acquisto', '$idprodotto_taglia', '$IDordine')";
 
-            $sql_updateQ = "UPDATE prodotto_taglia SET quantita = '$quantita_aggiornata'
-            WHERE $prodotto_taglia.IDprodotto_taglia = $idprodotto_taglia";
-
-            if ($conn->query($sql_updateQ))
+            if ($conn->query($sql_insert))
             {
-              $sql_delete = "DELETE FROM carrello WHERE idprodotto_taglia = $idprodotto_taglia";
+              $sql_quantitaPT = "SELECT * FROM prodotto_taglia WHERE IDprodotto_taglia = $idprodotto_taglia";
+              $result_quantitaPT = $conn->query($sql_quantitaPT);
+              $row_quantitaPT = $result_quantitaPT->fetch_assoc();
 
-              if ($conn->query($sql_delete)) {
-                session_start();
-                $_SESSION['IDmetodo_pagamento'] = $IDmetodo_pagamento;
-                $_SESSION['saldo_speso'] = $saldo_speso;
-                $_SESSION['str_errore'] = $str_errore;
-                $_SESSION['indirizzo_ck'] = $indirizzo_ck;
-                $_SESSION['citta_ck'] = $citta_ck;
-                $_SESSION['provincia_ck'] = $provincia_ck;
-                $_SESSION['cap_ck'] = $cap_ck;
-                header("Location: ./confirm.checkout.pagamento.php");
-              }
-              else {
-                echo "Error deleting record: " . mysqli_error($conn);
-              }
+              $quantita_aggiornata = $row_quantitaPT["quantita"] - $quantita_acquisto;
+
+              $sql_updateQ = "UPDATE prodotto_taglia SET quantita = '$quantita_aggiornata'
+                              WHERE $prodotto_taglia.IDprodotto_taglia = $idprodotto_taglia";
+                if ($conn->query($sql_updateQ))
+                {
+                  $sql_delete = "DELETE FROM carrello WHERE idprodotto_taglia = $idprodotto_taglia";
+
+                  if ($conn->query($sql_delete)) {
+                    session_start();
+                    $_SESSION['IDmetodo_pagamento'] = $IDmetodo_pagamento;
+                    $_SESSION['saldo_speso'] = $saldo_speso;
+                    $_SESSION['str_errore'] = $str_errore;
+                    $_SESSION['indirizzo_ck'] = $indirizzo_ck;
+                    $_SESSION['citta_ck'] = $citta_ck;
+                    $_SESSION['provincia_ck'] = $provincia_ck;
+                    $_SESSION['cap_ck'] = $cap_ck;
+                    header("Location: ./confirm.checkout.pagamento.php");
+                  }
+                  else {
+                    echo "Error deleting record: " . mysqli_error($conn);
+                  }
+                }
+                else
+                {
+                  echo "Error updating record: " . $conn->error;
+                }
+
             }
             else
             {
-              echo "Error updating record: " . $conn->error;
+              echo "<p class=errore> Errore nell'inserimento, riprovare: <br>" . $conn->error . "</p>";
             }
+          }
 
-          }
-          else
-          {
-            echo "<p class=errore> Errore nell'inserimento, riprovare: <br>" . $conn->error . "</p>";
-          }
-        }
+      }
+      else
+      {
+        echo "<p class=errore> Errore nell'inserimento, riprovare: <br>" . $conn->error . "</p>";
+      }
+
     }
 
 
