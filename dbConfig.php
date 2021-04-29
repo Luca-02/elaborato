@@ -19,6 +19,7 @@
     $recensioni = "recensioni";
     $carrello = "carrello";
     $acquisto = "acquisto";
+    $ordine = "ordine";
     $metodo_pagamento = "metodo_pagamento";
 
     $conn = new mysqli($host, $username, $password, $database);

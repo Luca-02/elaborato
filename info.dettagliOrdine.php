@@ -17,7 +17,8 @@
                  $row_user = $result_user->fetch_assoc();
                  $IDutente = $row_user["IDutente"];
 
-    $sql = "SELECT * FROM acquisto WHERE IDacquisto = '$IDacquisto'";
+    $sql = "SELECT * FROM acquisto INNER JOIN ordine ON $ordine.IDordine = $acquisto.idordine
+            WHERE IDacquisto = '$IDacquisto'";
             $result = $conn->query($sql);
             $row = $result->fetch_assoc();
 
@@ -104,8 +105,8 @@
                       <h2> Totale ordine </h2>
                     </div>
                     <div class="text-IO2">
-                      <h2> <?php echo $row["data_acquisto"] ?> </h2>
-                      <h2> #<?php echo $row["IDacquisto"] ?> </h2>
+                      <h2> <?php echo $row["data_ordine"] ?> </h2>
+                      <h2> #<?php echo $row["IDordine"] ?> </h2>
                       <h2> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?>
                         <span class="text-mod-color">(<?php
                           echo $row["quantita_acquisto"];
@@ -128,7 +129,7 @@
                       </a>
                     </div>
                     <div class="text-IO20">
-                      <h3> <?php echo $row_P["titolo"] ?> </h3>
+                      <h3 class="text-capitalize"> <?php echo $row_P["titolo"] ?> </h3>
                       <div class="text-mod-color">
                         <h2> Quantità: <?php echo $row["quantita_acquisto"] ?> </h2>
                         <h2> Taglia: <?php echo $row_taglia["taglia"] ?> </h2>
@@ -147,15 +148,15 @@
                   <h2> <?php echo $row["cap"] ?> </h2>
                 <hr>
                   <h1> Indirizzo di spedizione </h1>
-                  <h2> <?php echo "{$row["nome_spedizione"]} {$row["cognome_spedizione"]}" ?> </h2>
+                  <h2> <?php echo "{$row["nome_destinatario"]} {$row["cognome_destinatario"]}" ?> </h2>
                   <h2> <?php echo $row["indirizzo"] ?> </h2>
                   <h2> <?php echo "{$row["provincia"]}, {$row["citta"]} {$row["cap"]}" ?> </h2>
                 <hr>
                 <div class="text-info-ordine">
-                  <div class="text-IO1">
+                  <div class="text-btm1">
                     <h3> Totale ordine </h3>
                   </div>
-                  <div class="text-IO2">
+                  <div class="text-btm2">
                     <h3 class="prezzo-ordine"> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </h3>
                   </div>
                 </div>

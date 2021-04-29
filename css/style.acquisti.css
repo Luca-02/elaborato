@@ -259,12 +259,16 @@
   margin-top: 20px;
 }
 .container-dettagliOrdine h1 {
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: 10px;
 }
 .container-dettagliOrdine h2 {
   font-size: 16px;
   font-weight: normal;
+}
+.container-dettagliOrdine h3 {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .text-info-ordine {
@@ -272,16 +276,21 @@
   justify-content: flex-start;
 }
 .text-IO1 {
-  width: 100%;
+  width: 50%;
 }
 .text-mod-color {
   color: #7d7d7d;
 }
-.text-IO2 {
+.text-capitalize {
+  text-transform: capitalize;
 }
 
 .text-IO10 {
   margin-right: 10px;
+}
+
+.text-btm1 {
+  width: 100%;
 }
 
 .img-prodotto-dettagli-ordine {

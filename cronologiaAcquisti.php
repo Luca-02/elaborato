@@ -69,7 +69,7 @@
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
                     <?php
-                      $sql_cont = "SELECT count(*) as cont_prodotti_acquistati FROM acquisto WHERE idutente = $IDutente";
+                      $sql_cont = "SELECT count(*) as cont_prodotti_acquistati FROM acquisto WHERE idordine IN (SELECT IDordine FROM ordine WHERE idutente = $IDutente)";
                                    $result_cont = $conn->query($sql_cont);
                                    $row_cont = $result_cont->fetch_assoc();
 
@@ -257,16 +257,19 @@
                                   <?php
 
                                     if ((!isset($_POST["1anno-acquisto"])) || (!isset($_POST["mese-anno-acquisto"])) || (isset($_POST["resetta-filtri"]))) {
-                                      $sql="SELECT * FROM acquisto WHERE idutente = '$IDutente' ORDER BY data_acquisto DESC";
+                                      $sql = "SELECT * FROM acquisto INNER JOIN ordine ON $ordine.IDordine = $acquisto.idordine
+                                              WHERE idutente = $IDutente ORDER BY data_ordine DESC";
                                     }
 
                                     if ((isset($_POST["1anno-acquisto"]))) {
                                       $a1 = $_POST["1anno-acquisto"];
                                       $a2 = $_POST["1anno-acquisto"] + 1;
                                       $s = "-01-01";
-                                      $anno1 = $a1.$s;
-                                      $anno2 = $a2.$s;
-                                      $sql = "SELECT * FROM acquisto WHERE idutente = $IDutente AND data_acquisto >= '$anno1 = $a1.$s' AND data_acquisto < '$anno2 = $a2.$s' ORDER BY data_acquisto DESC";
+                                      $h = "00:00:00";
+                                      $anno1 = $a1.$s." ".$h;
+                                      $anno2 = $a2.$s." ".$h;
+                                      $sql = "SELECT * FROM acquisto INNER JOIN ordine ON $ordine.IDordine = $acquisto.idordine
+                                              WHERE idutente = $IDutente AND data_ordine >= '$anno1' AND data_ordine < '$anno2' ORDER BY data_ordine DESC";
 
                                       $strerr = "nel $a1";
                                     }
@@ -276,9 +279,11 @@
                                       $meseS = $_POST["2mese-acquisto"];
                                       $s01 = "-01";
                                       $s31 = "-31";
-                                      $am01 = $annoS.$meseS.$s01;
-                                      $am31 = $annoS.$meseS.$s31;
-                                      $sql = "SELECT * FROM acquisto WHERE idutente = $IDutente AND data_acquisto >= '$am01' AND data_acquisto <= '$am31' ORDER BY data_acquisto DESC";
+                                      $h = "00:00:00";
+                                      $am01 = $annoS.$meseS.$s01." ".$h;
+                                      $am31 = $annoS.$meseS.$s31." ".$h;
+                                      $sql = "SELECT * FROM acquisto INNER JOIN ordine ON $ordine.IDordine = $acquisto.idordine
+                                              WHERE idutente = $IDutente AND data_ordine >= '$am01' AND data_ordine <= '$am31' ORDER BY data_ordine DESC";
 
                                       if ($meseS == '-01') { $mm = 'Gennaio'; }
                                       if ($meseS == '-02') { $mm = 'Febbraio'; }
@@ -339,7 +344,7 @@
                                     <div class="container-info-acquisto">
                                       <h5> Acquistato il
                                         <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
-                                        <?php echo $row["data_acquisto"] ?>
+                                        <?php echo $row["data_ordine"] ?>
                                       </h5>
                                       <h1> <?php echo $row_P["titolo"] ?> </h1>
                                       <h4> Taglia: <?php echo $row_taglia["taglia"] ?> </h4>

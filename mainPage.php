@@ -43,22 +43,9 @@
 
         <div class="hero">
 
-          <div class="drone2">
-            <div class="about-us">
-              <div class="c-about-us">
-                <h1>CHI SIAMO?</h1>
-                <div class="text-overlay-text">
-                  <p class="text-column">
-                    Ciao! Siamo una nuova azienda e-commerce di abbigliamento e accessori,
-                    e siamo i primi in Italia a offrire il servizio di consegna
-                    a domicilio con drone <br>
-                    Non dovrai fare altro che acquistare i nostri
-                    prodotti e aspettare che il nostro drone volante
-                    consegni autonomamente
-                    il pacco all'indirizzo di consegna
-                  </p>
-                </div>
-              </div>
+          <div class="img-home-header">
+            <div class="container-img-home-header">
+              <img src="./immagini/logo_small_icon.png" class="img-home">
             </div>
           </div>
 
@@ -67,6 +54,23 @@
             <a href="./log.php" class="button2-a"> <button class="button2 nolog" name="button2-donna"> Donna </button> </a>
             <a href="./log.php" class="button2-a"> <button class="button2 nolog" name="button2-uomo"> Tutti i prodotti </button> </a>
             <a href="./log.php" class="button2-a"> <button class="button2 nolog" name="button2-donna"> Top 10 più venduti </button> </a>
+          </div>
+
+          <div class="about-us">
+            <div class="c-about-us">
+              <h1>CHI SIAMO?</h1>
+              <div class="text-overlay-text">
+                <p class="text-column">
+                  Ciao! Siamo una nuova azienda e-commerce di abbigliamento e accessori,
+                  e siamo i primi in Italia a offrire il servizio di consegna
+                  a domicilio con drone <br>
+                  Non dovrai fare altro che acquistare i nostri
+                  prodotti e aspettare che il nostro drone volante
+                  consegni autonomamente
+                  il pacco all'indirizzo di consegna
+                </p>
+              </div>
+            </div>
           </div>
 
           <div class="home-box">

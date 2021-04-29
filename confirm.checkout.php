@@ -32,6 +32,8 @@
 
     $controllo_saldo_disponibile = $row_saldoCarta["saldo_carta"] - $saldo_speso;
 
+
+
     if ($controllo_saldo_disponibile < 0) //controllo del saldo
     {
       $str_errore = 'Il tuo saldo non è sufficiente, cambiare metodo di pagamento o aggiornare il saldo';
@@ -43,7 +45,6 @@
       $_SESSION['cap_ck'] = $cap_ck;
       header("Location: ./checkoutEffettuato.php");
     }
-
     else
     {
       $str_errore = 'Acquisto andato a buon fine!';
