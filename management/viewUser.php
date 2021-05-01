@@ -67,15 +67,16 @@
             </tr>
             <tr>
               <td>username</td>
-              <td><input type="number" name="cerca-username"></td>
+              <td><input type="text" name="cerca-username"></td>
               <td><button name="btn-cerca-username"> Cerca username </button></td>
             </tr>
             <tr>
               <th></th>
-              <th><button name="resetta-filtri"> Resetta filtri </button></th>
+              <th></th>
               <th></th>
             </tr>
           </table>
+          <button class="btn-resetF" name="resetta-filtri"> Resetta filtri </button>
         </div>
       </div>
 
@@ -89,7 +90,7 @@
             <th> <button name="ordina-utenti-c" value="cognome"> cognome CRESC</button></th>
             <th> <button name="ordina-utenti-c" value="email"> email CRESC</button></th>
             <th> <button name="ordina-utenti-c" value="username"> username CRESC</button></th>
-            <th> <button name="resetta-filtri"> Resetta filtri </button> </th>
+            <th> </th>
           </thead>
           <thead>
             <th> <button name="ordina-utenti-d" value="IDutente"> IDutente DESC</button> </th>
@@ -101,12 +102,12 @@
           </thead>
         </tr>
 
+        <tbody>
           <?php
 
             if (!isset($_POST["ordina-utenti"]) || isset($_POST["resetta-filtri"])) {
               $sql = "SELECT * FROM utenti";
             }
-
             if (isset($_POST["ordina-utenti-c"])) {
               $str = $_POST["ordina-utenti-c"];
               $sql = "SELECT * FROM utenti ORDER BY $str";
@@ -116,23 +117,42 @@
               $sql = "SELECT * FROM utenti ORDER BY $str DESC";
             }
 
+            if (isset($_POST["btn-cerca-idutente"])) {
+              $idutente = $_POST["cerca-idutente"];
+                $sql = "SELECT * FROM utenti WHERE idutente = '$idutente'";
+            }
+            if (isset($_POST["btn-cerca-nome"])) {
+              $nome = $_POST["cerca-nome"];
+                $sql = "SELECT * FROM utenti WHERE nome = '$nome'";
+            }
+            if (isset($_POST["btn-cerca-cognome"])) {
+              $cognome = $_POST["cerca-cognome"];
+                $sql = "SELECT * FROM utenti WHERE cognome = '$cognome'";
+            }
+            if (isset($_POST["btn-cerca-email"])) {
+              $email = $_POST["cerca-email"];
+                $sql = "SELECT * FROM utenti WHERE email = '$email'";
+            }
+            if (isset($_POST["btn-cerca-username"])) {
+              $username = $_POST["cerca-username"];
+                $sql = "SELECT * FROM utenti WHERE username = '$username'";
+            }
+
           $result = $conn->query($sql);
 
           while($row = $result->fetch_assoc()) {
             ?>
               <tr>
-                <tbody>
-                  <td> <?php echo $row["IDutente"] ?> </td>
-                  <td> <?php echo $row["nome"] ?> </td>
-                  <td> <?php echo $row["cognome"] ?> </td>
-                  <td> <?php echo $row["email"] ?> </td>
-                  <td> <?php echo $row["username"] ?> </td>
-                  <td class="text-a">
-                    <?php echo "<a href=./update.modificaProdotto.php?IDutente={$row['IDutente']}>" ?>
-                      seleziona
-                    </a>
-                  </td>
-                </tbody>
+                <td> <?php echo $row["IDutente"] ?> </td>
+                <td> <?php echo $row["nome"] ?> </td>
+                <td> <?php echo $row["cognome"] ?> </td>
+                <td> <?php echo $row["email"] ?> </td>
+                <td> <?php echo $row["username"] ?> </td>
+                <td class="text-a">
+                  <?php echo "<a href=./update.modificaProdotto.php?IDutente={$row['IDutente']}>" ?>
+                    seleziona
+                  </a>
+                </td>
               </tr>
             <?php
           }
@@ -140,14 +160,15 @@
             $result_cont = $conn->query($sql_cont);
             $row_cont = $result_cont->fetch_assoc();
           ?>
-            <tr>
-              <tfoot>
+            </tbody>
+            <tfoot>
+              <tr>
                 <th> TOT <?php echo $row_cont["cont_utenti"] ?> prodotti </th>
-              </tfoot>
-            </tr>
+              </tr>
+            </tfoot>
           <?php
           ?>
-        </table>
+      </table>
 
     </form>
 

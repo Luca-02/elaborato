@@ -1,3 +1,32 @@
 creare tabella nel db con i fondi dell'azienda che guadagna
 
 
+
+agg prod{
+selezionare sesso
+selezionare calzatura_oggetto
+selezionare oggetto
+}
+
+dopo{
+titolo
+idproduttore_prod che esiste (se non esiste mettere agg. prod)
+costo
+idoggetto di prima 
+idcolore_prod
+insert img prod
+data_pubblicazione NOW()
+}
+
+infine {
+idtaglia
+quantità
+}
+
+(idprodotto sarà il max del idprodotto esistente + 1)
+
+
+38 c'e 39 no
+
+INSERT INTO `prodotto_taglia` (`IDprodotto_taglia`, `quantita`, `idtaglia`, `idprodotto`) 
+VALUES (NULL, '99', '7', '3'), (NULL, '99', '8', '3');

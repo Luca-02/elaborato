@@ -22,7 +22,6 @@
 
   <body >
 
-
       <div class="header-page">
         <div class="header">
           <p> Accesso effettuato da: id nome cognome mail </p>
@@ -97,11 +96,18 @@
               <td><button name="btn-cerca-data_pubblicazione"> Cerca data_pubblicazione </button></td>
             </tr>
             <tr>
-              <th></th>
-              <th><button name="resetta-filtri"> Resetta filtri </button></th>
-              <th></th>
+              <td>tipo_calzatura</td>
+              <td>
+                <select name="cerca-tipo_calzatura">
+                  <option value="" selected disabled> Seleziona tipo_calzatura </option>
+                  <option value="1"> uomo </option>
+                  <option value="2"> donna </option>
+                </select>
+              </td>
+              <td><button name="btn-cerca-tipo_calzatura"> Cerca tipo_calzatura </button></td>
             </tr>
           </table>
+          <button class="btn-resetF" name="resetta-filtri"> Resetta filtri </button>
         </div>
       </div>
 
@@ -118,6 +124,7 @@
             <th> <button name="ordina-prodotti-c" value="nome_colore"> nome_colore CRESC</button></th>
             <th> <button name="ordina-prodotti-c" value="data_pubblicazione"> data_pubblicazione CRESC</button></th>
             <th> </th>
+            <th> </th>
           </thead>
           <thead>
             <th> <button name="ordina-prodotti-d" value="IDprodotto"> IDprodotto DESC</button> </th>
@@ -127,10 +134,12 @@
             <th> <button name="ordina-prodotti-d" value="nome_oggetto"> nome_oggetto DESC</button></th>
             <th> <button name="ordina-prodotti-d" value="nome_colore"> nome_colore DESC</button></th>
             <th> <button name="ordina-prodotti-d" value="data_pubblicazione"> data_pubblicazione DESC</button></th>
+            <th> Tipo calzatura </th>
             <th> <button name="resetta-filtri"> Resetta filtri </button> </th>
           </thead>
         </tr>
 
+        <tbody>
           <?php
 
             if (!isset($_POST["ordina-prodotti-c"]) || !isset($_POST["ordina-prodotti-c"]) || isset($_POST["resetta-filtri"])) {
@@ -242,13 +251,35 @@
                 ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
                 WHERE data_pubblicazione LIKE '%$data_pubblicazione%'";
             }
+            if (isset($_POST["btn-cerca-tipo_calzatura"])) {
+              $idtipo_calzatura = $_POST["cerca-tipo_calzatura"];
+                $sql = "SELECT * FROM prodotto
+                INNER JOIN oggetto
+                ON $prodotto.idoggetto = $oggetto.idoggetto
+                INNER JOIN colore_prodotto
+                ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
+                INNER JOIN produttore_prodotto
+                ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
+                WHERE idcalzatura_oggetto IN (
+                SELECT IDcalzatura_oggetto FROM $calzatura_oggetto WHERE idtipo_calzatura = '$idtipo_calzatura'
+                )";
+            }
 
           $result = $conn->query($sql);
 
           while($row = $result->fetch_assoc()) {
+
+            $IDoggetto = $row['idoggetto'];
+            $sql_calzatura = "SELECT * FROM tipo_calzatura
+                              WHERE $tipo_calzatura.IDtipo_calzatura IN (
+                              SELECT idtipo_calzatura FROM $calzatura_oggetto WHERE IDcalzatura_oggetto IN (
+                              SELECT idcalzatura_oggetto FROM $oggetto WHERE IDoggetto = $IDoggetto
+                              ))";
+                              $result_calzatura = $conn->query($sql_calzatura);
+                              $row_calzatura = $result_calzatura->fetch_assoc();
+
             ?>
-              <tr>
-                <tbody>
+                <tr>
                   <td> <?php echo $row["IDprodotto"] ?> </td>
                   <td> <?php echo $row["titolo"] ?> </td>
                   <td> <?php echo $row["produttore"] ?> </td>
@@ -256,12 +287,12 @@
                   <td> <?php echo $row["nome_oggetto"] ?> </td>
                   <td> <?php echo $row["nome_colore"] ?> </td>
                   <td> <?php echo $row["data_pubblicazione"] ?> </td>
+                  <td> <?php echo $row_calzatura["tipo"] ?> </td>
                   <td class="text-a">
                     <?php echo "<a href=./update.modificaProdotto.php?IDprodotto={$row['IDprodotto']}>" ?>
                       modifica
                     </a>
                   </td>
-                </tbody>
               </tr>
             <?php
           }
@@ -269,11 +300,12 @@
             $result_cont = $conn->query($sql_cont);
             $row_cont = $result_cont->fetch_assoc();
           ?>
-            <tr>
-              <tfoot>
+            </tbody>
+            <tfoot>
+              <tr>
                 <th> TOT <?php echo $row_cont["cont_utenti"] ?> prodotti </th>
-              </tfoot>
-            </tr>
+              </tr>
+            </tfoot>
           <?php
           ?>
         </table>

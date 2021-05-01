@@ -38,10 +38,9 @@ table.steelBlueCols td, table.steelBlueCols th {
 }
 table.steelBlueCols tbody td {
   font-size: 16px;
-  color: #FFFFFF;
-  border-bottom: 1px solid #FBFCFC;
+  color: white;
 }
-table.steelBlueCols td:nth-child(even) {
+table.steelBlueCols tr:nth-child(even) {
   background: #398AA4;
 }
 table.steelBlueCols thead {
@@ -50,14 +49,14 @@ table.steelBlueCols thead {
 table.steelBlueCols thead th {
   font-size: 16px;
   font-weight: bold;
-  color: #FFFFFF;
+  color: white;
   text-align: left;
   border-left: 2px solid #398AA4;
 }
 table.steelBlueCols thead th button{
   font-size: 16px;
   font-weight: bold;
-  color: #FFFFFF;
+  color: white;
   text-align: left;
   background: none;
   outline: none;
@@ -73,6 +72,18 @@ table.steelBlueCols thead th:first-child {
 table.steelBlueCols td a {
   width: 100%;
 }
+table.steelBlueCols tfoot {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  background: #FFFFFF;
+  border-top: 4px solid #555555;
+}
+table.steelBlueCols tfoot th {
+  font-size: 16px;
+  text-decoration: underline;
+}
+
 .text-a {
   text-align: center;
 }
@@ -107,8 +118,49 @@ table.steelBlueCols td a {
 .tabella-filtri th {
   padding-top: 7px;
 }
-.tabella-filtri th button {
-  width: 100%;
+.btn-resetF {
+  margin-left: 10px;
+  padding: 25px;
   background: green;
   color: white;
+}
+
+.insert-prodotto {
+  text-align: left;
+  margin-left: 10px;
+  font-size: 16px;
+}
+.insert-prodotto button {
+  padding: 5px 10px;
+}
+.option-style {
+  font-size: 16px;
+}
+
+.table-insert1 td {
+  padding: 2.5px 5px;
+}
+
+.table-insert1 select,
+.table-insert1 input,
+.table-insert1 textarea {
+  width: 100%;
+}
+
+.table-insert2 {
+  background: red;
+}
+.table-insert2 th {
+  padding: 5px
+}
+
+.insert-taglia-container {
+  display: flex;
+  justify-content: flex-start;
+}
+.taglia-container2 {
+  margin-left: 10px;
+}
+.taglia-container2 button {
+  height: 100px;
 }

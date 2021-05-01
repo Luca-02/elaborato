@@ -159,7 +159,7 @@
 
 .container-prodotti:hover .overlay-prodotti {
   bottom: 0;
-  height: 350px;
+  height: 100%;
   transition: 0.2s ease;
 }
 
@@ -208,7 +208,8 @@
 }
 
 .text-overlay-prodotti li {
-  width: 35px;
+  min-width: 35px;
+  width: auto;
   height: auto;
   border: none;
   display: inline-block;

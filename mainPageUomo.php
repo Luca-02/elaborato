@@ -483,14 +483,14 @@
                                   <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']} class=btn-visualizza-prodotto-a> Visualizza prodotto </a>
                                 </div>
                               </div>
-                              <div class = bottom>
-                                <div class=bottom-content>
-                                  <div class = bottom-title>
-                                    <h2> {$row['produttore']} </h2>
-                                    <span> €{$row['costo']} </span>
-                                  </div>
-                                  <p> {$row['titolo']} </p>
-                                </div>
+                            </div>
+                            <div class = bottom>
+                              <div class=bottom-content>
+                              <div class = bottom-title>
+                              <h2> {$row['produttore']} </h2>
+                              <span> €{$row['costo']} </span>
+                              </div>
+                              <p> {$row['titolo']} </p>
                               </div>
                             </div>
                           </a>

@@ -1,17 +1,21 @@
 <?php
-  // Include the database configuration file
-  include './dbConfig/dbConfig.php';
+  session_start();
+  // if (!isset($_SESSION['email'])) {
+  //   header("Location: ./log.php");
+  // }
+
+  include '../dbConfig/dbConfig.php';
 
   $statusMsg = '';
 
   // File upload path
-  $targetDir = "uploads/";
+  $targetDir = "../uploads/";
   $fileName = basename($_FILES["file"]["name"]);
   $targetFilePath = $targetDir . $fileName;
   $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
   if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
-      $ID_p = $_POST['IDprodotto'];
+      $ID_p = $_POST['submit'];
 
       $allowTypes = array('jpg','png','jpeg','gif','pdf');
       if(in_array($fileType, $allowTypes)){
@@ -28,6 +32,7 @@
                   $sql2 = "UPDATE $prodotto SET idimmagine_prodotto = $ID_imgP WHERE $prodotto.IDprodotto = $ID_p";
                     if ($conn->query($sql2) === TRUE) {
                       echo "Record updated successfully";
+                      echo "<a href=./aggiungiProdotto.php> Ritorna alla home </a>";
                     } else {
                       echo "Error updating record: " . $conn->error;
                     }
