@@ -195,6 +195,7 @@
                             echo "<li>
                                     <button name=btn-colore value={$row_colore['IDcolore_prodotto']}>
                                        {$row_colore['nome_colore']}
+                                       <span class=color-dot style='background-color:{$row_colore["codice_colore"]};'></span>
                                     </button>
                                   </li>";
                           }

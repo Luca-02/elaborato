@@ -28,7 +28,7 @@
   width: 75%;
   margin: 0px auto;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1248px) {
   .container-prodotto {
     width: 100%;
   }
@@ -50,9 +50,21 @@
   position: relative;
   display: block;
   margin-top: 0px;
-  max-width: 500px;
+  width: auto;
+  max-height: 500px;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.8),
               0 8px 20px 0 rgba(0, 0, 0, 0.79);
+}
+
+@media screen and (max-width: 1428px) {
+  .img-prodotto-container img {
+    max-height: 400px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .img-prodotto-container img {
+    max-height: 300px;
+  }
 }
 
 .info-prodotto-container {

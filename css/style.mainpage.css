@@ -585,6 +585,6 @@ li, a{
 
 @media screen and (max-width: 1000px) {
   .ultimi-arrivi {
-    padding: 0;
+    padding: 0px;
   }
 }

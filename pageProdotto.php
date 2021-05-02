@@ -216,7 +216,7 @@
                     <div class="add-to-cart">
                       <?php
                         echo "
-                        <button type=submit name=add-to-cart value={$IDprodotto}> <i class=fa fa-shopping-cart></i> Aggiungi al carrello </button>
+                        <button type=submit name=add-to-cart value={$IDprodotto}> <i class='fa fa-shopping-cart'></i> Aggiungi al carrello </button>
                         ";
                       ?>
                     </div>

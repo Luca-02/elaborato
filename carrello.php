@@ -81,7 +81,7 @@
             <div class="container-carrello">
 
               <div class="header-carrello">
-                <h1> Il Tuo Carrello </h1>
+                <h1> Il Tuo Carrello <i class='fa fa-shopping-cart'></i> </h1>
               </div>
 
               <div class="prodotti-carrello">

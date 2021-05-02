@@ -1,0 +1,85 @@
+Sistema gestionale E-Commerce  & Fly (sistema E-Commerce con consegna a domicilio dei abbigliamento, borse, calzature, accessori. )
+
+//	//	//
+
+Traccia parte informatica:  
+
+Si progetti un sistema software&hardware per la gestione delle informazioni di un sistema E-Commerce con consegna a domicilio 
+dei abbigliamento, borse, pelletteria, calzature, accessori. In particolare si progetti  una base di dati che permetta la gestione 
+di clienti e ordini su un portale di acquisti online.
+
+Il sistema deve prevedere una gestione dell’anagrafica clienti, dei singoli articoli in warehouse e degli ordini. Un ordine può essere 
+cumulativo in quanto può contenere 1 o più articoli. Il sistema deve prevedere la consegna a domicilio da un drone aereo tramite un 
+sistema innovativo di coordinate terrestri. Il Cliente potrà monitorare in una mappa 2D il percorso (automatico o manuale) del drone e 
+riceverà un'email quando la consegna sarà imminente.
+
+//	//	//
+
+Traccia parte Sistemi e Reti: 
+
+ Il candidato, in riferimento al sistema Informativo descritto nella parte informatica e sulla base delle ipotesi aggiuntive inserite sul 
+dominio del progetto e sulle possibili condizioni iniziali nonché sulla base degli obiettivi comuni:
+
+a)	illustri quali potrebbero essere le soluzioni tecnologiche disponibili a livello di infrastruttura di rete locale , per il collegamento 
+	di computer ed altri dispositivi con la seguente collocazione:
+
+- uno o più computer ed una stampante nell'ufficio del responsabile del Centro vendita online.
+- un congruo numero di computer e stampanti dislocati in opportuni uffici(amministrazione, gestione personale , gestione fornitori, gestione clienti(vendite), gestione magazzino, ecc.)
+- sala con tutti i server ritenuti necessari.
+- altri dispositivi mobili ( pc portatili, tablet, a disposizione di collaboratori occasionali e/o del personale del centro). 
+Si illustri come garantire la sicurezza di tutta la rete locale descritta.
+
+b)	qualora siano previste più sedi , illustri quali potrebbero essere le soluzioni tecnologiche disponibili a livello di infrastruttura 
+	di rete pubblica per il collegamento in ambito geografico (intranet e/o extranet) per gestire in sicurezza la comunicazione tra la catena dei Store Center sparsi per la regione e/o con aziende partners (clienti e fornitori). In alternativa si preveda la gestione di piccoli uffici(filiali) e/o accesso remoto di singoli dipendenti/utenti.
+
+In entrambi i casi si illustrino le tecniche che consentono di garantire sicurezza/protezione dei dati nella rete pubblica di appoggio (crittografia ed autenticazione)..
+
+c) 	si illustri la soluzione tecnologica adottata per la gestione del drone aereoper la consegna degli articoli richiesti.
+
+d) 	Infine il sistema dovrà prevedere e gestire impianti di sicurezza laser e videosorveglianza con telecamera a 360° a 8MP (tramite computer vision) 
+	posizionati in punti strategici interni e/o esterni dello Store Center online .
+
+//	//	//
+
+Il candidato produca liberamente le opportune ipotesi aggiuntive sul progetto e sulle possibili strategie risolutive  che lo rendano completo e coerente con la realtà indagata.
+Infine, sulla base di tali considerazioni, si sviluppi una possibile soluzione concreta con i seguenti milestones in funzione delle descrizione della traccia:
+
+1) Spiegazione generale di come il sistema dovrà funzionare ed elencare tutte le attività più importanti.
+
+2) Raccolta e analisi dei requisiti funzionali sul progetto secondo i principi essenziali di ingegneria del software.
+
+3) Progettazione del modello concettuale della base di dati.
+
+4) Progettazione del modello logico della base di dati.
+
+5) Progettazione del modello fisico della base di dati, con inserimento di almeno 10 dati di prova a scelta del candidato. (DBMS: MariaDB o SQLITE).
+
+6) Formulazione di almeno 10 query complesse di comprovata utilità a scelta del candidato e stampa dei relativi output. 
+
+7) Sviluppo dell'intero sistema software (GUI e tutti i controlli funzionali + infrastruttura middleware per la connessione al database) in un linguaggio 
+di conoscenza del candidato scelti tra  PHP, HTML5 & CSS,  Java, C++, Swift 5.x, Python 3.x. 
+
+8) Gestione del login utente in funzione delle grant (es. amministratore, tecnico, utente, guest, ecc...) e implementare tutte le strategie opportune sulla sicurezza di tali operazioni.
+
+9) Riguardo la progettazione di Sistemi e Reti, scegliere le quantità e i tipi di host (se opportuno) che dovranno essere messi in collegamento 
+nella rete (pc, minitablet, smartphone, stampanti, monitor-tv, dispositivi fissi touch ,totem,ecc…)
+
+10) Tenendo conto del punto precedente progettare l'infrastruttura di rete inserendo gli opportuni apparati attivi (bridge, hub, router, switch, access point, firewall, ecc..), 
+la/le tecnologie di connessione (WIFI, Ethernet), la/le modalità di connessione (P2P, client-server, ibride, ecc..).
+
+11) Illustrare la procedura dettagliata sulla segmentazione della rete a livello 2 (VLAN) ed a livello 3 (tecnica del subnetting).
+
+12) Configurazione della sicurezza della rete e riservatezza dei dati (VPN, firewall, infrastruttura DMZ, scelta motivata dei protocolli di crittografia dei dati). 
+Tale punto comprenda altresì l'analisi delle minacce interne ed esterne al sistema, un'opportuna pianificazione strategia di backup, scelta dei metodi di 
+autenticazione più idonei per lo scenario proposto, analisi e prevenzione di specifici attacchi informatici (es. D.O.S., man-in-the-middle, SQL-injunction, ecc..)
+
+13) Progettazione della rete tramite applicativo Cisco Packet Tracer® e produrre le schermate (screenshot) più importanti che descrivono al meglio il suo funzionamento. 
+Salvare il progetto completo in <nomeprogetto>.PKT.
+
+14) *Facoltativo*: spiegazione generale su eventuali sistemi di automazione, robotica, microcontrollori (Raspberry o Arduino), droni aerei o terrestri, ecc... presenti nel progetto. 
+Sarà anche possibile inserire nel progetto file STL di eventuali pezzi/supporti funzionali al progetto da produrre con stampanti 3D.
+
+15) Produrre un ipotetico diagramma di GANTT completo con tutti  task per  realizzare il progetto  ed assegnare a ciascuno di essi : Ti (data inizio), Tf(data termine), risorse tecnologiche per svilupparlo.
+
+16) Produrre infine un PDF completo di : titolo elaborato, nome e cognome studente, indice generale, stesura commentata e illustrata del progetto completo seguendo i 15 punti di cui sopra.
+

@@ -2,7 +2,7 @@
 <html>
 
   <?php
-    // session_start();
+    session_start();
     // if (!isset($_SESSION['email'])) {
     //   header("Location: ./log.php");
     // }
@@ -149,7 +149,7 @@
                 <td> <?php echo $row["email"] ?> </td>
                 <td> <?php echo $row["username"] ?> </td>
                 <td class="text-a">
-                  <?php echo "<a href=./update.modificaProdotto.php?IDutente={$row['IDutente']}>" ?>
+                  <?php echo "<a href=./viewUser.select.php?IDutente={$row['IDutente']}>" ?>
                     seleziona
                   </a>
                 </td>

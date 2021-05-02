@@ -220,6 +220,7 @@
                             echo "<li>
                                     <button name=btn-colore value={$row_colore['IDcolore_prodotto']}>
                                        {$row_colore['nome_colore']}
+                                       <span class=color-dot style='background-color:{$row_colore["codice_colore"]};'></span>
                                     </button>
                                   </li>";
                           }
@@ -276,7 +277,8 @@
                                SELECT IDoggetto FROM $oggetto WHERE idcalzatura_oggetto IN (
                                SELECT IDcalzatura_oggetto FROM $calzatura_oggetto WHERE idtipo_calzatura IN (
                                SELECT IDtipo_calzatura FROM $tipo_calzatura WHERE tipo = 'uomo')
-                       ))";
+                               ))
+                               ";
                 }
 
 
@@ -396,7 +398,8 @@
                     if ( (!isset($_POST["prezzo-crescente"])) && (!isset($_POST["prezzo-decrescente"])) &&
                          (!isset($_POST["produttore-alfabetico-az"])) && (!isset($_POST["produttore-alfabetico-za"])) &&
                          (!isset($_POST["titolo-alfabetico-az"])) && (!isset($_POST["titolo-alfabetico-za"]))) {
-                      $sql .= "ORDER BY titolo";
+                      $sql .= "ORDER BY titolo
+                              LIMIT 20";
                     }
 
                     if (isset($_POST["prezzo-crescente"])) {

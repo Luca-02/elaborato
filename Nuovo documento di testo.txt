@@ -23,10 +23,3 @@ idtaglia
 quantità
 }
 
-(idprodotto sarà il max del idprodotto esistente + 1)
-
-
-38 c'e 39 no
-
-INSERT INTO `prodotto_taglia` (`IDprodotto_taglia`, `quantita`, `idtaglia`, `idprodotto`) 
-VALUES (NULL, '99', '7', '3'), (NULL, '99', '8', '3');

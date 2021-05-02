@@ -149,7 +149,8 @@
               INNER JOIN colore_prodotto
               ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
               INNER JOIN produttore_prodotto
-              ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto";
+              ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
+              ORDER BY IDprodotto";
             }
             if (isset($_POST["ordina-prodotti-c"])) {
               $str = $_POST["ordina-prodotti-c"];
@@ -183,7 +184,8 @@
                 ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
                 INNER JOIN produttore_prodotto
                 ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-                WHERE IDprodotto = $idprodotto";
+                WHERE IDprodotto = $idprodotto
+                ORDER BY IDprodotto";
             }
             if (isset($_POST["btn-cerca-titolo"])) {
               $titolo = $_POST["cerca-titolo"];
@@ -194,7 +196,8 @@
                 ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
                 INNER JOIN produttore_prodotto
                 ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-                WHERE titolo LIKE '%$titolo%'";
+                WHERE titolo LIKE '%$titolo%'
+                ORDER BY IDprodotto";
             }
             if (isset($_POST["btn-cerca-produttore"])) {
               $idproduttore = $_POST["cerca-produttore"];
@@ -205,7 +208,8 @@
                 ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
                 INNER JOIN produttore_prodotto
                 ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-                WHERE $produttore_prodotto.IDproduttore_prodotto = '$idproduttore'";
+                WHERE $produttore_prodotto.IDproduttore_prodotto = '$idproduttore'
+                ORDER BY IDprodotto";
             }
             if (isset($_POST["btn-cerca-costoMin"])) {
               $costo = $_POST["cerca-costoMin"];
@@ -216,7 +220,8 @@
                 ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
                 INNER JOIN produttore_prodotto
                 ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-                WHERE costo <= '$costo'";
+                WHERE costo >= '$costo'
+                ORDER BY IDprodotto";
             }
             if (isset($_POST["btn-cerca-costoMax"])) {
               $costo = $_POST["cerca-costoMax"];
@@ -227,7 +232,8 @@
                 ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
                 INNER JOIN produttore_prodotto
                 ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-                WHERE costo >= '$costo'";
+                WHERE costo <= '$costo'
+                ORDER BY IDprodotto";
             }
             if (isset($_POST["btn-cerca-nome_oggetto"])) {
               $nome_oggetto = $_POST["cerca-nome_oggetto"];
@@ -238,7 +244,8 @@
                 ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
                 INNER JOIN produttore_prodotto
                 ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-                WHERE nome_oggetto LIKE '%$nome_oggetto%'";
+                WHERE nome_oggetto LIKE '%$nome_oggetto%'
+                ORDER BY IDprodotto";
             }
             if (isset($_POST["btn-cerca-data_pubblicazione"])) {
               $data_pubblicazione = $_POST["cerca-data_pubblicazione"];
@@ -249,7 +256,8 @@
                 ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
                 INNER JOIN produttore_prodotto
                 ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-                WHERE data_pubblicazione LIKE '%$data_pubblicazione%'";
+                WHERE data_pubblicazione LIKE '%$data_pubblicazione%'
+                ORDER BY IDprodotto";
             }
             if (isset($_POST["btn-cerca-tipo_calzatura"])) {
               $idtipo_calzatura = $_POST["cerca-tipo_calzatura"];
@@ -262,7 +270,8 @@
                 ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
                 WHERE idcalzatura_oggetto IN (
                 SELECT IDcalzatura_oggetto FROM $calzatura_oggetto WHERE idtipo_calzatura = '$idtipo_calzatura'
-                )";
+                )
+                ORDER BY IDprodotto";
             }
 
           $result = $conn->query($sql);
