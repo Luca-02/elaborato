@@ -18,9 +18,12 @@
             ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
             INNER JOIN produttore_prodotto
             ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
+            INNER JOIN $immagine_prodotto
+            ON $prodotto.idimmagine_prodotto  = $immagine_prodotto.IDimmagine_prodotto
             WHERE IDprodotto = '$IDprodotto'";
             $result = $conn->query($sql);
             $row = $result->fetch_assoc();
+            $imageURL = '../uploads/'.$row["file_name"];
 
     $sql2 = "SELECT * FROM prodotto_taglia WHERE idprodotto = '$IDprodotto'";
              $result2 = $conn->query($sql2);
@@ -83,47 +86,55 @@
 
         <div class="insert-prodotto">
 
-          cambia titolo <textarea name="insert-titolo" minlength="5" maxlength="50" rows="1" cols="60"></textarea>
-          <button type="submit" name="cambio-titolo"> conferma cambio titolo </button>
-          <br><br>
+          <div class="container-filtri">
+            <div class="CF01">
+              <img src="<?php echo $imageURL; ?>" style="max-width:300px;">
+            </div>
+            <div class="CF02">
+              <div class="CF02-c">
+                cambia titolo <textarea name="insert-titolo" minlength="5" maxlength="50" rows="1" cols="60"></textarea>
+                <button type="submit" name="cambio-titolo"> conferma cambio titolo </button>
+                <br><br>
 
-          cambia produttore
-          <select name="insert-produttore">
-            <option value="" selected disabled> Seleziona produttore </option>
-            <?php
-            $sql_produttore = "SELECT * FROM produttore_prodotto ORDER BY produttore";
-            $result_produttore = $conn->query($sql_produttore);
+                cambia produttore
+                <select name="insert-produttore">
+                  <option value="" selected disabled> Seleziona produttore </option>
+                  <?php
+                  $sql_produttore = "SELECT * FROM produttore_prodotto ORDER BY produttore";
+                  $result_produttore = $conn->query($sql_produttore);
 
-            while ($row_produttore = $result_produttore->fetch_assoc()) {
-              echo "<option class=option-style value={$row_produttore["IDproduttore_prodotto"]}> {$row_produttore["produttore"]} </option>";
-            }
-            ?>
-          </select>
-          <button type="submit" name="cambio-produttore"> conferma cambio produttore </button>
-          <br><br>
+                  while ($row_produttore = $result_produttore->fetch_assoc()) {
+                    echo "<option class=option-style value={$row_produttore["IDproduttore_prodotto"]}> {$row_produttore["produttore"]} </option>";
+                  }
+                  ?>
+                </select>
+                <button type="submit" name="cambio-produttore"> conferma cambio produttore </button>
+                <br><br>
 
-          cambia costo <input type="number" name="insert-costo" step=".01">
-          <button type="submit" name="cambio-costo"> conferma cambio costo </button>
-          <br><br>
+                cambia costo <input type="number" name="insert-costo" step=".01">
+                <button type="submit" name="cambio-costo"> conferma cambio costo </button>
+                <br><br>
 
-          cambia colore
-          <select name="insert-colore">
-            <option value="" selected disabled> Seleziona colore </option>
-            <?php
-              $sql_colore = "SELECT * FROM colore_prodotto ORDER BY nome_colore";
-                             $result_colore = $conn->query($sql_colore);
+                cambia colore
+                <select name="insert-colore">
+                  <option value="" selected disabled> Seleziona colore </option>
+                  <?php
+                  $sql_colore = "SELECT * FROM colore_prodotto ORDER BY nome_colore";
+                  $result_colore = $conn->query($sql_colore);
 
-              while ($row_colore = $result_colore->fetch_assoc()) {
-                echo "<option class=option-style value={$row_colore["IDcolore_prodotto"]}> {$row_colore["nome_colore"]} - {$row_colore["codice_colore"]} </option>";
-              }
-            ?>
-          </select>
-          <button type="submit" name="cambio-colore"> conferma cambio colore </button>
-          <br><br>
+                  while ($row_colore = $result_colore->fetch_assoc()) {
+                    echo "<option class=option-style value={$row_colore["IDcolore_prodotto"]}> {$row_colore["nome_colore"]} - {$row_colore["codice_colore"]} </option>";
+                  }
+                  ?>
+                </select>
+                <button type="submit" name="cambio-colore"> conferma cambio colore </button>
+              </div>
+            </div>
+          </div>
 
         </div>
 
-        <hr><br>
+        <br><hr><br>
 
         <div class="insert-prodotto">
 

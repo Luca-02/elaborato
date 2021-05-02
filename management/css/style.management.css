@@ -169,3 +169,10 @@ table.steelBlueCols tfoot th {
   padding: 10px;
   font-size: 16px;
 }
+
+.CF02 {
+  margin-left: 10px;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+}
