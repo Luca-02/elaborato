@@ -3,13 +3,18 @@
 
   <?php
     session_start();
-    // if (!isset($_SESSION['email'])) {
-    //   header("Location: ./log.php");
-    // }
+    if (!isset($_SESSION['email_aziendale'])) {
+      header("Location: ./log.php");
+    }
 
     include '../dbConfig/dbConfig.php';
 
     $idoggetto = $_SESSION['idoggetto'];
+
+    $email_aziendale = $_SESSION['email_aziendale'];
+    $sql_dip = "SELECT * FROM dipendenti WHERE email_aziendale = '$email_aziendale'";
+            $result_dip = $conn->query($sql_dip);
+            $row_dip = $result_dip->fetch_assoc();
 
     $sql_oggetto = "SELECT * FROM oggetto WHERE IDoggetto = '$idoggetto'";
                     $result_oggetto = $conn->query($sql_oggetto);
@@ -30,7 +35,7 @@
 
     <div class="header-page">
       <div class="header">
-        <p> Accesso effettuato da: id nome cognome mail </p>
+        <p> Accesso effettuato da: <?php echo "{$row_dip["IDdipendente"]} - {$row_dip["nome"]} {$row_dip["cognome"]} - {$row_dip["email_aziendale"]}" ?> </p>
       </div>
       <br>
       <h2> Management area </h2>
@@ -44,7 +49,7 @@
     </div>
 
 
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form action="./aggiungiProdotto.insert.andImg.php?idoggetto" method="post">
 
       <div class="insert-prodotto">
         <h1> <?php echo $row_oggetto["nome_oggetto"] ?> </h1>
@@ -52,13 +57,13 @@
         <table class="table-insert1">
           <tr>
             <td>titolo</td>
-            <td><textarea name="insert-titolo" minlength="5" maxlength="50" rows="1" cols="60" required></textarea></td>
+            <td><textarea name="insert-titolo" minlength="5" maxlength="50" rows="1" cols="60"></textarea></td>
             <td></td>
           </tr>
           <tr>
             <td>produttore</td>
             <td>
-              <select name="insert-produttore" required>
+              <select name="insert-produttore">
                 <option value="" selected disabled> Seleziona produttore </option>
                 <?php
                   $sql_produttore = "SELECT * FROM produttore_prodotto ORDER BY produttore";
@@ -74,13 +79,13 @@
           </tr>
           <tr>
             <td>costo</td>
-            <td><input type="number" name="insert-costo" step=".01" required></td>
+            <td><input type="number" name="insert-costo" step=".01"></td>
             <td></td>
           </tr>
           <tr>
             <td>colore</td>
             <td>
-              <select name="insert-colore" required>
+              <select name="insert-colore">
                 <option value="" selected disabled> Seleziona colore </option>
                 <?php
                   $sql_colore = "SELECT * FROM colore_prodotto ORDER BY nome_colore";
@@ -99,26 +104,19 @@
         <br>
 
         <button name="submit-prodotto"> Conferma </button>
-        <button name="ripristina-campi"> Ripristina campi </button>
 
         <?php
-          if (isset($_POST["ripristina-campi"])) {
-            header("Location: " . $_SERVER['PHP_SELF'] );
-          }
-
           if (isset($_POST["submit-prodotto"])) {
             $titolo = strtolower($_POST["insert-titolo"]);
             $produttore = $_POST["insert-produttore"];
             $costo = $_POST["insert-costo"];
             $colore = $_POST["insert-colore"];
 
-            // session_start();
-            $_SESSION['idoggetto'] = $idoggetto;
+            // $_SESSION['idoggetto'] = $idoggetto;
             $_SESSION['titolo'] = $titolo;
             $_SESSION['produttore'] = $produttore;
             $_SESSION['costo'] = $costo;
             $_SESSION['colore'] = $colore;
-            header("Location: ./aggiungiProdotto.insert.andImg.php");
           }
         ?>
 
@@ -126,6 +124,6 @@
 
     </form>
 
-  </body
+  </body>
 
 </html>

@@ -3,9 +3,9 @@
 
   <?php
     session_start();
-    // if (!isset($_SESSION['email'])) {
-    //   header("Location: ./log.php");
-    // }
+    if (!isset($_SESSION['email_aziendale'])) {
+      header("Location: ./log.php");
+    }
 
     include '../dbConfig/dbConfig.php';
 
@@ -14,6 +14,11 @@
     $produttore = $_SESSION['produttore'];
     $costo = $_SESSION['costo'];
     $colore = $_SESSION['colore'];
+
+    $email_aziendale = $_SESSION['email_aziendale'];
+    $sql_dip = "SELECT * FROM dipendenti WHERE email_aziendale = '$email_aziendale'";
+            $result_dip = $conn->query($sql_dip);
+            $row_dip = $result_dip->fetch_assoc();
   ?>
 
   <head>
@@ -30,7 +35,7 @@
 
     <div class="header-page">
       <div class="header">
-        <p> Accesso effettuato da: id nome cognome mail </p>
+        <p> Accesso effettuato da: <?php echo "{$row_dip["IDdipendente"]} - {$row_dip["nome"]} {$row_dip["cognome"]} - {$row_dip["email_aziendale"]}" ?> </p>
       </div>
       <br>
       <h2> Management area </h2>
@@ -44,7 +49,8 @@
     </div>
 
 
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form action="./aggiungiProdotto.insertImg.php" method="post">
+
       <div class="insert-prodotto">
 
         idoggetto: <?php echo "$idoggetto"; ?> <br><br>
@@ -119,9 +125,8 @@
                 echo "<p class=errore> Errore nell'inserimento while, riprovare: <br>" . $conn->error . "</p>";
               }
             }
-            session_start();
             $_SESSION['idprodotto'] = $idprodotto;
-            header("Location: ./aggiungiProdotto.insertImg.php");
+            // header("Location: ./aggiungiProdotto.insertImg.php");
           }
           else
           {
@@ -131,8 +136,9 @@
         ?>
 
       </div>
+
     </form>
 
-  </body
+  </body>
 
 </html>

@@ -1,9 +1,9 @@
 <?php
 
   session_start();
-  // if (!isset($_SESSION['email'])) {
-  //   header("Location: ./log.php");
-  // }
+  if (!isset($_SESSION['email_aziendale'])) {
+    header("Location: ./log.php");
+  }
 
   include '../dbConfig/dbConfig.php';
 
