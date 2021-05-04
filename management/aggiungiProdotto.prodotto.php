@@ -49,7 +49,7 @@
     </div>
 
 
-    <form action="./aggiungiProdotto.insert.andImg.php?idoggetto" method="post">
+    <form action="./aggiungiProdotto.confirm.prodotto.php" method="post">
 
       <div class="insert-prodotto">
         <h1> <?php echo $row_oggetto["nome_oggetto"] ?> </h1>
@@ -104,21 +104,6 @@
         <br>
 
         <button name="submit-prodotto"> Conferma </button>
-
-        <?php
-          if (isset($_POST["submit-prodotto"])) {
-            $titolo = strtolower($_POST["insert-titolo"]);
-            $produttore = $_POST["insert-produttore"];
-            $costo = $_POST["insert-costo"];
-            $colore = $_POST["insert-colore"];
-
-            // $_SESSION['idoggetto'] = $idoggetto;
-            $_SESSION['titolo'] = $titolo;
-            $_SESSION['produttore'] = $produttore;
-            $_SESSION['costo'] = $costo;
-            $_SESSION['colore'] = $colore;
-          }
-        ?>
 
       </div>
 
