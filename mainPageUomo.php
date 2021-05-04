@@ -398,8 +398,7 @@
                     if ( (!isset($_POST["prezzo-crescente"])) && (!isset($_POST["prezzo-decrescente"])) &&
                          (!isset($_POST["produttore-alfabetico-az"])) && (!isset($_POST["produttore-alfabetico-za"])) &&
                          (!isset($_POST["titolo-alfabetico-az"])) && (!isset($_POST["titolo-alfabetico-za"]))) {
-                      $sql .= "ORDER BY titolo
-                              LIMIT 20";
+                      $sql .= "ORDER BY titolo";
                     }
 
                     if (isset($_POST["prezzo-crescente"])) {
