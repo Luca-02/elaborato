@@ -40,7 +40,7 @@
               <img src="./immagini/email.png">
             </div>
             <h3>Email.</h3>
-            <h4>milanesi.commerce@milanesi.com</h4>
+            <h4>milanesi.commerce@milanesi.it</h4>
         </div>
       </div>
       <div class="box box-shadow">
