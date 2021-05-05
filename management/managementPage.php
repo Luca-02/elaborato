@@ -35,6 +35,8 @@ include '../dbConfig/dbConfig.php';
         <br>
         <h2> Management area </h2>
         <br>
+        <a href="../logout.php"> <button type="button" name="button"> Logout </button> </a>
+        <br><br>
         <a href="./aggiungiProdotto.php"> <button name="agg-prod"> Aggiungi prodotto </button> </a>
         <a href="./modificaProdotto.php"> <button name="mod-prod" style="margin: 0 10px;"> Modifica prodotto </button> </a>
         <a href="./viewUser.php"> <button name="view-user"> Utenti </button> </a>

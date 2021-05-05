@@ -10,7 +10,8 @@ include '../dbConfig/dbConfig.php';
 <html>
 
   <?php
-    $idoggetto = $_SESSION['idoggetto'];
+
+    $idoggetto = $_POST["seleziona-oggetto"];
 
     $email_aziendale = $_SESSION['email_aziendale'];
     $sql_dip = "SELECT * FROM dipendenti WHERE email_aziendale = '$email_aziendale'";
@@ -104,7 +105,7 @@ include '../dbConfig/dbConfig.php';
 
         <br>
 
-        <button name="submit-prodotto"> Conferma </button>
+        <button type="submit" name="submit-prodotto" value="<?php echo $idoggetto ?>"> Conferma </button>
 
       </div>
 

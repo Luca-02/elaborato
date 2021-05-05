@@ -17,7 +17,7 @@ include '../dbConfig/dbConfig.php';
             $result_dip = $conn->query($sql_dip);
             $row_dip = $result_dip->fetch_assoc();
 
-    $sql = "SELECT * FROM Utenti WHERE IDutente = '$IDutente'";
+    $sql = "SELECT * FROM utenti WHERE IDutente = '$IDutente'";
             $result = $conn->query($sql);
             $row = $result->fetch_assoc();
   ?>

@@ -77,7 +77,7 @@ include './dbConfig/dbConfig.php';
             <a href="./mainPageTop10P.php" class="button2-a"> <button class="button2 logged" name="button2-Top10"> Top 10 più venduti </button> </a>
           </div>
 
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="./delete.carrello.php" method="post">
 
           <div class="prodotti">
             <div class="container-carrello">
@@ -94,7 +94,8 @@ include './dbConfig/dbConfig.php';
                                  $result_cont = $conn->query($sql_cont);
                                  $row_cont = $result_cont->fetch_assoc();
 
-                    if ($row_cont["cont_prodotti_carrello"] > 0) {
+                    if ($row_cont["cont_prodotti_carrello"] > 0)
+                    {
 
                       while ($row = $result->fetch_assoc()) {
                       $IDprodotto_taglia = $row['idprodotto_taglia'];
@@ -148,20 +149,6 @@ include './dbConfig/dbConfig.php';
                                 <input type="number" name="quantita_carrello" min="1" max="10" value="<?php echo $quantita_carrello_prod ?>" title="Quantità" readonly>
                               <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
                                 <button type="submit" name="btn-rimuovi-carrello" class="btn-rimuovi" value="<?php echo $IDprodotto_taglia ?>"> Rimuovi dal carrello </button>
-                                <?php
-                                if (isset($_POST["btn-rimuovi-carrello"])) {
-                                  $IDprodotto_taglia = $_POST["btn-rimuovi-carrello"];
-
-                                  $sql_delete = "DELETE FROM $carrello WHERE idprodotto_taglia = $IDprodotto_taglia AND idutente = $IDutente";
-
-                                  if ($conn->query($sql_delete) === TRUE) {
-                                    header("Location: " . $_SERVER['PHP_SELF']);
-                                  }
-                                  else {
-                                    echo "Error deleting record: " . $conn->error;
-                                  }
-                                }
-                                ?>
                             </div>
                           </div>
                         </div>
@@ -170,7 +157,8 @@ include './dbConfig/dbConfig.php';
                     <?php
                       }
                     }
-                    else {
+                    else
+                    {
                     ?>
                       <div class="empty-cart">
                         <p> Non ci sono prodotti nel carrello </p>

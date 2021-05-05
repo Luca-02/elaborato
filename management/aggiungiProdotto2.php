@@ -44,25 +44,42 @@ include '../dbConfig/dbConfig.php';
     </div>
 
 
-    <form action="./aggiungiProdotto2.php" method="post">
+    <form action="./aggiungiProdotto.prodotto.php" method="post">
 
       <div class="insert-prodotto">
-        <h2> Selezione della calzatura e del tipo oggetto </h2> <br>
-        tipo_calzatura
-          <select name="seleziona-tipo_calzatura" required>
-            <option value="1"> uomo </option>
-            <option value="2"> donna </option>
-          </select>
-        <br><br>
-        tipo_oggetto
-          <select name="seleziona-tipo_oggetto" required>
-            <option value="1"> Abbigliamento </option>
-            <option value="2"> Borse </option>
-            <option value="3"> Calzature </option>
-            <option value="4"> Accessori </option>
-          </select>
-        <br><br>
-        <button name="conferma-tipo_oggetto_calzatura"> conferma tipo_calzatura e tipo_calzatura </button>
+
+        <?php
+
+          if (isset($_POST["conferma-tipo_oggetto_calzatura"]))
+          {
+            $idtipo_calzatura = $_POST["seleziona-tipo_calzatura"];
+            $idtipo_oggetto = $_POST["seleziona-tipo_oggetto"];
+            ?>
+              tipo_calzatura = <?php echo $idtipo_calzatura ?>
+              tipo_oggetto = <?php echo $idtipo_oggetto ?>
+              <br><br>
+
+              <h2> Selezione dell'oggetto </h2> <br>
+
+              oggetto
+                <select name="seleziona-oggetto" required>
+                  <option value="" selected disabled> Seleziona oggetto </option>
+                  <?php
+                    $sql_oggetto = "SELECT * FROM oggetto WHERE idcalzatura_oggetto IN (
+                                    SELECT IDcalzatura_oggetto FROM calzatura_oggetto WHERE idtipo_calzatura = '$idtipo_calzatura' AND idtipo_oggetto = '$idtipo_oggetto'
+                                    )";
+                                    $result_oggetto = $conn->query($sql_oggetto);
+
+                    while ($row_oggetto = $result_oggetto->fetch_assoc()) {
+                      echo "<option value={$row_oggetto["IDoggetto"]}> {$row_oggetto["nome_oggetto"]} </option>";
+                    }
+                   ?>
+                </select>
+              <br><br>
+              <button type="submit" name="conferma-oggetto"> conferma oggetto </button>
+            <?php
+          }
+        ?>
       </div>
 
     </form>

@@ -10,6 +10,7 @@
   $idoggetto = $_SESSION['idoggetto'];
 
   if (isset($_POST["submit-prodotto"])) {
+    $idoggetto = $_POST["submit-prodotto"];
     $titolo = strtolower($_POST["insert-titolo"]);
     $produttore = $_POST["insert-produttore"];
     $costo = $_POST["insert-costo"];
