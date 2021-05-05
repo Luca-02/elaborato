@@ -1,7 +1,9 @@
-<?php
-include './dbConfig/dbConfig.php';
-?>
 <!DOCTYPE html>
+
+  <?php
+    include './dbConfig/dbConfig.php';
+  ?>
+
 <html>
 
   <head>
@@ -34,9 +36,9 @@ include './dbConfig/dbConfig.php';
                 <input type="checkbox" onclick="showPass()"> Show Password
               </div>
               <input type="submit" class="singin" value="Accedi" name="accedi" required>
-
             </div>
           <hr>
+          <p class=errore> Identificazione non riuscita: email o password errate, riprovare </p>
             <div class="register">
               <a href="./log.register.php"> Non hai ancora un account? Registrati </a>
             </div>

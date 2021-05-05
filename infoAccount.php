@@ -1,13 +1,15 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['email'])) {
+    header("Location: ./log.php");
+  }
+
+  include './dbConfig/dbConfig.php';
+?>
 <!DOCTYPE html>
 <html>
 
   <?php
-    session_start();
-    if(!isset($_SESSION['email'])) {
-      header("Location: ./log.php");
-    }
-
-    include './dbConfig/dbConfig.php';
 
     $sql = "SELECT * from $utenti where email = '$_SESSION[email]'";
     $result = $conn->query($sql);

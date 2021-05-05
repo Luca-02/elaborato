@@ -1,14 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION['email'])) {
+  header("Location: ./log.php");
+}
+
+include './dbConfig/dbConfig.php';
+?>
 <!DOCTYPE html>
 <html>
 
   <?php
-    session_start();
-    if (!isset($_SESSION['email'])) {
-      header("Location: ./log.php");
-    }
-
-    include './dbConfig/dbConfig.php';
-
     // //conta visite con cookie
     // if (isset($_COOKIE['visite'])) {
     //   //se esiste incrementa di 1 il cookie
@@ -34,16 +35,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title> Milanesi Commerce </title>
-
-    <!-- <title>
-        <?php
-          // if ($numero_visite == 1) {
-          //   echo "1";
-          // } else {
-          //   echo "$numero_visite";
-          // }
-        ?>
-    </title> -->
 
     <link rel="icon" href="./immagini/logo_small_icon.png">
     <link rel="stylesheet" href="./css/style.mainpage.css">

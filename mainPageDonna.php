@@ -1,19 +1,18 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['email'])) {
+    header("Location: ./log.php");
+  }
+
+  include './dbConfig/dbConfig.php';
+
+  $sql_max_costo = "SELECT MAX(costo) as max_costo FROM $prodotto";
+  $result_max_costo = $conn->query($sql_max_costo);
+  $row_max_costo = $result_max_costo->fetch_assoc();
+  $max_costo_arrot = ceil($row_max_costo["max_costo"]);
+?>
 <!DOCTYPE html>
 <html>
-
-  <?php
-    session_start();
-    if(!isset($_SESSION['email'])) {
-      header("Location: ./log.php");
-    }
-
-    include './dbConfig/dbConfig.php';
-
-    $sql_max_costo = "SELECT MAX(costo) as max_costo FROM $prodotto";
-    $result_max_costo = $conn->query($sql_max_costo);
-    $row_max_costo = $result_max_costo->fetch_assoc();
-    $max_costo_arrot = ceil($row_max_costo["max_costo"]);
-  ?>
 
   <head>
     <meta charset="UTF-8">

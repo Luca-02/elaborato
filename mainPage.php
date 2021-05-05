@@ -1,9 +1,9 @@
+<?php
+include './dbConfig/dbConfig.php';
+?>
 <!DOCTYPE html>
 <html>
 
-  <?php
-    include './dbConfig/dbConfig.php';
-  ?>
 
   <head>
     <meta charset="UTF-8">

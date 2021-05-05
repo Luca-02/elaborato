@@ -1,9 +1,7 @@
+<?php
+include './dbConfig/dbConfig.php';
+?>
 <!DOCTYPE html>
-
-  <?php
-    include './dbConfig/dbConfig.php';
-  ?>
-
 <html>
 
   <head>
@@ -24,7 +22,7 @@
 
     <div class="background"></div>
 
-      <form class="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
           <div class="box-shadow" id=box>
               <div class="title"> <h1> Registrati </h1> </div>
@@ -67,7 +65,7 @@
                     {
                         if($conn->query($sql))
                         {
-                          header('location: ./log.php');
+                          echo "<p class=corretto> Utente registrato correttamente </p>";
                         }
                         else
                         {

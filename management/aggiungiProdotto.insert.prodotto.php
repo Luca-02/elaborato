@@ -1,14 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION['email_aziendale'])) {
+  header("Location: ../log.php");
+}
+
+include '../dbConfig/dbConfig.php';
+?>
 <!DOCTYPE html>
 <html>
 
   <?php
-    session_start();
-    if (!isset($_SESSION['email_aziendale'])) {
-      header("Location: ./log.php");
-    }
-
-    include '../dbConfig/dbConfig.php';
-
     $idoggetto = $_SESSION['idoggetto'];
     $titolo = $_SESSION['titolo'];
     $produttore = $_SESSION['produttore'];

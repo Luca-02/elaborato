@@ -28,7 +28,7 @@
     $cvv_ck = mysqli_real_escape_string($conn, $_POST["cvv-ck"]);
 
     $sql_insert = "INSERT INTO metodo_pagamento (nome_intestatario, cognome_intestatario, numero_carta, anno_scadenza, mese_scadenza, cvv, idutente, saldo_carta)
-    VALUES ('$nome_intestatario_ck', '$cognome_intestatario_ck', '$numero_carta_ck', '$mese_scadenza_ck', '$anno_scadenza_ck', '$cvv_ck', '$IDutente', '10000')";
+    VALUES ('$nome_intestatario_ck', '$cognome_intestatario_ck', '$numero_carta_ck', '$mese_scadenza_ck', '$anno_scadenza_ck', '$cvv_ck', '$IDutente', '100000')";
 
     if ($conn->query($sql_insert)) {
       header("Location: ./metodiPagamento.php");

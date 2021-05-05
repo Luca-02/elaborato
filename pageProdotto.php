@@ -1,14 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION['email'])) {
+  header("Location: ./log.php");
+}
+
+include './dbConfig/dbConfig.php';
+?>
 <!DOCTYPE html>
 <html>
 
   <?php
-    session_start();
-    if(!isset($_SESSION['email'])) {
-      header("Location: ./log.php");
-    }
-
-    include './dbConfig/dbConfig.php';
-
     $IDprodotto = $_GET['IDprodotto'];
 
     $sql = "SELECT * FROM prodotto
@@ -121,17 +122,10 @@
         <form action="./insert.carrello.php" method="post">
 
           <div class="header2 sticky-header">
-            <nav>
-              <ul class="shortcut2">
-                <li>
-                  <div class="torna-indietro-prodotto" name="torna-indietro-infoprodotto">
-                    <a href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">
-                      <i class="fa fa-arrow-left"></i> Torna indietro
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            </nav>
+            <a href="./mainPageUomo.php" class="button2-a"> <button type="button" class="button2 logged" name="button2-uomo"> Uomo </button> </a>
+            <a href="./mainPageDonna.php" class="button2-a"> <button type="button" class="button2 logged" name="button2-donna"> Donna </button> </a>
+            <a href="./mainPageTuttiP.php" class="button2-a"> <button type="button" class="button2 logged" name="button2-tuttiP"> Tutti i prodotti </button> </a>
+            <a href="./mainPageTop10P.php" class="button2-a"> <button type="button" class="button2 logged" name="button2-Top10"> Top 10 più venduti </button> </a>
           </div>
 
 
