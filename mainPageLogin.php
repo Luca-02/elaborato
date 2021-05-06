@@ -39,7 +39,6 @@ include './dbConfig/dbConfig.php';
     <link rel="icon" href="./immagini/logo_small_icon.png">
     <link rel="stylesheet" href="./css/style.mainpage.css">
     <link rel="stylesheet" href="./css/background.css">
-    <link rel="stylesheet" href="./css/background.css">
     <link rel="stylesheet" href="./css/style.tabellaProdotti.css">
     <link rel="stylesheet" href="./css/style.tipoAbito.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

@@ -10,7 +10,7 @@ include './dbConfig/dbConfig.php';
 <html>
 
   <?php
-  
+
     $sql = "SELECT * from $utenti where email = '$_SESSION[email]'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
@@ -52,7 +52,7 @@ include './dbConfig/dbConfig.php';
           </div>
 
           <div class="title">
-            <h2> <?php echo "$nome $cognome" ?> </h2>
+            <h2> <?php echo "$nome <br> $cognome" ?> </h2>
             <h3> <?php echo $user; ?> </h3>
           </div>
         <hr>

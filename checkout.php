@@ -95,7 +95,7 @@ include './dbConfig/dbConfig.php';
                                 ?>
                                     <div class="col-50">
                                       <h3> Pagamento </h3>
-                                      <a href="./insert.metodo.pagamento.php"> <button type="button" class="btn-metodoP" name="btn-metodo-pagamento"> Aggiungi metodo di pagamento </button> </a>
+                                      <a href="./aggiungi.metodoPagamento.php"> <button type="button" class="btn-metodoP" name="btn-metodo-pagamento"> Aggiungi metodo di pagamento </button> </a>
                                     </div>
                                   </div>
                                 <?php

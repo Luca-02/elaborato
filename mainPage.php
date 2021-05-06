@@ -76,7 +76,6 @@ include './dbConfig/dbConfig.php';
           <div class="home-box">
             <h1> Ultimi arrivi </h1>
           </div>
-          <!-- mettere alcuni dei prodotti piu recenti -->
           <div class="ultimi-arrivi">
               <ul class="prodotti-ul-home">
                 <?php
@@ -115,7 +114,7 @@ include './dbConfig/dbConfig.php';
 
                         echo "
                         <li class = prodotti-li title='{$row['titolo']}'>
-                          <a href=./log.php>
+                          <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']}>
                             <div class = container-prodotti>
                               <div class = img-prodotto>
                                 <img src=$imageURL alt = product-image class = img-product>
@@ -146,7 +145,7 @@ include './dbConfig/dbConfig.php';
                                   <br>
                                 </div>
                                 <div class=btn-visualizza-prodotto>
-                                  <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']} class=btn-visualizza-prodotto-a-uomo> Visualizza prodotto </a>
+                                  <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']} class=btn-visualizza-prodotto-a> Visualizza prodotto </a>
                                 </div>
                               </div>
                               <div class = bottom>
