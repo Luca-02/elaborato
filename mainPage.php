@@ -87,7 +87,7 @@ include './dbConfig/dbConfig.php';
                           INNER JOIN $immagine_prodotto
                           ON $prodotto.idimmagine_prodotto  = $immagine_prodotto.IDimmagine_prodotto
                           ORDER BY data_pubblicazione DESC
-                          LIMIT 6";
+                          LIMIT 5";
 
                   $result = $conn->query($sql);
 

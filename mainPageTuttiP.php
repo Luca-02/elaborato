@@ -135,50 +135,51 @@ include './dbConfig/dbConfig.php';
             </div>
           </div>
 
-          <div class="prodotti">
+          <div class="prodotti2">
 
-            <div class="cerca">
-              <div class="cerca-container" style="margin:auto;">
-                <input type="text" placeholder="Cerca..." name="cerca-str" title="Cerca">
-                <button class="btn-cerca" type="submit" name="btn-cerca-str" title="Trova"> <i class="fa fa-search"></i> </button>
+            <div class="container-header2">
+              <div class="cerca">
+                <div class="cerca-container" style="margin:auto;">
+                  <input type="text" placeholder="Cerca..." name="cerca-str" title="Cerca">
+                  <button class="btn-cerca" type="submit" name="btn-cerca-str" title="Trova"> <i class="fa fa-search"></i> </button>
+                </div>
               </div>
-            </div>
 
-            <div class="container-option">
+              <div class="container-option">
                 <div class="container-option-ordina-opzioni">
                   <details>
                     <summary> Prezzo </summary>
-                      <ul>
-                        <div class="prezzo-container">
-                          <?php echo
-                          "<input type=range min=1 max={$max_costo_arrot} value=1 name=prezzo-slider id=myRange>";
-                          ?>
-                          <div class="container-max-prezzo">
-                            <p> MAX € </p> <textarea name="max-prezzo" minlength="1" maxlength="4" rows="1" cols="3" id=maxP readonly></textarea>
-                          </div>
+                    <ul>
+                      <div class="prezzo-container">
+                        <?php echo
+                        "<input type=range min=1 max={$max_costo_arrot} value=1 name=prezzo-slider id=myRange>";
+                        ?>
+                        <div class="container-max-prezzo">
+                          <p> MAX € </p> <textarea name="max-prezzo" minlength="1" maxlength="4" rows="1" cols="3" id=maxP readonly></textarea>
                         </div>
-                        <li> <button name="prezzo"> Cerca </button> </li>
-                      </ul>
+                      </div>
+                      <li> <button name="prezzo"> Cerca </button> </li>
+                    </ul>
                   </details>
 
                   <details>
                     <summary> Brand </summary>
                     <ul>
                       <?php
-                        $sql_produttori = "SELECT DISTINCT $produttore_prodotto.IDproduttore_prodotto, produttore
-                                           FROM $prodotto INNER JOIN $produttore_prodotto
-                                           ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-                                           ORDER BY produttore";
-                        $result_produttori = $conn->query($sql_produttori);
+                      $sql_produttori = "SELECT DISTINCT $produttore_prodotto.IDproduttore_prodotto, produttore
+                      FROM $prodotto INNER JOIN $produttore_prodotto
+                      ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
+                      ORDER BY produttore";
+                      $result_produttori = $conn->query($sql_produttori);
 
-                          while($row_produttori = $result_produttori->fetch_assoc()) {
-                           echo "<li>
-                                    <button name=btn-produttore value={$row_produttori['IDproduttore_prodotto']}>
-                                       {$row_produttori['produttore']}
-                                    </button>
-                                 </li>";
-                          }
-                       ?>
+                      while($row_produttori = $result_produttori->fetch_assoc()) {
+                        echo "<li>
+                        <button name=btn-produttore value={$row_produttori['IDproduttore_prodotto']}>
+                        {$row_produttori['produttore']}
+                        </button>
+                        </li>";
+                      }
+                      ?>
                     </ul>
                   </details>
 
@@ -186,21 +187,21 @@ include './dbConfig/dbConfig.php';
                     <summary> Colore </summary>
                     <ul>
                       <?php
-                        $sql_colore = "SELECT DISTINCT $colore_prodotto.IDcolore_prodotto, nome_colore, codice_colore
-                                       FROM $prodotto INNER JOIN $colore_prodotto
-                                       ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
-                                       ORDER BY nome_colore";
-                        $result_colore = $conn->query($sql_colore);
+                      $sql_colore = "SELECT DISTINCT $colore_prodotto.IDcolore_prodotto, nome_colore, codice_colore
+                      FROM $prodotto INNER JOIN $colore_prodotto
+                      ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
+                      ORDER BY nome_colore";
+                      $result_colore = $conn->query($sql_colore);
 
-                          while($row_colore = $result_colore->fetch_assoc()) {
-                            echo "<li>
-                                    <button name=btn-colore value={$row_colore['IDcolore_prodotto']}>
-                                       {$row_colore['nome_colore']}
-                                       <span class=color-dot style='background-color:{$row_colore["codice_colore"]};'></span>
-                                    </button>
-                                  </li>";
-                          }
-                       ?>
+                      while($row_colore = $result_colore->fetch_assoc()) {
+                        echo "<li>
+                          <button name=btn-colore value={$row_colore['IDcolore_prodotto']}>
+                            {$row_colore['nome_colore']}
+                            <span class=color-dot style='background-color:{$row_colore["codice_colore"]};'></span>
+                          </button>
+                        </li>";
+                      }
+                      ?>
                     </ul>
                   </details>
 
@@ -208,17 +209,17 @@ include './dbConfig/dbConfig.php';
                     <summary> Sesso </summary>
                     <ul>
                       <?php
-                        $sql_tipo_calzatura = "SELECT * FROM $tipo_calzatura";
-                        $result_tipo_calzatura = $conn->query($sql_tipo_calzatura);
+                      $sql_tipo_calzatura = "SELECT * FROM $tipo_calzatura";
+                      $result_tipo_calzatura = $conn->query($sql_tipo_calzatura);
 
-                          while($row_tipo_calzatura = $result_tipo_calzatura->fetch_assoc()) {
-                            echo "<li>
-                                    <button name=btn-tipo-calzatura value={$row_tipo_calzatura['IDtipo_calzatura']}>
-                                       {$row_tipo_calzatura['tipo']}
-                                    </button>
-                                  </li>";
-                          }
-                       ?>
+                      while($row_tipo_calzatura = $result_tipo_calzatura->fetch_assoc()) {
+                        echo "<li>
+                          <button name=btn-tipo-calzatura value={$row_tipo_calzatura['IDtipo_calzatura']}>
+                            {$row_tipo_calzatura['tipo']}
+                          </button>
+                        </li>";
+                      }
+                      ?>
                     </ul>
                   </details>
 
@@ -234,11 +235,11 @@ include './dbConfig/dbConfig.php';
                       <li> <button name="titolo-alfabetico-za"> Titolo (Z-A) </button> </li>
                       <li> <button name="produttore-alfabetico-az"> Produttore (A-Z) </button> </li>
                       <li> <button name="produttore-alfabetico-za"> Produttore (Z-A) </button> </li>
-                      <li> <button name="prezzo-piu-comprati"> Più comprati </button> </li>
                     </ul>
                   </details>
                 </div>
               </div>
+            </div>
 
             <!-- <ul class="prodotti-ul"> -->
               <?php

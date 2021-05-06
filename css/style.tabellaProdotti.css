@@ -21,7 +21,12 @@
 }
 
 
-
+.prodotti2 {
+  /* background: red; */
+  /* width: 75%; */
+  margin: 0px auto;
+  font-family: "Montserrat", sans-serif;
+}
 .prodotti {
   /* background: red; */
   width: 75%;
@@ -71,7 +76,7 @@
   height: auto;
   background: white;
   box-sizing: border-box;
-  width: 350px;
+  width: 320px;
   margin: 20px 10px 20px 10px;
   cursor: pointer;
   transition: .3s ease;
@@ -102,9 +107,11 @@
 }
 .bottom-content p {
   color: #bbbbbb;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 22px;
   text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .bottom-title {
@@ -255,7 +262,9 @@
   vertical-align: middle;
 }
 
-
+.container-header2 {
+  padding: 0 20px;
+}
 
 .cerca {
   box-sizing: border-box;

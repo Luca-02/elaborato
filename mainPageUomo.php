@@ -151,8 +151,9 @@ include './dbConfig/dbConfig.php';
           </div>
 
 
-          <div class="prodotti">
+          <div class="prodotti2">
 
+          <div class="container-header2">
             <div class="cerca">
               <div class="cerca-container" style="margin:auto;">
                 <input type="text" placeholder="Cerca..." name="cerca-str" title="Cerca">
@@ -161,109 +162,110 @@ include './dbConfig/dbConfig.php';
             </div>
 
             <div class="container-option">
-                <div class="container-option-ordina-opzioni">
-                  <details>
-                    <summary> Prezzo </summary>
-                      <ul>
-                        <div class="prezzo-container">
-                          <?php echo
-                          "<input type=range min=1 max={$max_costo_arrot} value=1 name=prezzo-slider id=myRange>";
-                          ?>
-                          <div class="container-max-prezzo">
-                            <p> MAX € </p> <textarea name="max-prezzo" minlength="1" maxlength="4" rows="1" cols="3" id=maxP readonly></textarea>
-                          </div>
-                        </div>
-                        <li> <button name="prezzo"> Cerca </button> </li>
-                      </ul>
-                  </details>
+              <div class="container-option-ordina-opzioni">
+                <details>
+                  <summary> Prezzo </summary>
+                  <ul>
+                    <div class="prezzo-container">
+                      <?php echo
+                      "<input type=range min=1 max={$max_costo_arrot} value=1 name=prezzo-slider id=myRange>";
+                      ?>
+                      <div class="container-max-prezzo">
+                        <p> MAX € </p> <textarea name="max-prezzo" minlength="1" maxlength="4" rows="1" cols="3" id=maxP readonly></textarea>
+                      </div>
+                    </div>
+                    <li> <button name="prezzo"> Cerca </button> </li>
+                  </ul>
+                </details>
 
-                  <details>
-                    <summary> Brand </summary>
-                    <ul>
-                      <?php
-                        $sql_produttori = "SELECT DISTINCT $produttore_prodotto.IDproduttore_prodotto, produttore
-                                           FROM $prodotto INNER JOIN $produttore_prodotto
-                                           ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
-                                           WHERE idoggetto IN (
-                                           SELECT IDoggetto FROM $oggetto WHERE idcalzatura_oggetto IN (
-                                           SELECT IDcalzatura_oggetto FROM $calzatura_oggetto WHERE idtipo_calzatura IN (
-                                           SELECT IDtipo_calzatura FROM $tipo_calzatura WHERE tipo = 'uomo')
-                                           ))
-                                           ORDER BY produttore";
+                <details>
+                  <summary> Brand </summary>
+                  <ul>
+                    <?php
+                    $sql_produttori = "SELECT DISTINCT $produttore_prodotto.IDproduttore_prodotto, produttore
+                    FROM $prodotto INNER JOIN $produttore_prodotto
+                    ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
+                    WHERE idoggetto IN (
+                      SELECT IDoggetto FROM $oggetto WHERE idcalzatura_oggetto IN (
+                        SELECT IDcalzatura_oggetto FROM $calzatura_oggetto WHERE idtipo_calzatura IN (
+                          SELECT IDtipo_calzatura FROM $tipo_calzatura WHERE tipo = 'uomo')
+                        ))
+                        ORDER BY produttore";
                         $result_produttori = $conn->query($sql_produttori);
 
-                          while($row_produttori = $result_produttori->fetch_assoc()) {
-                           echo "<li>
-                                    <button name=btn-produttore value={$row_produttori['IDproduttore_prodotto']}>
-                                       {$row_produttori['produttore']}
-                                    </button>
-                                 </li>";
-                          }
-                       ?>
-                    </ul>
-                  </details>
+                        while($row_produttori = $result_produttori->fetch_assoc()) {
+                          echo "<li>
+                          <button name=btn-produttore value={$row_produttori['IDproduttore_prodotto']}>
+                          {$row_produttori['produttore']}
+                          </button>
+                          </li>";
+                        }
+                        ?>
+                      </ul>
+                    </details>
 
-                  <details>
-                    <summary> Colore </summary>
-                    <ul>
-                      <?php
+                    <details>
+                      <summary> Colore </summary>
+                      <ul>
+                        <?php
                         $sql_colore = "SELECT DISTINCT $colore_prodotto.IDcolore_prodotto, nome_colore, codice_colore FROM $prodotto INNER JOIN $colore_prodotto
-                                           ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
-                                           WHERE idoggetto IN (
-                                           SELECT IDoggetto FROM $oggetto WHERE idcalzatura_oggetto IN (
-                                           SELECT IDcalzatura_oggetto FROM $calzatura_oggetto WHERE idtipo_calzatura IN (
-                                           SELECT IDtipo_calzatura FROM $tipo_calzatura WHERE tipo = 'uomo')
-                                           ))
-                                           ORDER BY nome_colore";
+                        ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
+                        WHERE idoggetto IN (
+                        SELECT IDoggetto FROM $oggetto WHERE idcalzatura_oggetto IN (
+                        SELECT IDcalzatura_oggetto FROM $calzatura_oggetto WHERE idtipo_calzatura IN (
+                        SELECT IDtipo_calzatura FROM $tipo_calzatura WHERE tipo = 'uomo')
+                        ))
+                        ORDER BY nome_colore";
                         $result_colore = $conn->query($sql_colore);
 
-                          while($row_colore = $result_colore->fetch_assoc()) {
-                            echo "<li>
-                                    <button name=btn-colore value={$row_colore['IDcolore_prodotto']}>
-                                       {$row_colore['nome_colore']}
-                                       <span class=color-dot style='background-color:{$row_colore["codice_colore"]};'></span>
-                                    </button>
-                                  </li>";
-                          }
-                       ?>
-                    </ul>
-                  </details>
+                        while($row_colore = $result_colore->fetch_assoc()) {
+                          echo "<li>
+                            <button name=btn-colore value={$row_colore['IDcolore_prodotto']}>
+                              {$row_colore['nome_colore']}
+                              <span class=color-dot style='background-color:{$row_colore["codice_colore"]};'></span>
+                            </button>
+                          </li>";
+                        }
+                        ?>
+                      </ul>
+                    </details>
 
-                  <details>
-                    <summary> Tipo di prodotto </summary>
-                    <ul>
-                      <?php
+                    <details>
+                      <summary> Tipo di prodotto </summary>
+                      <ul>
+                        <?php
                         $sql_tipo_oggetto = "SELECT * FROM $tipo_oggetto";
                         $result_tipo_oggetto = $conn->query($sql_tipo_oggetto);
 
-                          while($row_tipo_oggetto = $result_tipo_oggetto->fetch_assoc()) {
-                            echo "<li>
-                                    <button name=btn-tipo-oggetto value={$row_tipo_oggetto['IDtipo_oggetto']}>
-                                       {$row_tipo_oggetto['nome']}
-                                    </button>
-                                  </li>";
-                          }
-                       ?>
-                    </ul>
-                  </details>
+                        while($row_tipo_oggetto = $result_tipo_oggetto->fetch_assoc()) {
+                          echo "<li>
+                            <button name=btn-tipo-oggetto value={$row_tipo_oggetto['IDtipo_oggetto']}>
+                              {$row_tipo_oggetto['nome']}
+                            </button>
+                          </li>";
+                        }
+                        ?>
+                      </ul>
+                    </details>
 
-                </div>
+                  </div>
 
-                <div class=container-option-ordina>
-                  <details>
-                    <summary> Ordina tutti i prodotti per </summary>
-                    <ul>
-                      <li> <button name="prezzo-crescente"> Prezzo crescente </button> </li>
-                      <li> <button name="prezzo-decrescente"> Prezzo decrescente </button> </li>
-                      <li> <button name="titolo-alfabetico-az"> Titolo (A-Z) </button> </li>
-                      <li> <button name="titolo-alfabetico-za"> Titolo (Z-A) </button> </li>
-                      <li> <button name="produttore-alfabetico-az"> Produttore (A-Z) </button> </li>
-                      <li> <button name="produttore-alfabetico-za"> Produttore (Z-A) </button> </li>
-                      <li> <button name="prezzo-piu-comprati"> Più comprati </button> </li>
-                    </ul>
-                  </details>
+                  <div class=container-option-ordina>
+                    <details>
+                      <summary> Ordina tutti i prodotti per </summary>
+                      <ul>
+                        <li> <button name="prezzo-crescente"> Prezzo crescente </button> </li>
+                        <li> <button name="prezzo-decrescente"> Prezzo decrescente </button> </li>
+                        <li> <button name="titolo-alfabetico-az"> Titolo (A-Z) </button> </li>
+                        <li> <button name="titolo-alfabetico-za"> Titolo (Z-A) </button> </li>
+                        <li> <button name="produttore-alfabetico-az"> Produttore (A-Z) </button> </li>
+                        <li> <button name="produttore-alfabetico-za"> Produttore (Z-A) </button> </li>
+                      </ul>
+                    </details>
+                  </div>
                 </div>
-              </div>
+          </div>
+
 
               <?php
 
