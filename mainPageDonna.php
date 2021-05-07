@@ -169,7 +169,7 @@
                       "<input type=range min=1 max={$max_costo_arrot} value=1 name=prezzo-slider id=myRange>";
                       ?>
                       <div class="container-max-prezzo">
-                        <p> MAX € </p> <textarea name="max-prezzo" minlength="1" maxlength="4" rows="1" cols="3" id=maxP readonly></textarea>
+                        <p> MAX € </p> <textarea name="max-prezzo" minlength="1" maxlength="5" rows="1" cols="3" id=maxP></textarea>
                       </div>
                     </div>
                     <li> <button name="prezzo"> Cerca </button> </li>
@@ -372,7 +372,7 @@
                           SELECT IDcalzatura_oggetto FROM $calzatura_oggetto WHERE idtipo_calzatura IN (
                           SELECT IDtipo_calzatura FROM $tipo_calzatura WHERE tipo = 'donna')
                           ))
-                          AND costo <= $max_prezzo";
+                          AND costo <= '$max_prezzo'";
 
                 }
 

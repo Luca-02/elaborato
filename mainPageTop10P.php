@@ -56,6 +56,13 @@ include './dbConfig/dbConfig.php';
       <div class="hero">
 
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+          <div class="header2">
+            <nav>
+              <ul class="shortcut2">
+                <li> <button class="tutti" name="tutti-i-prodotti-top"> Top 10 prodotto più venduti </button> </li>
+              </ul>
+            </nav>
+          </div>
 
           <div class="header2 sticky-header">
             <a href="./mainPageUomo.php" class="button2-a"> <button type="button" class="button2 logged" name="button2-uomo"> Uomo </button> </a>
@@ -66,8 +73,69 @@ include './dbConfig/dbConfig.php';
 
           <div class="prodotti2">
 
+            <div class="container-header2">
+
+              <div class="container-option">
+                <div class="container-option-ordina-opzioni">
+
+                      <details>
+                        <summary> Sesso </summary>
+                        <ul>
+                          <?php
+                          $sql_tipo_calzatura = "SELECT * FROM $tipo_calzatura";
+                          $result_tipo_calzatura = $conn->query($sql_tipo_calzatura);
+
+                          while($row_tipo_calzatura = $result_tipo_calzatura->fetch_assoc()) {
+                            echo "<li>
+                              <button name=btn-tipo-calzatura value={$row_tipo_calzatura['IDtipo_calzatura']}>
+                                {$row_tipo_calzatura['tipo']}
+                              </button>
+                            </li>";
+                          }
+                          ?>
+                        </ul>
+                      </details>
+
+                      <details>
+                        <summary> Tipo di prodotto </summary>
+                        <ul>
+                          <?php
+                          $sql_tipo_oggetto = "SELECT * FROM $tipo_oggetto";
+                          $result_tipo_oggetto = $conn->query($sql_tipo_oggetto);
+
+                          while($row_tipo_oggetto = $result_tipo_oggetto->fetch_assoc()) {
+                            echo "<li>
+                              <button name=btn-tipo-oggetto value={$row_tipo_oggetto['IDtipo_oggetto']}>
+                                {$row_tipo_oggetto['nome']}
+                              </button>
+                            </li>";
+                          }
+                          ?>
+                        </ul>
+                      </details>
+
+                    </div>
+
+                  <div class=container-option-ordina>
+                    <details>
+                      <summary> Ordina tutti i prodotti per </summary>
+                      <ul>
+                        <li> <button name="prezzo-crescente"> Prezzo crescente </button> </li>
+                        <li> <button name="prezzo-decrescente"> Prezzo decrescente </button> </li>
+                        <li> <button name="titolo-alfabetico-az"> Titolo (A-Z) </button> </li>
+                        <li> <button name="titolo-alfabetico-za"> Titolo (Z-A) </button> </li>
+                        <li> <button name="produttore-alfabetico-az"> Produttore (A-Z) </button> </li>
+                        <li> <button name="produttore-alfabetico-za"> Produttore (Z-A) </button> </li>
+                      </ul>
+                    </details>
+                  </div>
+                </div>
+
+            </div>
+
             <?php
 
+                if (!isset($_POST["btn-tipo-calzatura"]) || isset($_POST["tutti-i-prodotti-top"])) {
                   $sql = "SELECT *, SUM(quantita_acquisto) as somma FROM acquisto, prodotto_taglia, prodotto
                           INNER JOIN colore_prodotto
                           ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
@@ -81,6 +149,50 @@ include './dbConfig/dbConfig.php';
                           ORDER BY SUM(quantita_acquisto) DESC
                           LIMIT 10
                           ";
+                }
+
+                if (isset($_POST["btn-tipo-calzatura"])) {
+                  $id_tipo_calzatura = $_POST["btn-tipo-calzatura"];
+
+                  $sql = "SELECT *, SUM(quantita_acquisto) as somma FROM acquisto, prodotto_taglia, prodotto
+                          INNER JOIN colore_prodotto
+                          ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
+                          INNER JOIN produttore_prodotto
+                          ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
+                          INNER JOIN immagine_prodotto
+                          ON $prodotto.idimmagine_prodotto  = $immagine_prodotto.IDimmagine_prodotto
+                          WHERE $acquisto.idprodotto_taglia = $prodotto_taglia.IDprodotto_taglia
+                          AND $prodotto_taglia.idprodotto = $prodotto.IDprodotto
+                          AND $prodotto.idoggetto IN (
+                          SELECT IDoggetto FROM oggetto WHERE idcalzatura_oggetto IN (
+                          SELECT IDcalzatura_oggetto FROM calzatura_oggetto WHERE idtipo_calzatura IN (
+                          SELECT IDtipo_calzatura FROM tipo_calzatura WHERE IDtipo_calzatura = '$id_tipo_calzatura')))
+                          GROUP BY $prodotto.IDprodotto
+                          ORDER BY SUM(quantita_acquisto) DESC
+                          LIMIT 10
+                          ";
+                }
+
+                if (isset($_POST["btn-tipo-oggetto"])) {
+                  $id_tipo_oggetto = $_POST["btn-tipo-oggetto"];
+
+                  $sql = "SELECT *, SUM(quantita_acquisto) as somma FROM acquisto, prodotto_taglia, prodotto
+                          INNER JOIN colore_prodotto
+                          ON $prodotto.idcolore_prodotto = $colore_prodotto.IDcolore_prodotto
+                          INNER JOIN produttore_prodotto
+                          ON $prodotto.idproduttore_prodotto = $produttore_prodotto.IDproduttore_prodotto
+                          INNER JOIN immagine_prodotto
+                          ON $prodotto.idimmagine_prodotto  = $immagine_prodotto.IDimmagine_prodotto
+                          WHERE $acquisto.idprodotto_taglia = $prodotto_taglia.IDprodotto_taglia
+                          AND $prodotto_taglia.idprodotto = $prodotto.IDprodotto
+                          AND idoggetto IN (
+                          SELECT IDoggetto FROM $oggetto WHERE idcalzatura_oggetto IN (
+                          SELECT IDcalzatura_oggetto FROM $calzatura_oggetto WHERE idtipo_oggetto = '$id_tipo_oggetto'))
+                          GROUP BY $prodotto.IDprodotto
+                          ORDER BY SUM(quantita_acquisto) DESC
+                          LIMIT 10
+                          ";
+                }
 
                     $result = $conn->query($sql);
                     $num_rows = mysqli_num_rows($result);
