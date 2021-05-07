@@ -59,7 +59,7 @@ include './dbConfig/dbConfig.php';
           <div class="header2">
             <nav>
               <ul class="shortcut2">
-                <li> <button class="tutti" name="tutti-i-prodotti-top"> Top 10 prodotto più venduti </button> </li>
+                <li> <button class="tutti" name="tutti-i-prodotti-top"> Top 10 prodotti più venduti </button> </li>
               </ul>
             </nav>
           </div>
@@ -68,7 +68,7 @@ include './dbConfig/dbConfig.php';
             <a href="./mainPageUomo.php" class="button2-a"> <button type="button" class="button2 logged" name="button2-uomo"> Uomo </button> </a>
             <a href="./mainPageDonna.php" class="button2-a"> <button type="button" class="button2 logged" name="button2-donna"> Donna </button> </a>
             <a href="./mainPageTuttiP.php" class="button2-a"> <button type="button" class="button2 logged" name="button2-tuttiP"> Tutti i prodotti </button> </a>
-            <a href="./mainPageTop10P.php" class="button2-a"> <button type="button" class="button2 logged" name="button2-Top10"> Top 10 più venduti </button> </a>
+            <a href="./mainPageTop10P.php" class="button2-a"> <button type="button" class="button2 logged" name="button2-Top10"> Top 10 prodotti più venduti </button> </a>
           </div>
 
           <div class="prodotti2">
@@ -260,8 +260,7 @@ include './dbConfig/dbConfig.php';
                               <ul class=colors>
                               <li style = 'background: {$row['codice_colore']}'></li>
                               </ul>
-                              <br>
-                              <label> {$row['somma']} Pezzi venduti </label>
+                              <p> {$row['somma']} Pezzi venduti </p>
                               </div>
                               <div class=btn-visualizza-prodotto>
                                 <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']} class=btn-visualizza-prodotto-a> Visualizza prodotto </a>

@@ -304,3 +304,13 @@
   color: rgba(0,110,255,1);
   text-decoration: underline;
 }
+
+
+.container-mappa {
+  text-align: center;
+}
+.img-mappa {
+  max-height: 500px;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2),
+              0 8px 10px 0 rgba(0, 0, 0, 0.19);
+}

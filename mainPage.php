@@ -53,7 +53,7 @@ include './dbConfig/dbConfig.php';
             <a href="./log.php" class="button2-a"> <button class="button2 nolog" name="button2-uomo"> Uomo </button> </a>
             <a href="./log.php" class="button2-a"> <button class="button2 nolog" name="button2-donna"> Donna </button> </a>
             <a href="./log.php" class="button2-a"> <button class="button2 nolog" name="button2-uomo"> Tutti i prodotti </button> </a>
-            <a href="./log.php" class="button2-a"> <button class="button2 nolog" name="button2-donna"> Top 10 più venduti </button> </a>
+            <a href="./log.php" class="button2-a"> <button class="button2 nolog" name="button2-donna"> Top 10 prodotti più venduti </button> </a>
           </div>
 
           <div class="about-us">

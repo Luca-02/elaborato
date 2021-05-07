@@ -65,7 +65,7 @@ include './dbConfig/dbConfig.php';
             <a href="./mainPageUomo.php" class="button2-a"> <button class="button2 logged" name="button2-uomo"> Uomo </button> </a>
             <a href="./mainPageDonna.php" class="button2-a"> <button class="button2 logged" name="button2-donna"> Donna </button> </a>
             <a href="./mainPageTuttiP.php" class="button2-a"> <button class="button2 logged" name="button2-tuttiP"> Tutti i prodotti </button> </a>
-            <a href="./mainPageTop10P.php" class="button2-a"> <button class="button2 logged" name="button2-Top10"> Top 10 più venduti </button> </a>
+            <a href="./mainPageTop10P.php" class="button2-a"> <button class="button2 logged" name="button2-Top10"> Top 10 prodotti più venduti </button> </a>
           </div>
 
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -352,8 +352,12 @@ include './dbConfig/dbConfig.php';
                                       <h4> Taglia: <?php echo $row_taglia["taglia"] ?> </h4>
                                       <h6> Quantita: <?php echo $row["quantita_acquisto"] ?> </h6>
                                       <p> Spesa totale: <span> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </span> </p>
-                                      <?php echo "<a href=./info.dettagliOrdine.php?IDacquisto={$row["IDacquisto"]} name=compra-di-nuovo title='Scrivi una recensione'>"; ?>
+                                      <?php echo "<a href=./info.dettagliOrdine.php?IDacquisto={$row["IDacquisto"]} name=compra-di-nuovo title='Dettagli dell'ordine'>"; ?>
                                         <button type="button" class="btn-dettagli-ordine" name="button"> Dettagli dell'ordine </button>
+                                      </a>
+                                      <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
+                                      <?php echo "<a href=./tracciaPacco.php?IDacquisto={$row["IDacquisto"]} name=compra-di-nuovo title='Percorso del pacco'>"; ?>
+                                        <button type="button" class="btn-dettagli-ordine" name="button"> Percorso del pacco </button>
                                       </a>
                                     </div>
                                   </div>
@@ -362,7 +366,7 @@ include './dbConfig/dbConfig.php';
                                       <?php echo "<a href=./scriviRecensione.php?IDprodotto={$IDprodotto} name=recensisci-acquisto title='Scrivi una recensione'>"; ?>
                                         <button type="button" class="margin-buttons-acquisto" name="recensisci"> Recensisci </button>
                                       </a>
-                                      <?php echo "<a href=./pageProdotto.php?IDprodotto={$IDprodotto} name=compra-di-nuovo title='Scrivi una recensione'>"; ?>
+                                      <?php echo "<a href=./pageProdotto.php?IDprodotto={$IDprodotto} name=compra-di-nuovo title='Compra di nuovo'>"; ?>
                                         <button type="button" name="compra-di-nuovo"> Compralo di nuovo </button>
                                       </a>
                                     </div>
