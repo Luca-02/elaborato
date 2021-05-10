@@ -18,6 +18,10 @@
     $citta_ck = mysqli_real_escape_string($conn, $_POST['citta-ck']);
     $provincia_ck = mysqli_real_escape_string($conn, $_POST['provincia-ck']);
     $cap_ck = mysqli_real_escape_string($conn, $_POST['cap-ck']);
+    $latitudine = mysqli_real_escape_string($conn, $_POST['latitudine-ck']);
+    $longitudine = mysqli_real_escape_string($conn, $_POST['longitudine-ck']);
+    $altitudine = mysqli_real_escape_string($conn, $_POST['altitudine-ck']);
+
     $IDmetodo_pagamento = mysqli_real_escape_string($conn, $_POST['metodo-pagamento']);
     $saldo_speso = mysqli_real_escape_string($conn, $_POST['costo_spesa']);
 
@@ -43,6 +47,9 @@
       $_SESSION['citta_ck'] = $citta_ck;
       $_SESSION['provincia_ck'] = $provincia_ck;
       $_SESSION['cap_ck'] = $cap_ck;
+      $_SESSION['latitudine'] = $latitudine;
+      $_SESSION['longitudine'] = $longitudine;
+      $_SESSION['altitudine'] = $altitudine;
       header("Location: ./checkoutEffettuato.php");
     }
     else
@@ -50,9 +57,11 @@
       $str_errore = 'Acquisto andato a buon fine!';
 
       $sql_insert_ordine = "INSERT INTO ordine
-                            (nome_destinatario, cognome_destinatario, email_destinatario, indirizzo, citta, provincia, cap, numero_carta_utilizzata, data_ordine, idutente)
+                            (nome_destinatario, cognome_destinatario, email_destinatario, indirizzo, citta, provincia, cap,
+                             numero_carta_utilizzata, data_ordine, latitudine, longitudine, altitudine, idutente)
                             VALUES
-                            ('$nome_completo_ck', '$cognome_completo_ck', '$email_ck', '$indirizzo_ck', '$citta_ck', '$provincia_ck', '$cap_ck', '$str_carta', NOW(), '$IDutente')";
+                            ('$nome_completo_ck', '$cognome_completo_ck', '$email_ck', '$indirizzo_ck', '$citta_ck', '$provincia_ck', '$cap_ck',
+                             '$str_carta', NOW(), '$latitudine', '$longitudine', '$altitudine', '$IDutente')";
 
       if ($conn->query($sql_insert_ordine)) {
 
@@ -96,6 +105,9 @@
                     $_SESSION['citta_ck'] = $citta_ck;
                     $_SESSION['provincia_ck'] = $provincia_ck;
                     $_SESSION['cap_ck'] = $cap_ck;
+                    $_SESSION['latitudine'] = $latitudine;
+                    $_SESSION['longitudine'] = $longitudine;
+                    $_SESSION['altitudine'] = $altitudine;
                     header("Location: ./confirm.checkout.pagamento.php");
                   }
                   else {

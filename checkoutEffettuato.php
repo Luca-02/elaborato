@@ -10,12 +10,14 @@ include './dbConfig/dbConfig.php';
 <html>
 
   <?php
-
     $str_errore = $_SESSION['str_errore'];
     $indirizzo_ck = $_SESSION['indirizzo_ck'];
     $citta_ck = $_SESSION['citta_ck'];
     $provincia_ck = $_SESSION['provincia_ck'];
     $cap_ck = $_SESSION['cap_ck'];
+    $latitudine = $_SESSION['latitudine'];
+    $longitudine = $_SESSION['longitudine'];
+    $altitudine = $_SESSION['altitudine'];
   ?>
 
   <head>
@@ -103,7 +105,7 @@ include './dbConfig/dbConfig.php';
                           INNER JOIN $immagine_prodotto
                           ON $prodotto.idimmagine_prodotto  = $immagine_prodotto.IDimmagine_prodotto
                           ORDER BY data_pubblicazione DESC
-                          LIMIT 6";
+                          LIMIT 10";
 
                   $result = $conn->query($sql);
 

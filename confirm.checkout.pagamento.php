@@ -13,6 +13,9 @@
     $citta_ck = $_SESSION['citta_ck'];
     $provincia_ck = $_SESSION['provincia_ck'];
     $cap_ck = $_SESSION['cap_ck'];
+    $latitudine = $_SESSION['latitudine-ck'];
+    $longitudine = $_SESSION['longitudine-ck'];
+    $altitudine = $_SESSION['altitudine-ck'];
 
     $sql_saldoCarta = "SELECT saldo_carta FROM metodo_pagamento WHERE IDmetodo_pagamento = $IDmetodo_pagamento";
                        $result_saldoCarta = $conn->query($sql_saldoCarta);
@@ -30,6 +33,9 @@
       $_SESSION['citta_ck'] = $citta_ck;
       $_SESSION['provincia_ck'] = $provincia_ck;
       $_SESSION['cap_ck'] = $cap_ck;
+      $_SESSION['latitudine'] = $latitudine;
+      $_SESSION['longitudine'] = $longitudine;
+      $_SESSION['altitudine'] = $altitudine;
       header("Location: ./checkoutEffettuato.php");
     }
     else {

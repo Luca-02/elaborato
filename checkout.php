@@ -85,6 +85,14 @@ include './dbConfig/dbConfig.php';
                                   <input type="number" id="zip" minlength="5" maxlength="5" name="cap-ck" maxlength="5" placeholder="10001" required>
                                 </div>
                               </div>
+
+                              <label for="fname"><i class="fa fa-map-marker"></i> Coordinate consegna (il drone consegnerà esattamente a queste coordinate) </label>
+                              <div class="container-nome-cognome">
+                                <input type="number" class="margin-input" name="latitudine-ck" minlength="1" maxlength="25" step="any" placeholder="Latitudine" required>
+                                <input type="number" class="margin-input" name="longitudine-ck" minlength="1" maxlength="25" step="any" placeholder="Longitudine" required>
+                                <input type="number" name="altitudine-ck" minlength="1" maxlength="25" step="any" placeholder="Altitudine" required>
+                              </div>
+
                             </div>
 
                             <?php

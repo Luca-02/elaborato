@@ -1,1 +1,3 @@
-creare pagina con guida taglie
+creare pagina con guida taglie 
+
+fare servlet nella parte management per visualizzare info del dipendente (nome, cognome, stipendio ecc.)

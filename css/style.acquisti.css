@@ -265,6 +265,7 @@
 .container-dettagliOrdine h2 {
   font-size: 16px;
   font-weight: normal;
+  text-transform: capitalize;
 }
 .container-dettagliOrdine h3 {
   font-size: 18px;

@@ -103,6 +103,9 @@ include './dbConfig/dbConfig.php';
                   <h2> <?php echo "{$row["nome_destinatario"]} {$row["cognome_destinatario"]}" ?> </h2>
                   <h2> <?php echo $row["indirizzo"] ?> </h2>
                   <h2> <?php echo "{$row["provincia"]}, {$row["citta"]} {$row["cap"]}" ?> </h2>
+                  <br>
+                  <h3> Coordinate consegna </h3>
+                  <h2> <?php echo "Lat. {$row["latitudine"]}, Lon. {$row["longitudine"]}, Alt. {$row["altitudine"]}" ?> </h2>
                 <hr>
                 <h1> Percorso del pacco </h1>
                 <div class="container-mappa">
