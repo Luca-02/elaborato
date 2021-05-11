@@ -16,6 +16,14 @@
   font-family: "Montserrat", sans-serif;
   color: black;
 }
+.container-checkout2 {
+  /* background: green; */
+  width: 50%;
+  height: 100%;
+  margin: 0px auto;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+}
 
 .container-checkout-margin {
   padding-top: 50px;

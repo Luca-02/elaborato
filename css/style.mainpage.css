@@ -337,25 +337,53 @@ li, a{
 .about-us {
   word-wrap: break-word;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
   text-align: center;
+  -ms-align-items: center;
+  align-items: center;
   padding: 50px;
   backdrop-filter: blur(8px);
   background: rgba(0,0,0,0.75);
 }
 
+.img-about-us {
+  margin-left: auto;
+  margin-right: auto;
+  transform: rotate(-12deg);
+}
+.img-about-us2 {
+  margin-left: auto;
+  margin-right: auto;
+  transform: rotate(4deg);
+}
+.img-about-us img {
+  max-width: 225px;
+  margin-left: auto;
+}
+.img-about-us2 img {
+  max-width: 200px;
+  margin-left: auto;
+}
 .c-about-us {
   width: 50%;
   position: relative;
   font-family: "Montserrat", sans-serif;
   word-wrap: break-word;
   overflow: hidden;
-  left: 50%;
-  transform: translate(-50%, 0%);
   text-align: center;
 }
 @media screen and (max-width: 1248px) {
   .c-about-us {
     width: 100%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .img-about-us img {
+    display: none;
+  }
+  .img-about-us2 img {
+    display: none;
   }
 }
 

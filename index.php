@@ -57,6 +57,9 @@ include './dbConfig/dbConfig.php';
           </div>
 
           <div class="about-us">
+            <div class="img-about-us">
+              <img src="./immagini/favpng_aircraft-sf-express-uav-unmanned-aerial-vehicle-uncrewed-vehicle-flat-design.png" alt="">
+            </div>
             <div class="c-about-us">
               <h1>CHI SIAMO?</h1>
               <div class="text-overlay-text">
@@ -70,6 +73,9 @@ include './dbConfig/dbConfig.php';
                   il pacco all'indirizzo di consegna
                 </p>
               </div>
+            </div>
+            <div class="img-about-us2">
+              <img src="./immagini/favpng_aircraft-sf-express-uav-unmanned-aerial-vehicle-uncrewed-vehicle-flat-design.png" alt="">
             </div>
           </div>
 

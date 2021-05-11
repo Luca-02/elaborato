@@ -4,5 +4,5 @@
 		$_SESSION = array();
 		// elimina la sessione
 		session_destroy();
-		header("Location: ./mainPage.php");
+		header("Location: ./index.php");
 ?>

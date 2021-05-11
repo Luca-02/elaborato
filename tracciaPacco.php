@@ -59,6 +59,7 @@ include './dbConfig/dbConfig.php';
     <link rel="stylesheet" href="./css/style.pageProdotto.css">
     <link rel="stylesheet" href="./css/style.acquisti.css">
     <link rel="stylesheet" href="./css/background.css">
+    <link rel="stylesheet" href="./css/style.checkout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   </head>
@@ -96,24 +97,32 @@ include './dbConfig/dbConfig.php';
 
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-            <div class="dettagliOrdine">
-              <div class="container-dettagliOrdine">
+            <div class="checkout-page">
+              <div class="container-checkout-margin">
+                <div class="container-checkout2">
+                  <div class="row-checkout">
 
-                  <h1> Indirizzo di spedizione </h1>
-                  <h2> <?php echo "{$row["nome_destinatario"]} {$row["cognome_destinatario"]}" ?> </h2>
-                  <h2> <?php echo $row["indirizzo"] ?> </h2>
-                  <h2> <?php echo "{$row["provincia"]}, {$row["citta"]} {$row["cap"]}" ?> </h2>
-                  <br>
-                  <h3> Coordinate consegna </h3>
-                  <h2> <?php echo "Lat. {$row["latitudine"]}, Lon. {$row["longitudine"]}, Alt. {$row["altitudine"]}" ?> </h2>
-                <hr>
-                <h1> Percorso del pacco </h1>
-                <div class="container-mappa">
-                  <img src="./immagini/mappa.png" class="img-mappa">
+                    <div class="col-75">
+                        <div class="container-dettagliOrdine">
+
+                            <h1> Indirizzo di spedizione </h1>
+                            <h2> <?php echo "{$row["nome_destinatario"]} {$row["cognome_destinatario"]}" ?> </h2>
+                            <h2> <?php echo $row["indirizzo"] ?> </h2>
+                            <h2> <?php echo "{$row["provincia"]}, {$row["citta"]} {$row["cap"]}" ?> </h2>
+                            <br>
+                            <h3> Coordinate consegna </h3>
+                            <h2> <?php echo "Lat. {$row["latitudine"]}, Lon. {$row["longitudine"]}, Alt. {$row["altitudine"]}" ?> </h2>
+                          <hr>
+                          <div class="container-mappa">
+                            <img src="./immagini/mappa.png" class="img-mappa">
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
               </div>
-            </div>
 
           </form>
         </div>

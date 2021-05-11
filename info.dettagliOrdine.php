@@ -59,6 +59,7 @@ include './dbConfig/dbConfig.php';
     <link rel="stylesheet" href="./css/style.pageProdotto.css">
     <link rel="stylesheet" href="./css/style.acquisti.css">
     <link rel="stylesheet" href="./css/background.css">
+    <link rel="stylesheet" href="./css/style.checkout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   </head>
@@ -96,75 +97,84 @@ include './dbConfig/dbConfig.php';
 
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-            <div class="dettagliOrdine">
-              <div class="container-dettagliOrdine">
+            <div class="checkout-page">
+              <div class="container-checkout-margin">
+                <div class="container-checkout2">
+                  <div class="row-checkout">
 
-                  <h1> Dettagli dell'ordine </h1>
-                  <div class="text-info-ordine">
-                    <div class="text-IO1 text-mod-color">
-                      <h2> Data dell'ordine </h2>
-                      <h2> Numero ordine </h2>
-                      <h2> Totale ordine </h2>
-                    </div>
-                    <div class="text-IO2">
-                      <h2> <?php echo $row["data_ordine"] ?> </h2>
-                      <h2> #<?php echo $row["IDordine"] ?> </h2>
-                      <h2> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?>
-                        <span class="text-mod-color">(<?php
-                          echo $row["quantita_acquisto"];
-                          if ($row["quantita_acquisto"] == 1) {
-                            echo " articolo";
-                          }
-                          else {
-                            echo " articoli";
-                          }
-                        ?>)</span>
-                      </h2>
-                    </div>
-                  </div>
-                <hr>
-                  <h1> Dettagli prodotto </h1>
-                  <div class="text-info-ordine">
-                    <div class="text-IO10">
-                      <?php echo "<a href=./pageProdotto.php?IDprodotto={$IDprodotto} name=compra-di-nuovo>"; ?>
-                        <img src="<?php echo $imageURL; ?>"  class="img-prodotto-dettagli-ordine">
-                      </a>
-                    </div>
-                    <div class="text-IO20">
-                      <h3 class="text-capitalize"> <?php echo $row_P["titolo"] ?> </h3>
-                      <div class="text-mod-color">
-                        <h2> Quantità: <?php echo $row["quantita_acquisto"] ?> </h2>
-                        <h2> Taglia: <?php echo $row_taglia["taglia"] ?> </h2>
+                    <div class="col-75">
+                      <div class="container-dettagliOrdine">
+
+                            <h1> Dettagli dell'ordine </h1>
+                            <div class="text-info-ordine">
+                              <div class="text-IO1 text-mod-color">
+                                <h2> Data dell'ordine </h2>
+                                <h2> Numero ordine </h2>
+                                <h2> Totale ordine </h2>
+                              </div>
+                              <div class="text-IO2">
+                                <h2> <?php echo $row["data_ordine"] ?> </h2>
+                                <h2> #<?php echo $row["IDordine"] ?> </h2>
+                                <h2> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?>
+                                  <span class="text-mod-color">(<?php
+                                    echo $row["quantita_acquisto"];
+                                    if ($row["quantita_acquisto"] == 1) {
+                                      echo " articolo";
+                                    }
+                                    else {
+                                      echo " articoli";
+                                    }
+                                  ?>)</span>
+                                </h2>
+                              </div>
+                            </div>
+                          <hr>
+                            <h1> Dettagli prodotto </h1>
+                            <div class="text-info-ordine">
+                              <div class="text-IO10">
+                                <?php echo "<a href=./pageProdotto.php?IDprodotto={$IDprodotto} name=compra-di-nuovo>"; ?>
+                                  <img src="<?php echo $imageURL; ?>"  class="img-prodotto-dettagli-ordine">
+                                </a>
+                              </div>
+                              <div class="text-IO20">
+                                <h3 class="text-capitalize"> <?php echo $row_P["titolo"] ?> </h3>
+                                <div class="text-mod-color">
+                                  <h2> Quantità: <?php echo $row["quantita_acquisto"] ?> </h2>
+                                  <h2> Taglia: <?php echo $row_taglia["taglia"] ?> </h2>
+                                </div>
+                              </div>
+                            </div>
+                          <hr>
+                            <h1> Informazioni di pagamento </h1>
+                            <h3> Metodo di pagamento </h3>
+                            <h2> Carta di credito </h2>
+                            <br>
+                            <h3> Indirizzo di fatturazione </h3>
+                            <h2> <?php echo $row["indirizzo"] ?> </h2>
+                            <h2> <?php echo $row["provincia"] ?> </h2>
+                            <h2> <?php echo $row["citta"] ?> </h2>
+                            <h2> <?php echo $row["cap"] ?> </h2>
+                          <hr>
+                            <h1> Indirizzo di spedizione </h1>
+                            <h2> <?php echo "{$row["nome_destinatario"]} {$row["cognome_destinatario"]}" ?> </h2>
+                            <h2> <?php echo $row["indirizzo"] ?> </h2>
+                            <h2> <?php echo "{$row["provincia"]}, {$row["citta"]} {$row["cap"]}" ?> </h2>
+                          <hr>
+                          <div class="text-info-ordine">
+                            <div class="text-btm1">
+                              <h3> Totale ordine </h3>
+                            </div>
+                            <div class="text-btm2">
+                              <h3 class="prezzo-ordine"> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </h3>
+                            </div>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
                   </div>
-                <hr>
-                  <h1> Informazioni di pagamento </h1>
-                  <h3> Metodo di pagamento </h3>
-                  <h2> Carta di credito </h2>
-                  <br>
-                  <h3> Indirizzo di fatturazione </h3>
-                  <h2> <?php echo $row["indirizzo"] ?> </h2>
-                  <h2> <?php echo $row["provincia"] ?> </h2>
-                  <h2> <?php echo $row["citta"] ?> </h2>
-                  <h2> <?php echo $row["cap"] ?> </h2>
-                <hr>
-                  <h1> Indirizzo di spedizione </h1>
-                  <h2> <?php echo "{$row["nome_destinatario"]} {$row["cognome_destinatario"]}" ?> </h2>
-                  <h2> <?php echo $row["indirizzo"] ?> </h2>
-                  <h2> <?php echo "{$row["provincia"]}, {$row["citta"]} {$row["cap"]}" ?> </h2>
-                <hr>
-                <div class="text-info-ordine">
-                  <div class="text-btm1">
-                    <h3> Totale ordine </h3>
-                  </div>
-                  <div class="text-btm2">
-                    <h3 class="prezzo-ordine"> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </h3>
-                  </div>
                 </div>
-
               </div>
-            </div>
 
           </form>
         </div>

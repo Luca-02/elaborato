@@ -92,7 +92,7 @@ CREATE TABLE `carrello` (
   KEY `idprodotto_taglia` (`idprodotto_taglia`),
   CONSTRAINT `carrello_ibfk_1` FOREIGN KEY (`idutente`) REFERENCES `utenti` (`IDutente`),
   CONSTRAINT `carrello_ibfk_2` FOREIGN KEY (`idprodotto_taglia`) REFERENCES `prodotto_taglia` (`IDprodotto_taglia`)
-) ENGINE=InnoDB AUTO_INCREMENT=281 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=282 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,8 +163,32 @@ CREATE TABLE `dipendenti` (
 
 LOCK TABLES `dipendenti` WRITE;
 /*!40000 ALTER TABLE `dipendenti` DISABLE KEYS */;
-INSERT INTO `dipendenti` VALUES (1,'Giorgio','Bianchi','1985-10-05','Milano','M','MI','BNCGRG85R05F205C',2000.00,30,'giorgio.bianchi@gmail.com','giorgio.bianchi@milanesi.it','giorgio1');
+INSERT INTO `dipendenti` VALUES (1,'Giorgio','Bianchi','1985-10-05','Milano','M','MI','BNCGRG85R05F205C',2400.00,36,'giorgio.bianchi@gmail.com','giorgio.bianchi@milanesi.it','giorgio1');
 /*!40000 ALTER TABLE `dipendenti` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `giorni`
+--
+
+DROP TABLE IF EXISTS `giorni`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `giorni` (
+  `IDgiorno` int(11) NOT NULL AUTO_INCREMENT,
+  `giorno` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`IDgiorno`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `giorni`
+--
+
+LOCK TABLES `giorni` WRITE;
+/*!40000 ALTER TABLE `giorni` DISABLE KEYS */;
+INSERT INTO `giorni` VALUES (1,'lunedì'),(2,'martedì'),(3,'mercoledì'),(4,'giovedì'),(5,'venerdì '),(6,'sabato'),(7,'domenica');
+/*!40000 ALTER TABLE `giorni` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -252,6 +276,37 @@ LOCK TABLES `oggetto` WRITE;
 /*!40000 ALTER TABLE `oggetto` DISABLE KEYS */;
 INSERT INTO `oggetto` VALUES (1,'Giacche e Cappotti',1),(2,'Abiti',1),(3,'Camicie',1),(5,'T-shirts e Polo',1),(6,'Felpe',1),(7,'Pantaloni',1),(8,'Jeans',1),(9,'Abbigliamento Sportivo',1),(10,'Abbigliamento Mare',1),(11,'Intimo e Calze',1),(13,'Zaini',2),(14,'Marsupi',2),(15,'Sneakers',3),(16,'Mocassini',3),(17,'Stivali',3),(18,'Scarpe Sportive',3),(19,'Sandali e Ciabatte',3),(20,'Cinture',1),(21,'Portafogli',4),(22,'Occhiali da Sole',4),(24,'Orologi',4),(25,'Cravatte e Sciarpe',4),(26,'Cappelli e Guanti',4),(28,'Giacche e Cappotti',5),(29,'Abiti',5),(31,'Camicie e Top',5),(33,'T-Shirts e Felpe',5),(34,'Gonne',5),(35,'Pantaloni e Shorts',5),(36,'Jeans',5),(37,'Abbigliamento Sportivo',5),(38,'Abbigliamento Mare',5),(39,'Intimo e Calze',5),(45,'Borsa a spalla',6),(46,'Borsa a mano',6),(47,'Pochette',6),(48,'Zaini e Marsupi',6),(50,'Stivali',7),(51,'Décolleté',7),(52,'Sneakers',7),(53,'Ballerine',7),(54,'Scarpe sportive',7),(55,'Cinture',5),(56,'Portafogli',8),(57,'Occhiali da Sole',8),(59,'Orologi',8),(60,'Foulard e Sciarpe',8),(61,'Cappelli e Guanti',8);
 /*!40000 ALTER TABLE `oggetto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orari_lavorativi`
+--
+
+DROP TABLE IF EXISTS `orari_lavorativi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orari_lavorativi` (
+  `IDorario_lavorativo` int(11) NOT NULL AUTO_INCREMENT,
+  `orario_inizio` time DEFAULT NULL,
+  `orario_fine` time DEFAULT NULL,
+  `idgiorno` int(11) DEFAULT NULL,
+  `iddipendente` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IDorario_lavorativo`),
+  KEY `iddipendente` (`iddipendente`),
+  KEY `idgiorno` (`idgiorno`),
+  CONSTRAINT `orari_lavorativi_ibfk_1` FOREIGN KEY (`iddipendente`) REFERENCES `dipendenti` (`IDdipendente`),
+  CONSTRAINT `orari_lavorativi_ibfk_2` FOREIGN KEY (`idgiorno`) REFERENCES `giorni` (`IDgiorno`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orari_lavorativi`
+--
+
+LOCK TABLES `orari_lavorativi` WRITE;
+/*!40000 ALTER TABLE `orari_lavorativi` DISABLE KEYS */;
+INSERT INTO `orari_lavorativi` VALUES (1,'09:00:00','17:00:00',1,1),(2,'09:00:00','17:00:00',2,1),(3,'09:00:00','15:00:00',3,1),(4,'09:00:00','17:00:00',4,1),(5,'09:00:00','15:00:00',5,1),(6,NULL,NULL,6,1),(7,NULL,NULL,7,1);
+/*!40000 ALTER TABLE `orari_lavorativi` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -533,4 +588,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-10 23:24:09
+-- Dump completed on 2021-05-12  0:50:57
