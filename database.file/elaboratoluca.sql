@@ -132,66 +132,6 @@ INSERT INTO `colore_prodotto` VALUES (1,'nero','#000000'),(2,'blu marino (navy)'
 UNLOCK TABLES;
 
 --
--- Table structure for table `dipendenti`
---
-
-DROP TABLE IF EXISTS `dipendenti`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `dipendenti` (
-  `IDdipendente` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(30) DEFAULT NULL,
-  `cognome` varchar(30) DEFAULT NULL,
-  `data_nascita` date DEFAULT NULL,
-  `luogo_nascita` varchar(30) DEFAULT NULL,
-  `sesso` varchar(1) DEFAULT NULL,
-  `provincia_sigla` varchar(2) DEFAULT NULL,
-  `codice_fiscale` varchar(16) DEFAULT NULL,
-  `salario_mensile` decimal(10,2) DEFAULT NULL,
-  `ore_lavoro_settimanali` int(11) DEFAULT NULL,
-  `email_personale` varchar(50) DEFAULT NULL,
-  `email_aziendale` varchar(50) DEFAULT NULL,
-  `password_aziendale` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`IDdipendente`),
-  UNIQUE KEY `codice_fiscale` (`codice_fiscale`,`email_personale`,`email_aziendale`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `dipendenti`
---
-
-LOCK TABLES `dipendenti` WRITE;
-/*!40000 ALTER TABLE `dipendenti` DISABLE KEYS */;
-INSERT INTO `dipendenti` VALUES (1,'Giorgio','Bianchi','1985-10-05','Milano','M','MI','BNCGRG85R05F205C',2400.00,36,'giorgio.bianchi@gmail.com','giorgio.bianchi@milanesi.it','giorgio1');
-/*!40000 ALTER TABLE `dipendenti` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `giorni`
---
-
-DROP TABLE IF EXISTS `giorni`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `giorni` (
-  `IDgiorno` int(11) NOT NULL AUTO_INCREMENT,
-  `giorno` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`IDgiorno`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `giorni`
---
-
-LOCK TABLES `giorni` WRITE;
-/*!40000 ALTER TABLE `giorni` DISABLE KEYS */;
-INSERT INTO `giorni` VALUES (1,'Lun'),(2,'Mar'),(3,'Mer'),(4,'Gio'),(5,'Ven'),(6,'Sab'),(7,'Dom');
-/*!40000 ALTER TABLE `giorni` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `immagine_prodotto`
 --
 
@@ -276,37 +216,6 @@ LOCK TABLES `oggetto` WRITE;
 /*!40000 ALTER TABLE `oggetto` DISABLE KEYS */;
 INSERT INTO `oggetto` VALUES (1,'Giacche e Cappotti',1),(2,'Abiti',1),(3,'Camicie',1),(5,'T-shirts e Polo',1),(6,'Felpe',1),(7,'Pantaloni',1),(8,'Jeans',1),(9,'Abbigliamento Sportivo',1),(10,'Abbigliamento Mare',1),(11,'Intimo e Calze',1),(13,'Zaini',2),(14,'Marsupi',2),(15,'Sneakers',3),(16,'Mocassini',3),(17,'Stivali',3),(18,'Scarpe Sportive',3),(19,'Sandali e Ciabatte',3),(20,'Cinture',1),(21,'Portafogli',4),(22,'Occhiali da Sole',4),(24,'Orologi',4),(25,'Cravatte e Sciarpe',4),(26,'Cappelli e Guanti',4),(28,'Giacche e Cappotti',5),(29,'Abiti',5),(31,'Camicie e Top',5),(33,'T-Shirts e Felpe',5),(34,'Gonne',5),(35,'Pantaloni e Shorts',5),(36,'Jeans',5),(37,'Abbigliamento Sportivo',5),(38,'Abbigliamento Mare',5),(39,'Intimo e Calze',5),(45,'Borsa a spalla',6),(46,'Borsa a mano',6),(47,'Pochette',6),(48,'Zaini e Marsupi',6),(50,'Stivali',7),(51,'Décolleté',7),(52,'Sneakers',7),(53,'Ballerine',7),(54,'Scarpe sportive',7),(55,'Cinture',5),(56,'Portafogli',8),(57,'Occhiali da Sole',8),(59,'Orologi',8),(60,'Foulard e Sciarpe',8),(61,'Cappelli e Guanti',8);
 /*!40000 ALTER TABLE `oggetto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `orari_lavorativi`
---
-
-DROP TABLE IF EXISTS `orari_lavorativi`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orari_lavorativi` (
-  `IDorario_lavorativo` int(11) NOT NULL AUTO_INCREMENT,
-  `orario_inizio` time DEFAULT NULL,
-  `orario_fine` time DEFAULT NULL,
-  `idgiorno` int(11) DEFAULT NULL,
-  `iddipendente` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDorario_lavorativo`),
-  KEY `iddipendente` (`iddipendente`),
-  KEY `idgiorno` (`idgiorno`),
-  CONSTRAINT `orari_lavorativi_ibfk_1` FOREIGN KEY (`iddipendente`) REFERENCES `dipendenti` (`IDdipendente`),
-  CONSTRAINT `orari_lavorativi_ibfk_2` FOREIGN KEY (`idgiorno`) REFERENCES `giorni` (`IDgiorno`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orari_lavorativi`
---
-
-LOCK TABLES `orari_lavorativi` WRITE;
-/*!40000 ALTER TABLE `orari_lavorativi` DISABLE KEYS */;
-INSERT INTO `orari_lavorativi` VALUES (1,'09:00:00','17:00:00',1,1),(2,'09:00:00','17:00:00',2,1),(3,'09:00:00','15:00:00',3,1),(4,'09:00:00','17:00:00',4,1),(5,'09:00:00','15:00:00',5,1),(6,NULL,NULL,6,1),(7,NULL,NULL,7,1);
-/*!40000 ALTER TABLE `orari_lavorativi` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -588,4 +497,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-12 23:23:30
+-- Dump completed on 2021-05-13  0:28:41

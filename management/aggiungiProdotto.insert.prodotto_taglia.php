@@ -5,6 +5,7 @@
   }
 
   include '../dbConfig/dbConfig.php';
+  include '../dbConfig/dbConfig_dip.php';
 
   $idoggetto = $_SESSION['idoggetto'];
   $titolo = $_SESSION['titolo'];

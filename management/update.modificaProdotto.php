@@ -5,6 +5,7 @@ if (!isset($_SESSION['email_aziendale'])) {
 }
 
 include '../dbConfig/dbConfig.php';
+include '../dbConfig/dbConfig_dip.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@ include '../dbConfig/dbConfig.php';
 
     $email_aziendale = $_SESSION['email_aziendale'];
     $sql_dip = "SELECT * FROM dipendenti WHERE email_aziendale = '$email_aziendale'";
-            $result_dip = $conn->query($sql_dip);
+            $result_dip = $conn2->query($sql_dip);
             $row_dip = $result_dip->fetch_assoc();
 
     $sql = "SELECT * FROM prodotto

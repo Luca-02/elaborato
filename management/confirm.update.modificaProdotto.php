@@ -6,6 +6,7 @@
   }
 
   include '../dbConfig/dbConfig.php';
+  include '../dbConfig/dbConfig_dip.php';
 
   $IDprodotto = $_GET["IDprodotto"];
 

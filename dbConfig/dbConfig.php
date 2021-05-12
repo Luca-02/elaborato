@@ -22,9 +22,6 @@
     $acquisto = "acquisto";
     $ordine = "ordine";
     $metodo_pagamento = "metodo_pagamento";
-    $dipendenti = "dipendenti";
-    $giorni = "giorni";
-    $orari_lavorativi = "orari_lavorativi";
 
     $conn = new mysqli($host, $username, $password, $database);
     if($conn->connect_errno) {

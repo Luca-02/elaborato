@@ -38,7 +38,7 @@ CREATE TABLE `dipendenti` (
   `password_aziendale` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`IDdipendente`),
   UNIQUE KEY `codice_fiscale` (`codice_fiscale`,`email_personale`,`email_aziendale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,6 +47,7 @@ CREATE TABLE `dipendenti` (
 
 LOCK TABLES `dipendenti` WRITE;
 /*!40000 ALTER TABLE `dipendenti` DISABLE KEYS */;
+INSERT INTO `dipendenti` VALUES (1,'Giorgio','Bianchi','1986-10-05','Milano','M','MI','BNCGRG85R05F205C',2400.00,36,'giorgio.bianchi@gmail.com','giorgio.bianchi@milanesi.it','giorgio1');
 /*!40000 ALTER TABLE `dipendenti` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +62,7 @@ CREATE TABLE `giorni` (
   `IDgiorno` int(11) NOT NULL AUTO_INCREMENT,
   `giorno` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`IDgiorno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,6 +71,7 @@ CREATE TABLE `giorni` (
 
 LOCK TABLES `giorni` WRITE;
 /*!40000 ALTER TABLE `giorni` DISABLE KEYS */;
+INSERT INTO `giorni` VALUES (1,'Lun'),(2,'Mar'),(3,'Mer'),(4,'Gio'),(5,'Ven'),(6,'Sab'),(7,'Dom');
 /*!40000 ALTER TABLE `giorni` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +93,7 @@ CREATE TABLE `orari_lavorativi` (
   KEY `iddipendente` (`iddipendente`),
   CONSTRAINT `orari_lavorativi_ibfk_1` FOREIGN KEY (`idgiorno`) REFERENCES `giorni` (`IDgiorno`),
   CONSTRAINT `orari_lavorativi_ibfk_2` FOREIGN KEY (`iddipendente`) REFERENCES `dipendenti` (`IDdipendente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,6 +102,7 @@ CREATE TABLE `orari_lavorativi` (
 
 LOCK TABLES `orari_lavorativi` WRITE;
 /*!40000 ALTER TABLE `orari_lavorativi` DISABLE KEYS */;
+INSERT INTO `orari_lavorativi` VALUES (1,'09:00:00','17:00:00',1,1),(2,'09:00:00','17:00:00',2,1),(3,'09:00:00','15:00:00',3,1),(4,'09:00:00','17:00:00',4,1),(5,'09:00:00','15:00:00',5,1),(6,NULL,NULL,6,1),(7,NULL,NULL,7,1);
 /*!40000 ALTER TABLE `orari_lavorativi` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -112,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-12 23:23:42
+-- Dump completed on 2021-05-13  0:28:50
