@@ -187,7 +187,7 @@ CREATE TABLE `giorni` (
 
 LOCK TABLES `giorni` WRITE;
 /*!40000 ALTER TABLE `giorni` DISABLE KEYS */;
-INSERT INTO `giorni` VALUES (1,'lunedì'),(2,'martedì'),(3,'mercoledì'),(4,'giovedì'),(5,'venerdì '),(6,'sabato'),(7,'domenica');
+INSERT INTO `giorni` VALUES (1,'Lun'),(2,'Mar'),(3,'Mer'),(4,'Gio'),(5,'Ven'),(6,'Sab'),(7,'Dom');
 /*!40000 ALTER TABLE `giorni` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -588,4 +588,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-12  0:50:57
+-- Dump completed on 2021-05-12 23:23:30
