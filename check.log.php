@@ -1,6 +1,6 @@
 <?php
 
-  // include './dbConfig/dbConfig.php';
+  include './dbConfig/dbConfig.php';
   include './dbConfig/dbConfig_dip.php';
 
   if (isset($_POST["accedi"]))
@@ -31,7 +31,7 @@
       else
       {
         $sql2 = "SELECT * FROM $dipendenti WHERE email_aziendale = '$email'";
-        $result2 = $conn->query($sql2);
+        $result2 = $conn2->query($sql2);
         $conta2 = $result2->num_rows;
 
           if ($conta2 == 1)
