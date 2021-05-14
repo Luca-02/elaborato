@@ -45,7 +45,7 @@ include './dbConfig/dbConfig.php';
 
       <div class="entire-page">
 
-        <form action="./confirm.checkout.php" method="post">
+        <form action="./checkout.coupon.php" method="post">
 
           <div class="hero">
             <div class="checkout-page">
@@ -146,6 +146,7 @@ include './dbConfig/dbConfig.php';
                                            ?>
                                       </div>
                                     </div>
+
                                   </div>
                                   <?php
                                     echo "<button type=submit class=btn-checkout name=btn-conferma-checkout value=$IDutente> Ordina e paga </button>";
@@ -226,6 +227,6 @@ include './dbConfig/dbConfig.php';
 
     <script src="./js/main.js"></script>
 
-  </body
+  </body>
 
 </html>

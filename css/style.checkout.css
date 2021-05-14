@@ -65,6 +65,12 @@
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.8),
               0 8px 20px 0 rgba(0, 0, 0, 0.79);
 }
+.container20 {
+  background-color: #FBFCFC;
+  padding: 20px;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.8),
+              0 8px 20px 0 rgba(0, 0, 0, 0.79);
+}
 .container-cart {
   background-color: #FBFCFC;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.8),
@@ -108,6 +114,18 @@
 }
 .container input[type=number] {
   -moz-appearance: textfield;
+}
+
+.text-coupon {
+  height: 100%;
+  border: 1px solid rgb(145,145,145);
+  text-align: center;
+  resize: none;
+  outline: none;
+  font-size: 16px;
+  padding: 2.5px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 select {
@@ -324,4 +342,8 @@ h5 {
   background-color: rgba(0,110,255,1);
   color: #FBFCFC;
   transition: 0s;
+}
+
+.errore-coupon {
+  color: red;
 }

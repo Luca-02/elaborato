@@ -9,21 +9,21 @@
 
   if (isset($_POST["btn-conferma-checkout"])) {
 
-    $IDutente = $_POST["btn-conferma-checkout"];
+    $IDutente = $_SESSION['IDutente'];
 
-    $nome_completo_ck = mysqli_real_escape_string($conn, $_POST["nome-completo-ck"]);
-    $cognome_completo_ck = mysqli_real_escape_string($conn, $_POST["cognome-completo-ck"]);
-    $email_ck = mysqli_real_escape_string($conn, $_POST["email-ck"]);
-    $indirizzo_ck = mysqli_real_escape_string($conn, $_POST['indirizzo-ck']);
-    $citta_ck = mysqli_real_escape_string($conn, $_POST['citta-ck']);
-    $provincia_ck = mysqli_real_escape_string($conn, $_POST['provincia-ck']);
-    $cap_ck = mysqli_real_escape_string($conn, $_POST['cap-ck']);
-    $latitudine = mysqli_real_escape_string($conn, $_POST['latitudine-ck']);
-    $longitudine = mysqli_real_escape_string($conn, $_POST['longitudine-ck']);
-    $altitudine = mysqli_real_escape_string($conn, $_POST['altitudine-ck']);
+    $nome_completo_ck = $_SESSION['nome_completo_ck'];
+    $cognome_completo_ck = $_SESSION['cognome_completo_ck'];
+    $email_ck = $_SESSION['email_ck'];
+    $indirizzo_ck = $_SESSION['indirizzo_ck'];
+    $citta_ck = $_SESSION['citta_ck'];
+    $provincia_ck = $_SESSION['provincia_ck'];
+    $cap_ck = $_SESSION['cap_ck'];
+    $latitudine = $_SESSION['latitudine'];
+    $longitudine = $_SESSION['longitudine'];
+    $altitudine = $_SESSION['altitudine'];
 
-    $IDmetodo_pagamento = mysqli_real_escape_string($conn, $_POST['metodo-pagamento']);
-    $saldo_speso = mysqli_real_escape_string($conn, $_POST['costo_spesa']);
+    $IDmetodo_pagamento = $_SESSION['IDmetodo_pagamento'];
+    $saldo_speso = $_SESSION['saldo_speso'];
 
     $sql_saldoCarta = "SELECT saldo_carta FROM metodo_pagamento WHERE IDmetodo_pagamento = $IDmetodo_pagamento";
                        $result_saldoCarta = $conn->query($sql_saldoCarta);
