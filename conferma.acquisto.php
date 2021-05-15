@@ -24,7 +24,6 @@
   $saldo_speso = $_SESSION['saldo_speso'];
 
   $coupon_text = $_SESSION['coupon_text'];
-
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +64,7 @@
 
       <div class="entire-page">
 
-        <form action="./checkout.confirm.coupon.php" method="post">
+        <form action="./confirm.checkout.php" method="post">
 
           <div class="hero">
             <div class="checkout-page">
@@ -78,30 +77,54 @@
 
                           <div class="row-checkout">
 
-                            <div class="col-50">
-                              <h3> Coupon inserito </h3>
-                              <div class="container-metodiP">
-                                <label> Hai inserito il coupon: <?php echo $coupon_text ?> </label>
-                                <?php
-                                  $sql2 = "SELECT * FROM coupon WHERE codice = '$coupon_text'";
-                                          $result2 = $conn3->query($sql2);
-                                          $row2 = $result2->fetch_assoc();
-                                          $tipo_sconto = $row2["idtipo_sconto"];
-
-                                  if ($tipo_sconto == 1) {
-                                    ?>
-                                      <label> Avrai uno sconto sul totale della spesa del <?php echo $row2["valore"] ?>% </label>
-                                    <?php
-                                  }
-                                  else {
-                                    ?>
-                                      <label> Avrai uno sconto sul totale della spesa di €<?php echo $row2["valore"] ?>  </label>
-                                    <?php
-                                  }
-
+                            <?php
+                              if ($coupon_text == 0)
+                              {
                                 ?>
-                              </div>
-                            </div>
+                                  <div class="col-50">
+                                    <h3> Coupon non inserito </h3>
+                                    <div class="container-metodiP">
+                                      <label> Non hai inserito nessun coupon </label>
+                                      <?php
+                                        $saldo_finale = $saldo_speso;
+                                      ?>
+                                    </div>
+                                  </div>
+                                <?php
+                              }
+                              else
+                              {
+                                ?>
+                                  <div class="col-50">
+                                    <h3> Coupon inserito </h3>
+                                    <div class="container-metodiP">
+                                      <label> Hai inserito il coupon: <?php echo $coupon_text ?> </label>
+                                      <?php
+                                      $sql2 = "SELECT * FROM coupon WHERE codice = '$coupon_text'";
+                                      $result2 = $conn3->query($sql2);
+                                      $row2 = $result2->fetch_assoc();
+                                      $tipo_sconto = $row2["idtipo_sconto"];
+
+                                      if ($tipo_sconto == 1) {
+                                        ?>
+                                        <label> Avrai uno sconto sul totale della spesa del <?php echo $row2["valore"] ?>% </label>
+                                        <?php
+                                        $saldo_finale = $saldo_speso - (($saldo_speso/100)*$row2["valore"]);
+                                      }
+                                      else {
+                                        ?>
+                                        <label> Avrai uno sconto sul totale della spesa di €<?php echo $row2["valore"] ?>  </label>
+                                        <?php
+                                        $saldo_finale = $saldo_speso - $row2["valore"];
+                                      }
+
+                                      ?>
+                                    </div>
+                                  </div>
+                                <?php
+                              }
+                            ?>
+
 
                           </div>
                           <button type="submit" class="btn-checkout" name="btn-conferma-coupon"> Conferma acquisto </button>
@@ -156,7 +179,7 @@
                         </div>
                         <hr>
                         <h5> Total <span class="price" style="color:black"><b style="text-decoration: line-through;"> €<?php echo $prezzo_tot ?> </b></span> </h5>
-                        <h5> Prezzo scontato <span class="price" style="color:black"><b style="text-decoration: underline;"> €<?php echo $saldo_speso ?> </b></span> </h5>
+                        <h5> Prezzo scontato <span class="price" style="color:black"><b style="text-decoration: underline;"> €<?php echo $saldo_finale ?> </b></span> </h5>
                         <input type="text" class="input-costo-spesa" name="costo_spesa" value="<?php echo "$prezzo_tot" ?>">
                       </div>
                     </div>

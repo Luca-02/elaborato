@@ -5,9 +5,10 @@
   }
 
   include './dbConfig/dbConfig.php';
+  include './dbConfig/dbConfig_coupon.php';
 
     $IDmetodo_pagamento = $_SESSION['IDmetodo_pagamento'];
-    $saldo_speso = $_SESSION['saldo_speso'];
+    $saldo_finale = $_SESSION['saldo_finale'];
     $str_errore = $_SESSION['str_errore'];
     $indirizzo_ck = $_SESSION['indirizzo_ck'];
     $citta_ck = $_SESSION['citta_ck'];
@@ -21,7 +22,7 @@
                        $result_saldoCarta = $conn->query($sql_saldoCarta);
                        $row_saldoCarta = $result_saldoCarta->fetch_assoc();
 
-    $saldo_aggiornato = $row_saldoCarta["saldo_carta"] - $saldo_speso;
+    $saldo_aggiornato = $row_saldoCarta["saldo_carta"] - $saldo_finale;
 
     $sql_updateSaldo = "UPDATE metodo_pagamento SET saldo_carta = $saldo_aggiornato
                         WHERE IDmetodo_pagamento = $IDmetodo_pagamento";

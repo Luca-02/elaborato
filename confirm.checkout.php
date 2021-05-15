@@ -6,8 +6,7 @@
   }
 
   include './dbConfig/dbConfig.php';
-
-  if (isset($_POST["btn-conferma-checkout"])) {
+  include './dbConfig/dbConfig_coupon.php';
 
     $IDutente = $_SESSION['IDutente'];
 
@@ -25,6 +24,40 @@
     $IDmetodo_pagamento = $_SESSION['IDmetodo_pagamento'];
     $saldo_speso = $_SESSION['saldo_speso'];
 
+    $coupon_text = $_SESSION['coupon_text'];
+
+    if ($coupon_text == 0) {
+      $saldo_finale = $saldo_speso;
+      $_SESSION['saldo_finale'] = $saldo_finale;
+    }
+    else {
+      $sql2 = "SELECT * FROM coupon WHERE codice = '$coupon_text'";
+      $result2 = $conn3->query($sql2);
+      $row2 = $result2->fetch_assoc();
+      $IDcoupon = $row2["IDcoupon"];
+      $tipo_sconto = $row2["idtipo_sconto"];
+
+      if ($tipo_sconto == 1) {
+        $saldo_finale = $saldo_speso - (($saldo_speso/100)*$row2["valore"]);
+      }
+      else {
+        $saldo_finale = $saldo_speso - $row2["valore"];
+      }
+
+      $utilizzi_agg = $row2["utilizzi"] - 1;
+      $sql_updtC = "UPDATE coupon SET utilizzi = '$utilizzi_agg' WHERE IDcoupon = '$IDcoupon'";
+
+      if ($conn3->query($sql_updtC) === TRUE) {
+      }
+      else {
+        echo "Error updating record: " . $conn->error;
+      }
+
+      $_SESSION['saldo_finale'] = $saldo_finale;
+    }
+
+    //
+
     $sql_saldoCarta = "SELECT saldo_carta FROM metodo_pagamento WHERE IDmetodo_pagamento = $IDmetodo_pagamento";
                        $result_saldoCarta = $conn->query($sql_saldoCarta);
                        $row_saldoCarta = $result_saldoCarta->fetch_assoc();
@@ -34,7 +67,7 @@
                         $row_selectmetodi = $result_selectmetodi->fetch_assoc();
                         $str_carta = '**** **** **** '.substr($row_selectmetodi["numero_carta"], -4);
 
-    $controllo_saldo_disponibile = $row_saldoCarta["saldo_carta"] - $saldo_speso;
+    $controllo_saldo_disponibile = $row_saldoCarta["saldo_carta"] - $saldo_finale;
 
 
 
@@ -50,6 +83,7 @@
       $_SESSION['latitudine'] = $latitudine;
       $_SESSION['longitudine'] = $longitudine;
       $_SESSION['altitudine'] = $altitudine;
+      $_SESSION['saldo_finale'] = $saldo_finale;
       header("Location: ./checkoutEffettuato.php");
     }
     else
@@ -99,7 +133,7 @@
                   if ($conn->query($sql_delete)) {
                     session_start();
                     $_SESSION['IDmetodo_pagamento'] = $IDmetodo_pagamento;
-                    $_SESSION['saldo_speso'] = $saldo_speso;
+                    $_SESSION['saldo_finale'] = $saldo_finale;
                     $_SESSION['str_errore'] = $str_errore;
                     $_SESSION['indirizzo_ck'] = $indirizzo_ck;
                     $_SESSION['citta_ck'] = $citta_ck;
@@ -133,8 +167,5 @@
       }
 
     }
-
-
-  }
 
 ?>

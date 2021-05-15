@@ -31,15 +31,10 @@
           $conta = $result->num_rows;
 
   if ($conta > 0) {
-    $row = $result->fetch_assoc();
-    $saldo_speso = $saldo_speso - $row["valore"];
-
-    session_start();
-    $_SESSION['saldo_speso'] = $saldo_speso;
-    header("Location: ./prova.php");
+    header("Location: ./conferma.acquisto.php");
   }
   else {
-    header("Location: ./prova.php");
+    header("Location: ./conferma.acquisto.php");
   }
 
 ?>

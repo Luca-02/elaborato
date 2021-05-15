@@ -347,11 +347,13 @@ include './dbConfig/dbConfig.php';
                                       <h5> Acquistato il
                                         <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
                                         <?php echo $row["data_ordine"] ?>
+                                        <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
+                                        Numero ordine: #<?php echo $row["IDordine"] ?>
                                       </h5>
                                       <h1> <?php echo $row_P["titolo"] ?> </h1>
                                       <h4> Taglia: <?php echo $row_taglia["taglia"] ?> </h4>
                                       <h6> Quantita: <?php echo $row["quantita_acquisto"] ?> </h6>
-                                      <p> Spesa totale: <span> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </span> </p>
+                                      <p> Costo: <span> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </span> </p>
                                       <?php echo "<a href=./info.dettagliOrdine.php?IDacquisto={$row["IDacquisto"]} name=compra-di-nuovo title='Dettagli dell'ordine'>"; ?>
                                         <button type="button" class="btn-dettagli-ordine" name="button"> Dettagli dell'ordine </button>
                                       </a>

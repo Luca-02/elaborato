@@ -5,6 +5,7 @@ if (!isset($_SESSION['email'])) {
 }
 
 include './dbConfig/dbConfig.php';
+include './dbConfig/dbConfig_coupon.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -131,57 +132,57 @@ include './dbConfig/dbConfig.php';
                                         $row_media_recensioni = $result_media_recensioni->fetch_assoc();
                                         $media_recensioni = number_format($row_media_recensioni["media_valutazione"], 1);
 
-                        echo "
-                        <li class = prodotti-li title='{$row['titolo']}'>
-                          <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']}>
-                            <div class = container-prodotti>
-                              <div class = img-prodotto>
-                                <img src=$imageURL alt = product-image class = img-product>
-                              </div>
+                      echo "
+                      <li class = prodotti-li title='{$row['titolo']}'>
+                        <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']}>
+                          <div class = container-prodotti>
+                            <div class = img-prodotto>
+                              <img src=$imageURL alt = product-image class = img-product>
+                            </div>
 
-                              <div class = overlay-prodotti>
-                                <div class = over-img>
-                                <button type = button name = valutation>
-                                  <img src=./immagini/star.png alt=stars style='filter: saturate(4);' width=16px> $media_recensioni
-                                </button>
-                              </div>
-                                <div class=text-overlay-prodotti>
-                                  <label> Taglie disponibili </label>
-                                  <ul>
-                                    ";
-                                    while($row2 = $result2->fetch_assoc()) {
-                                      echo "
-                                      <li> <p> {$row2['taglia']} </p> </li>
-                                      ";
-                                    }
+                            <div class = overlay-prodotti>
+                              <div class = over-img>
+                              <button type = button name = valutation>
+                                <img src=./immagini/star.png alt=stars style='filter: saturate(4);' width=16px> $media_recensioni
+                              </button>
+                            </div>
+                              <div class=text-overlay-prodotti>
+                                <label> Taglie disponibili </label>
+                                <ul>
+                                  ";
+                                  while($row2 = $result2->fetch_assoc()) {
                                     echo "
-                                  </ul>
-                                  <br>
-                                  <label> Colore principale </label>
-                                  <ul class=colors>
-                                    <li style = 'background: {$row['codice_colore']}'></li>
-                                  </ul>
-                                  <br>
-                                </div>
-                                <div class=btn-visualizza-prodotto>
-                                  <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']} class=btn-visualizza-prodotto-a> Visualizza prodotto </a>
-                                </div>
+                                    <li> <p> {$row2['taglia']} </p> </li>
+                                    ";
+                                  }
+                                  echo "
+                                </ul>
+                                <br>
+                                <label> Colore principale </label>
+                                <ul class=colors>
+                                  <li style = 'background: {$row['codice_colore']}'></li>
+                                </ul>
+                                <br>
                               </div>
-                              <div class = bottom>
-                                <div class=bottom-content>
-                                  <div class = bottom-title>
-                                    <h2> {$row['produttore']} <span> ({$row_calzatura['tipo']}) </span> </h2>
-                                    <span> €{$row['costo']} </span>
-                                  </div>
-                                  <p> {$row['titolo']} </p>
-                                </div>
+                              <div class=btn-visualizza-prodotto>
+                                <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']} class=btn-visualizza-prodotto-a> Visualizza prodotto </a>
                               </div>
                             </div>
-                          </a>
-                        </li>";
+                            <div class = bottom>
+                              <div class=bottom-content>
+                                <div class = bottom-title>
+                                  <h2> {$row['produttore']} <span> ({$row_calzatura['tipo']}) </span> </h2>
+                                  <span> €{$row['costo']} </span>
+                                </div>
+                                <p> {$row['titolo']} </p>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </li>";
 
-                    }
-              ?>
+                  }
+            ?>
             </ul>
           </div>
         </div>
