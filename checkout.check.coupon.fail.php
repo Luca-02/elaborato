@@ -79,7 +79,7 @@
                               <h3> Inserisci il coupon </h3>
                               <div class="container-metodiP">
                                   <input type="text" class="text-coupon" maxlength="20" name="coupon-text" required>
-                                  <p class="errore-coupon"> Coupon non valido riprovare </p>
+                                  <p class="errore-coupon"> Coupon non esistente o non valido per questo acquisto, riprovare </p>
                               </div>
                             </div>
 

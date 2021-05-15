@@ -347,3 +347,7 @@ h5 {
 .errore-coupon {
   color: red;
 }
+
+.padding-resize {
+  padding: 0 20px;
+}

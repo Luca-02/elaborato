@@ -25,7 +25,7 @@
 
   $coupon_text = mysqli_real_escape_string($conn, $_POST['coupon-text']);
 
-  $sql = "SELECT * FROM coupon WHERE codice = '$coupon_text' AND utilizzi > 0";
+  $sql = "SELECT * FROM coupon WHERE codice = '$coupon_text' AND utilizzi > 0 AND minimo_spesa <= '$saldo_speso'";
           $result = $conn3->query($sql);
 
   if ($row = $result->fetch_assoc()) {

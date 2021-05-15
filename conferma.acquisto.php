@@ -78,7 +78,7 @@
                           <div class="row-checkout">
 
                             <?php
-                              if ($coupon_text == 0)
+                              if ($coupon_text === NULL)
                               {
                                 ?>
                                   <div class="col-50">
@@ -98,7 +98,7 @@
                                   <div class="col-50">
                                     <h3> Coupon inserito </h3>
                                     <div class="container-metodiP">
-                                      <label> Hai inserito il coupon: <?php echo $coupon_text ?> </label>
+                                      <label> Hai inserito il coupon: <b style="text-decoration: underline;"> <?php echo $coupon_text ?> </b> </label>
                                       <?php
                                       $sql2 = "SELECT * FROM coupon WHERE codice = '$coupon_text'";
                                       $result2 = $conn3->query($sql2);
@@ -107,13 +107,13 @@
 
                                       if ($tipo_sconto == 1) {
                                         ?>
-                                        <label> Avrai uno sconto sul totale della spesa del <?php echo $row2["valore"] ?>% </label>
+                                        <label> Avrai uno sconto sul totale della spesa del <b style="text-decoration: underline;"> <?php echo $row2["valore"] ?>% </b> </label>
                                         <?php
                                         $saldo_finale = $saldo_speso - (($saldo_speso/100)*$row2["valore"]);
                                       }
                                       else {
                                         ?>
-                                        <label> Avrai uno sconto sul totale della spesa di €<?php echo $row2["valore"] ?>  </label>
+                                        <label> Avrai uno sconto sul totale della spesa di <b style="text-decoration: underline;"> €<?php echo $row2["valore"] ?> </b> </label>
                                         <?php
                                         $saldo_finale = $saldo_speso - $row2["valore"];
                                       }
@@ -178,9 +178,40 @@
                            ?>
                         </div>
                         <hr>
-                        <h5> Total <span class="price" style="color:black"><b style="text-decoration: line-through;"> €<?php echo $prezzo_tot ?> </b></span> </h5>
-                        <h5> Prezzo scontato <span class="price" style="color:black"><b style="text-decoration: underline;"> €<?php echo $saldo_finale ?> </b></span> </h5>
-                        <input type="text" class="input-costo-spesa" name="costo_spesa" value="<?php echo "$prezzo_tot" ?>">
+                        <h5 class="padding-resize" style="padding-bottom: 20px; padding-top: 20px;"> Totale <span class="price" style="color:black"><p> €<?php echo $prezzo_tot ?> </p> </span> </h5>
+
+                        <?php
+
+                        if ($coupon_text === NULL)
+                        {
+                        }
+                        else
+                        {
+                          $sql2 = "SELECT * FROM coupon WHERE codice = '$coupon_text'";
+                          $result2 = $conn3->query($sql2);
+                          $row2 = $result2->fetch_assoc();
+                          $tipo_sconto = $row2["idtipo_sconto"];
+
+                          if ($tipo_sconto == 1) {
+                            ?>
+                            <h5 class="padding-resize" style="padding-bottom: 20px;"> Sconto <span class="price" style="color:black"> <p> - <?php echo $row2["valore"] ?>% </p> </span> </h5>
+                            <?php
+                          }
+                          else {
+                            ?>
+                            <h5 class="padding-resize" style="padding-bottom: 20px;"> Sconto <span class="price" style="color:black"> <p> - €<?php echo $row2["valore"] ?> </p> </span> </h5>
+                            <?php
+                          }
+                          ?>
+                          <hr>
+                          <h5 class="padding-resize" style="padding-top: 20px; padding-bottom: 20px;"> Prezzo finale <span class="price" style="color:black"><b style="text-decoration: underline;"> €<?php echo $saldo_finale ?> </b> </span> </h5>
+                          <input type="text" class="input-costo-spesa" name="costo_spesa" value="<?php echo "$prezzo_tot" ?>">
+                          <?php
+                        }
+
+                        ?>
+
+
                       </div>
                     </div>
 

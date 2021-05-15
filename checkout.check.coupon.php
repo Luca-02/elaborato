@@ -27,7 +27,7 @@
 
   if ($scelta_coupon == 0) {
     session_start();
-    $coupon_text = 0;
+    $coupon_text = NULL;
     $_SESSION['coupon_text'] = $coupon_text;
     header("Location: ./checkout.contoFinale.php");
   }
