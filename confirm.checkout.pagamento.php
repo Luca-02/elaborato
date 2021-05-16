@@ -24,8 +24,8 @@
 
     $saldo_aggiornato = $row_saldoCarta["saldo_carta"] - $saldo_finale;
 
-    $sql_updateSaldo = "UPDATE metodo_pagamento SET saldo_carta = $saldo_aggiornato
-                        WHERE IDmetodo_pagamento = $IDmetodo_pagamento";
+    $sql_updateSaldo = "UPDATE metodo_pagamento SET saldo_carta = '$saldo_aggiornato'
+                        WHERE IDmetodo_pagamento = '$IDmetodo_pagamento'";
 
     if ($conn->query($sql_updateSaldo)) {
       session_start();

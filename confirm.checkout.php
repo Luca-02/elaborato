@@ -26,8 +26,9 @@
 
     $coupon_text = $_SESSION['coupon_text'];
 
-    if ($coupon_text == 0) {
+    if ($coupon_text == NULL) {
       $saldo_finale = $saldo_speso;
+      session_start();
       $_SESSION['saldo_finale'] = $saldo_finale;
     }
     else {
@@ -35,6 +36,7 @@
       $result2 = $conn3->query($sql2);
       $row2 = $result2->fetch_assoc();
       $IDcoupon = $row2["IDcoupon"];
+      $utilizzi = $row2["utilizzi"];
       $tipo_sconto = $row2["idtipo_sconto"];
 
       if ($tipo_sconto == 1) {
@@ -44,16 +46,18 @@
         $saldo_finale = $saldo_speso - $row2["valore"];
       }
 
-      $utilizzi_agg = $row2["utilizzi"] - 1;
+      session_start();
+      $_SESSION['saldo_finale'] = $saldo_finale;
+
+      $utilizzi_agg = $utilizzi - 1;
       $sql_updtC = "UPDATE coupon SET utilizzi = '$utilizzi_agg' WHERE IDcoupon = '$IDcoupon'";
 
-      if ($conn3->query($sql_updtC) === TRUE) {
+      if ($conn3->query($sql_updtC)) {
       }
       else {
         echo "Error updating record: " . $conn->error;
       }
 
-      $_SESSION['saldo_finale'] = $saldo_finale;
     }
 
     //
@@ -83,7 +87,6 @@
       $_SESSION['latitudine'] = $latitudine;
       $_SESSION['longitudine'] = $longitudine;
       $_SESSION['altitudine'] = $altitudine;
-      $_SESSION['saldo_finale'] = $saldo_finale;
       header("Location: ./checkoutEffettuato.php");
     }
     else
