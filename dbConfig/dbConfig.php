@@ -22,6 +22,7 @@
     $acquisto = "acquisto";
     $ordine = "ordine";
     $metodo_pagamento = "metodo_pagamento";
+    $spedizione = "spedizione";
 
     $conn = new mysqli($host, $username, $password, $database);
     if($conn->connect_errno) {

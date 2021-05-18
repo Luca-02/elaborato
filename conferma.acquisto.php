@@ -23,6 +23,8 @@
   $IDmetodo_pagamento = $_SESSION['IDmetodo_pagamento'];
   $saldo_speso = $_SESSION['saldo_speso'];
 
+  $spedizione = $_SESSION['spedizione'];
+
   $coupon_text = $_SESSION['coupon_text'];
 ?>
 
@@ -38,6 +40,10 @@
 
     $sql = "SELECT * FROM $carrello WHERE idutente = $IDutente";
             $result = $conn->query($sql);
+
+    $sql_sped = "SELECT * FROM spedizione WHERE IDspedizione = '$spedizione'";
+            $result_sped = $conn->query($sql_sped);
+            $row_sped = $result_sped->fetch_assoc();
   ?>
 
   <head>
@@ -86,7 +92,7 @@
                                     <div class="container-metodiP">
                                       <label> Non hai inserito nessun coupon </label>
                                       <?php
-                                        $saldo_finale = $saldo_speso;
+                                        $saldo_finale = $saldo_speso + $row_sped["costo"];
                                       ?>
                                     </div>
                                   </div>
@@ -109,13 +115,13 @@
                                         ?>
                                         <label> Avrai uno sconto sul totale della spesa del <b style="text-decoration: underline;"> <?php echo $row2["valore"] ?>% </b> </label>
                                         <?php
-                                        $saldo_finale = $saldo_speso - (($saldo_speso/100)*$row2["valore"]);
+                                        $saldo_finale = $saldo_speso - (($saldo_speso/100)*$row2["valore"]) + $row_sped["costo"];
                                       }
                                       else {
                                         ?>
                                         <label> Avrai uno sconto sul totale della spesa di <b style="text-decoration: underline;"> €<?php echo $row2["valore"] ?> </b> </label>
                                         <?php
-                                        $saldo_finale = $saldo_speso - $row2["valore"];
+                                        $saldo_finale = $saldo_speso - $row2["valore"] + $row_sped["costo"];
                                       }
 
                                       ?>
@@ -184,9 +190,17 @@
 
                         if ($coupon_text === NULL)
                         {
+                          ?>
+                            <h5 class="padding-resize" style="padding-bottom: 20px;"> Spedizione <span class="price" style="color:black"> <p> - €<?php echo $row_sped["costo"] ?> </p> </span> </h5>
+                            <hr>
+                            <h5 class="padding-resize" style="padding-top: 20px; padding-bottom: 20px;"> Prezzo finale <span class="price" style="color:black"><b style="text-decoration: underline;"> €<?php echo $saldo_finale ?> </b> </span> </h5>
+                          <?php
                         }
                         else
                         {
+                          ?>
+                            <h5 class="padding-resize" style="padding-bottom: 20px;"> Spedizione <span class="price" style="color:black"> <p> - €<?php echo $row_sped["costo"] ?> </p> </span> </h5>
+                          <?php
                           $sql2 = "SELECT * FROM coupon WHERE codice = '$coupon_text'";
                           $result2 = $conn3->query($sql2);
                           $row2 = $result2->fetch_assoc();

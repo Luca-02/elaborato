@@ -22,6 +22,8 @@
 
   $IDmetodo_pagamento = $_SESSION['IDmetodo_pagamento'];
   $saldo_speso = $_SESSION['saldo_speso'];
+
+  $spedizione = $_SESSION['spedizione'];
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +38,10 @@
 
     $sql = "SELECT * FROM $carrello WHERE idutente = $IDutente";
             $result = $conn->query($sql);
+
+    $sql_sped = "SELECT * FROM spedizione WHERE IDspedizione = '$spedizione'";
+            $result_sped = $conn->query($sql_sped);
+            $row_sped = $result_sped->fetch_assoc();
   ?>
 
   <head>
@@ -135,7 +141,10 @@
                            ?>
                         </div>
                         <hr>
-                        <h5> Total <span class="price" style="color:black"><b style="text-decoration: underline;"> €<?php echo $prezzo_tot ?> </b></span> </h5>
+                        <h5 class="padding-resize" style="padding-bottom: 20px; padding-top: 20px;"> Totale <span class="price" style="color:black"><p> €<?php echo $prezzo_tot ?> </p> </span> </h5>
+                        <h5 class="padding-resize" style="padding-bottom: 20px;"> Spedizione <span class="price" style="color:black"> <p> - €<?php echo $row_sped["costo"] ?> </p> </span> </h5>
+                        <hr>
+                        <h5 class="padding-resize" style="padding-top: 20px; padding-bottom: 20px;"> Prezzo finale <span class="price" style="color:black"><b style="text-decoration: underline;"> €<?php echo $prezzo_tot + $row_sped["costo"] ?> </b> </span> </h5>
                         <input type="text" class="input-costo-spesa" name="costo_spesa" value="<?php echo "$prezzo_tot" ?>">
                       </div>
                     </div>

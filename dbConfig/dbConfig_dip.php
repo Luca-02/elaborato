@@ -5,6 +5,7 @@
     $database = "elaboratoluca_dip";
 
     //tabelle
+    $mansioni = "mansioni";
     $dipendenti = "dipendenti";
     $giorni = "giorni";
     $orari_lavorativi = "orari_lavorativi";

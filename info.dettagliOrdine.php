@@ -115,16 +115,7 @@ include './dbConfig/dbConfig.php';
                               <div class="text-IO2">
                                 <h2> <?php echo $row["data_ordine"] ?> </h2>
                                 <h2> #<?php echo $row["IDordine"] ?> </h2>
-                                <h2> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?>
-                                  <span class="text-mod-color">(<?php
-                                    echo $row["quantita_acquisto"];
-                                    if ($row["quantita_acquisto"] == 1) {
-                                      echo " articolo";
-                                    }
-                                    else {
-                                      echo " articoli";
-                                    }
-                                  ?>)</span>
+                                <h2> €<?php echo $row["totale"] ?>
                                 </h2>
                               </div>
                             </div>
@@ -141,6 +132,7 @@ include './dbConfig/dbConfig.php';
                                 <div class="text-mod-color">
                                   <h2> Quantità: <?php echo $row["quantita_acquisto"] ?> </h2>
                                   <h2> Taglia: <?php echo $row_taglia["taglia"] ?> </h2>
+                                  <h2> Costo singolo pezzo: <?php echo $row_P["costo"] ?> </h2>
                                 </div>
                               </div>
                             </div>
@@ -162,10 +154,11 @@ include './dbConfig/dbConfig.php';
                           <hr>
                           <div class="text-info-ordine">
                             <div class="text-btm1">
-                              <h3> Totale ordine </h3>
+                              <h3> Totale acquisto </h3>
                             </div>
                             <div class="text-btm2">
-                              <h3 class="prezzo-ordine"> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?> </h3>
+                              <h3 class="prezzo-ordine"> €<?php echo $row_P["costo"] * $row["quantita_acquisto"] ?>
+                              </h3>
                             </div>
                           </div>
 

@@ -28,7 +28,7 @@ include './dbConfig/dbConfig.php';
             <div class="title"> <h1> Accedi </h1> </div>
           <hr>
             <div class="box-log-container">
-              <input type="text" class="data" maxlength="50" placeholder="Email" name="email" required>
+              <input type="text" class="data" maxlength="50" placeholder="Email" name="email" required pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
               <input type="password" class="data" minlength="8" maxlength="30" placeholder="Password" name="password" id="MyPass" required>
               <div class="show-pass">
                 <input type="checkbox" onclick="showPass()"> Show Password

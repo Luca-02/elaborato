@@ -24,10 +24,16 @@
     $IDmetodo_pagamento = $_SESSION['IDmetodo_pagamento'];
     $saldo_speso = $_SESSION['saldo_speso'];
 
+    $spedizione = $_SESSION['spedizione'];
+
     $coupon_text = $_SESSION['coupon_text'];
 
+    $sql_sped = "SELECT * FROM spedizione WHERE IDspedizione = '$spedizione'";
+            $result_sped = $conn->query($sql_sped);
+            $row_sped = $result_sped->fetch_assoc();
+
     if ($coupon_text == NULL) {
-      $saldo_finale = $saldo_speso;
+      $saldo_finale = $saldo_speso + $row_sped["costo"];
       session_start();
       $_SESSION['saldo_finale'] = $saldo_finale;
     }
@@ -40,10 +46,10 @@
       $tipo_sconto = $row2["idtipo_sconto"];
 
       if ($tipo_sconto == 1) {
-        $saldo_finale = $saldo_speso - (($saldo_speso/100)*$row2["valore"]);
+        $saldo_finale = $saldo_speso - (($saldo_speso/100)*$row2["valore"]) + $row_sped["costo"];;
       }
       else {
-        $saldo_finale = $saldo_speso - $row2["valore"];
+        $saldo_finale = $saldo_speso - $row2["valore"] + $row_sped["costo"];;
       }
 
       session_start();
@@ -95,10 +101,10 @@
 
       $sql_insert_ordine = "INSERT INTO ordine
                             (nome_destinatario, cognome_destinatario, email_destinatario, indirizzo, citta, provincia, cap,
-                             numero_carta_utilizzata, data_ordine, latitudine, longitudine, altitudine, idutente)
+                             numero_carta_utilizzata, data_ordine, latitudine, longitudine, altitudine, totale, idutente, idspedizione)
                             VALUES
                             ('$nome_completo_ck', '$cognome_completo_ck', '$email_ck', '$indirizzo_ck', '$citta_ck', '$provincia_ck', '$cap_ck',
-                             '$str_carta', NOW(), '$latitudine', '$longitudine', '$altitudine', '$IDutente')";
+                             '$str_carta', NOW(), '$latitudine', '$longitudine', '$altitudine', '$saldo_finale', '$IDutente', '$spedizione')";
 
       if ($conn->query($sql_insert_ordine)) {
 

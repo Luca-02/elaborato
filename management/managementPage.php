@@ -12,10 +12,13 @@ include '../dbConfig/dbConfig_dip.php';
 
   <?php
     $email_aziendale = $_SESSION['email_aziendale'];
-    $sql_dip = "SELECT * FROM dipendenti WHERE email_aziendale = '$email_aziendale'";
-            $result_dip = $conn2->query($sql_dip);
-            $row_dip = $result_dip->fetch_assoc();
-            $iddipendente = $row_dip["IDdipendente"];
+    $sql_dip = "SELECT * FROM dipendenti
+                INNER JOIN mansioni ON
+                $dipendenti.idmansione = $mansioni.IDmansione
+                WHERE email_aziendale = '$email_aziendale'";
+                $result_dip = $conn2->query($sql_dip);
+                $row_dip = $result_dip->fetch_assoc();
+                $iddipendente = $row_dip["IDdipendente"];
   ?>
 
   <head>
@@ -79,6 +82,10 @@ include '../dbConfig/dbConfig_dip.php';
             <tr>
               <td>email aziendale:</td>
               <td><?php echo $row_dip["email_aziendale"] ?></td>
+            </tr>
+            <tr>
+              <td>mansione:</td>
+              <td><?php echo $row_dip["mansione"] ?></td>
             </tr>
           </table>
           <br>

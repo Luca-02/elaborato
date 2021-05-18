@@ -23,6 +23,8 @@
   $IDmetodo_pagamento = $_SESSION['IDmetodo_pagamento'];
   $saldo_speso = $_SESSION['saldo_speso'];
 
+  $spedizione = $_SESSION['spedizione'];
+
   $coupon_text = $_SESSION['coupon_text'];
 
 

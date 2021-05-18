@@ -23,6 +23,8 @@
   $IDmetodo_pagamento = $_SESSION['IDmetodo_pagamento'];
   $saldo_speso = $_SESSION['saldo_speso'];
 
+  $spedizione = $_SESSION['spedizione'];
+
   $coupon_text = $_POST['coupon-text'];
 
   $sql = "SELECT * FROM coupon WHERE codice = '$coupon_text' AND utilizzi > 0 AND minimo_spesa <= '$saldo_speso'";

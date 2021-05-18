@@ -36,9 +36,12 @@ CREATE TABLE `dipendenti` (
   `email_personale` varchar(50) DEFAULT NULL,
   `email_aziendale` varchar(50) DEFAULT NULL,
   `password_aziendale` varchar(30) DEFAULT NULL,
+  `idmansione` int(11) DEFAULT NULL,
   PRIMARY KEY (`IDdipendente`),
-  UNIQUE KEY `codice_fiscale` (`codice_fiscale`,`email_personale`,`email_aziendale`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  UNIQUE KEY `codice_fiscale` (`codice_fiscale`,`email_personale`,`email_aziendale`),
+  KEY `idmansione` (`idmansione`),
+  CONSTRAINT `dipendenti_ibfk_1` FOREIGN KEY (`idmansione`) REFERENCES `mansioni` (`IDmansione`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +50,7 @@ CREATE TABLE `dipendenti` (
 
 LOCK TABLES `dipendenti` WRITE;
 /*!40000 ALTER TABLE `dipendenti` DISABLE KEYS */;
-INSERT INTO `dipendenti` VALUES (1,'Giorgio','Bianchi','1986-10-05','Milano','M','MI','BNCGRG85R05F205C',2400.00,36,'giorgio.bianchi@gmail.com','giorgio.bianchi@milanesi.it','giorgio1');
+INSERT INTO `dipendenti` VALUES (1,'Giorgio','Bianchi','1986-10-05','Milano','M','MI','BNCGRG85R05F205C',2400.00,36,'giorgio.bianchi@gmail.com','giorgio.bianchi@milanesi.it','giorgio1',3),(2,'Luca ','Milanesi','2002-11-04','Bollate','M','MI','MLNLCU02S04A940F',10000.00,36,'luca.milanesi@gmail.com','luca.milanesi@milanesi.it','luca1234',4);
 /*!40000 ALTER TABLE `dipendenti` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,6 +79,30 @@ INSERT INTO `giorni` VALUES (1,'Lun'),(2,'Mar'),(3,'Mer'),(4,'Gio'),(5,'Ven'),(6
 UNLOCK TABLES;
 
 --
+-- Table structure for table `mansioni`
+--
+
+DROP TABLE IF EXISTS `mansioni`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mansioni` (
+  `IDmansione` int(11) NOT NULL AUTO_INCREMENT,
+  `mansione` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`IDmansione`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mansioni`
+--
+
+LOCK TABLES `mansioni` WRITE;
+/*!40000 ALTER TABLE `mansioni` DISABLE KEYS */;
+INSERT INTO `mansioni` VALUES (1,'contatti'),(2,'amministrazione '),(3,'gestione '),(4,'CEO');
+/*!40000 ALTER TABLE `mansioni` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `orari_lavorativi`
 --
 
@@ -93,7 +120,7 @@ CREATE TABLE `orari_lavorativi` (
   KEY `iddipendente` (`iddipendente`),
   CONSTRAINT `orari_lavorativi_ibfk_1` FOREIGN KEY (`idgiorno`) REFERENCES `giorni` (`IDgiorno`),
   CONSTRAINT `orari_lavorativi_ibfk_2` FOREIGN KEY (`iddipendente`) REFERENCES `dipendenti` (`IDdipendente`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +129,7 @@ CREATE TABLE `orari_lavorativi` (
 
 LOCK TABLES `orari_lavorativi` WRITE;
 /*!40000 ALTER TABLE `orari_lavorativi` DISABLE KEYS */;
-INSERT INTO `orari_lavorativi` VALUES (1,'09:00:00','17:00:00',1,1),(2,'09:00:00','17:00:00',2,1),(3,'09:00:00','15:00:00',3,1),(4,'09:00:00','17:00:00',4,1),(5,'09:00:00','15:00:00',5,1),(6,NULL,NULL,6,1),(7,NULL,NULL,7,1);
+INSERT INTO `orari_lavorativi` VALUES (1,'09:00:00','17:00:00',1,1),(2,'09:00:00','17:00:00',2,1),(3,'09:00:00','15:00:00',3,1),(4,'09:00:00','17:00:00',4,1),(5,'09:00:00','15:00:00',5,1),(6,NULL,NULL,6,1),(7,NULL,NULL,7,1),(8,'09:00:00','17:00:00',1,2),(9,'09:00:00','15:00:00',2,2),(10,'09:00:00','15:00:00',3,2),(11,'09:00:00','17:00:00',4,2),(12,'09:00:00','17:00:00',5,2),(13,NULL,NULL,6,2),(14,NULL,NULL,7,2);
 /*!40000 ALTER TABLE `orari_lavorativi` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -115,4 +142,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-16  1:13:11
+-- Dump completed on 2021-05-18  0:43:20

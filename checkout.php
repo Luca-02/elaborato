@@ -147,6 +147,47 @@ include './dbConfig/dbConfig.php';
                                       </div>
                                     </div>
 
+                                    <div class="col-50">
+                                      <h3> Spedizione </h3>
+                                      <label><i class="fa fa-truck"></i> Seleziona Tipo di Spedizione </label>
+                                      <div class="container-metodiP">
+                                          <?php
+                                            $sql_selectsped = "SELECT * FROM spedizione";
+                                                    $result_selectsped = $conn->query($sql_selectsped);
+
+                                            $count_sped = 0;
+
+                                            while ($row_selectsped = $result_selectsped->fetch_assoc()) {
+                                              $count_sped++;
+                                              if ($count_sped == 1) {
+                                                ?>
+                                                  <div class="metodiP">
+                                                    <input type="radio" name="tipo_spedizione" checked="checked" value="<?php echo $row_selectsped["IDspedizione"] ?>">
+                                                    <?php echo $row_selectsped["tipo_spedizione"] ?>
+                                                    <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
+                                                    consegna in massimo <?php echo $row_selectsped["giorni_consegna_max"] ?> giorni
+                                                    <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
+                                                    €<?php echo $row_selectsped["costo"] ?>
+                                                  </div>
+                                                <?php
+                                              }
+                                              else {
+                                                ?>
+                                                  <div class="metodiP">
+                                                    <input type="radio" name="tipo_spedizione" value="<?php echo $row_selectsped["IDspedizione"] ?>">
+                                                    <?php echo $row_selectsped["tipo_spedizione"] ?>
+                                                    <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
+                                                    consegna in massimo <?php echo $row_selectsped["giorni_consegna_max"] ?> giorni
+                                                    <i class="a-icon a-icon-text-separator sc-action-separator" role="img" aria-label="|"></i>
+                                                    €<?php echo $row_selectsped["costo"] ?>
+                                                  </div>
+                                                <?php
+                                              }
+                                            }
+                                           ?>
+                                      </div>
+                                    </div>
+
                                   </div>
                                   <?php
                                     echo "<button type=submit class=btn-checkout name=btn-conferma-checkout value=$IDutente> Ordina e paga </button>";
