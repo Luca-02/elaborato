@@ -58,66 +58,31 @@ include ("../dbConfig/dbConfig_dip.php");
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-      <div class="filtri">
-        <p> Cerca in base a: </p>
-        <div class="container-filtri">
-          <table class="tabella-filtri">
-            <tr>
-              <td>IDutente</td>
-              <td><input type="number" name="cerca-idutente"></td>
-              <td><button name="btn-cerca-idutente"> Cerca IDutente </button></td>
-            </tr>
-            <tr>
-              <td>nome</td>
-              <td><input type="text" name="cerca-nome"></td>
-              <td><button name="btn-cerca-nome"> Cerca nome </button></td>
-            </tr>
-            <tr>
-              <td>cognome</td>
-              <td><input type="text" name="cerca-cognome"></td>
-              <td><button name="btn-cerca-cognome"> Cerca cognome </button></td>
-            </tr>
-          </table>
-          <table class="tabella-filtri">
-            <tr>
-              <td>email</td>
-              <td><input type="text" name="cerca-email"></td>
-              <td><button name="btn-cerca-email"> Cerca email </button></td>
-            </tr>
-            <tr>
-              <td>username</td>
-              <td><input type="text" name="cerca-username"></td>
-              <td><button name="btn-cerca-username"> Cerca username </button></td>
-            </tr>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </table>
-          <button class="btn-resetF" name="resetta-filtri"> Resetta filtri </button>
-        </div>
-      </div>
-
       <br>
 
       <table class="steelBlueCols">
         <tr>
           <thead>
-            <th> <button name="ordina-utenti-c" value="IDutente"> IDutente CRESC</button> </th>
+            <th> <button name="ordina-utenti-c" value="IDdipendente"> IDdipendente CRESC</button> </th>
             <th> <button name="ordina-utenti-c" value="nome"> nome CRESC</button></th>
             <th> <button name="ordina-utenti-c" value="cognome"> cognome CRESC</button></th>
-            <th> <button name="ordina-utenti-c" value="email"> email CRESC</button></th>
-            <th> <button name="ordina-utenti-c" value="username"> username CRESC</button></th>
-            <th> </th>
+            <th> <button name="ordina-utenti-c" value="data_nascita"> data_nascita CRESC</button></th>
+            <th> <button name="ordina-utenti-c" value="codice_fiscale"> codice_fiscale CRESC</button></th>
+            <th> <button name="ordina-utenti-c" value="salario_mensile"> salario CRESC</button></th>
+            <th> <button name="ordina-utenti-c" value="email_personale"> mail personale CRESC</button></th>
+            <th> <button name="ordina-utenti-c" value="email_aziendale"> mail aziendale CRESC</button></th>
+            <th> <button name="ordina-utenti-c" value="idmansione"> idmansione CRESC</button></th>
           </thead>
           <thead>
-            <th> <button name="ordina-utenti-d" value="IDutente"> IDutente DESC</button> </th>
+            <th> <button name="ordina-utenti-d" value="IDdipendente"> IDdipendente DESC</button> </th>
             <th> <button name="ordina-utenti-d" value="nome"> nome DESC</button></th>
             <th> <button name="ordina-utenti-d" value="cognome"> cognome DESC</button></th>
-            <th> <button name="ordina-utenti-d" value="email"> email DESC</button></th>
-            <th> <button name="ordina-utenti-d" value="username"> username DESC</button></th>
-            <th> <button name="resetta-filtri"> Resetta filtri </button> </th>
+            <th> <button name="ordina-utenti-d" value="data_nascita"> data_nascita DESC</button></th>
+            <th> <button name="ordina-utenti-d" value="codice_fiscale"> codice fiscale DESC</button></th>
+            <th> <button name="ordina-utenti-d" value="salario_mensile"> salario DESC</button></th>
+            <th> <button name="ordina-utenti-d" value="email_personale"> mail personale DESC</button></th>
+            <th> <button name="ordina-utenti-d" value="email_aziendale"> mail aziendale DESC</button></th>
+            <th> <button name="ordina-utenti-d" value="idmansione"> idmansione DESC</button></th>
           </thead>
         </tr>
 
@@ -125,53 +90,31 @@ include ("../dbConfig/dbConfig_dip.php");
           <?php
 
             if (!isset($_POST["ordina-utenti"]) || isset($_POST["resetta-filtri"])) {
-              $sql = "SELECT * FROM utenti";
+              $sql = "SELECT * FROM dipendenti";
             }
             if (isset($_POST["ordina-utenti-c"])) {
               $str = $_POST["ordina-utenti-c"];
-              $sql = "SELECT * FROM utenti ORDER BY $str";
+              $sql = "SELECT * FROM dipendenti ORDER BY $str";
             }
             if (isset($_POST["ordina-utenti-d"])) {
               $str = $_POST["ordina-utenti-d"];
-              $sql = "SELECT * FROM utenti ORDER BY $str DESC";
+              $sql = "SELECT * FROM dipendenti ORDER BY $str DESC";
             }
 
-            if (isset($_POST["btn-cerca-idutente"])) {
-              $idutente = $_POST["cerca-idutente"];
-                $sql = "SELECT * FROM utenti WHERE idutente = '$idutente'";
-            }
-            if (isset($_POST["btn-cerca-nome"])) {
-              $nome = $_POST["cerca-nome"];
-                $sql = "SELECT * FROM utenti WHERE nome = '$nome'";
-            }
-            if (isset($_POST["btn-cerca-cognome"])) {
-              $cognome = $_POST["cerca-cognome"];
-                $sql = "SELECT * FROM utenti WHERE cognome = '$cognome'";
-            }
-            if (isset($_POST["btn-cerca-email"])) {
-              $email = $_POST["cerca-email"];
-                $sql = "SELECT * FROM utenti WHERE email = '$email'";
-            }
-            if (isset($_POST["btn-cerca-username"])) {
-              $username = $_POST["cerca-username"];
-                $sql = "SELECT * FROM utenti WHERE username = '$username'";
-            }
-
-          $result = $conn->query($sql);
+          $result = $conn2->query($sql);
 
           while($row = $result->fetch_assoc()) {
             ?>
               <tr>
-                <td> <?php echo $row["IDutente"] ?> </td>
+                <td> <?php echo $row["IDdipendente"] ?> </td>
                 <td> <?php echo $row["nome"] ?> </td>
                 <td> <?php echo $row["cognome"] ?> </td>
-                <td> <?php echo $row["email"] ?> </td>
-                <td> <?php echo $row["username"] ?> </td>
-                <td class="text-a">
-                  <?php echo "<a href=./viewUser.select.php?IDutente={$row['IDutente']}>" ?>
-                    seleziona
-                  </a>
-                </td>
+                <td> <?php echo $row["data_nascita"] ?> </td>
+                <td> <?php echo $row["codice_fiscale"] ?> </td>
+                <td> <?php echo $row["salario_mensile"] ?> </td>
+                <td> <?php echo $row["email_personale"] ?> </td>
+                <td> <?php echo $row["email_aziendale"] ?> </td>
+                <td> <?php echo $row["idmansione"] ?> </td>
               </tr>
             <?php
           }

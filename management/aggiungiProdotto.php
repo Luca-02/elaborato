@@ -36,8 +36,20 @@ include '../dbConfig/dbConfig_dip.php';
       <br>
       <h2> Management area </h2>
       <br>
-      <a href="./managementPage.php"> <button name="management-page"> Torna alla home </button> </a>
+      <a href="../logout.php"> <button type="button" name="button"> Logout </button> </a>
       <br><br>
+      <?php
+        $sqlC = "SELECT * FROM dipendenti WHERE IDdipendente = '$iddipendente'";
+                 $resultC = $conn2->query($sqlC);
+                 $rowC = $resultC->fetch_assoc();
+        if ($rowC["idmansione"] == 4) {
+          ?>
+            <a href="./aggiungiDipendente.php"> <button name="agg-prod" style="margin-right: 10px;"> Aggiungi dipendente </button> </a>
+            <a href="./visualizzaDipendenti.php"> <button name="agg-prod" style="margin-right: 10px;"> Visualizza dipendenti </button> </a>
+          <?php
+        }
+
+      ?>
       <a href="./aggiungiProdotto.php"> <button name="agg-prod"> Aggiungi prodotto </button> </a>
       <a href="./modificaProdotto.php"> <button name="mod-prod" style="margin: 0 10px;"> Modifica prodotto </button> </a>
       <a href="./viewUser.php"> <button name="view-user"> Utenti </button> </a>

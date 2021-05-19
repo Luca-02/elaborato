@@ -33,21 +33,32 @@ include '../dbConfig/dbConfig_dip.php';
 
   <body>
 
-      <div class="header-page">
-        <div class="header">
-          <p> Accesso effettuato da: <?php echo "{$row_dip["IDdipendente"]} - {$row_dip["nome"]} {$row_dip["cognome"]} - {$row_dip["email_aziendale"]}" ?> </p>
-        </div>
-        <br>
-        <h2> Management area </h2>
-        <br>
-        <a href="../logout.php"> <button type="button" name="button"> Logout </button> </a>
-        <br><br>
-        <a href="./aggiungiProdotto.php"> <button name="agg-prod"> Aggiungi prodotto </button> </a>
-        <a href="./modificaProdotto.php"> <button name="mod-prod" style="margin: 0 10px;"> Modifica prodotto </button> </a>
-        <a href="./viewUser.php"> <button name="view-user"> Utenti </button> </a>
-        <a href="http://localhost:8080/elaborato/management/orarioL.jsp"> <button name="view-user" style="margin-left: 10px;" > Orario lavorativo personale </button> </a>
-        <br><br><hr><br>
+    <div class="header-page">
+      <div class="header">
+        <p> Accesso effettuato da: <?php echo "{$row_dip["IDdipendente"]} - {$row_dip["nome"]} {$row_dip["cognome"]} - {$row_dip["email_aziendale"]}" ?> </p>
       </div>
+      <br>
+      <h2> Management area </h2>
+      <br>
+      <a href="../logout.php"> <button type="button" name="button"> Logout </button> </a>
+      <br><br>
+      <?php
+        $sqlC = "SELECT * FROM dipendenti WHERE IDdipendente = '$iddipendente'";
+                 $resultC = $conn2->query($sqlC);
+                 $rowC = $resultC->fetch_assoc();
+        if ($rowC["idmansione"] == 4) {
+          ?>
+            <a href="./aggiungiDipendente.php"> <button name="agg-prod" style="margin-right: 10px;"> Aggiungi dipendente </button> </a>
+            <a href="./visualizzaDipendenti.php"> <button name="agg-prod" style="margin-right: 10px;"> Visualizza dipendenti </button> </a>
+          <?php
+        }
+
+      ?>
+      <a href="./aggiungiProdotto.php"> <button name="agg-prod"> Aggiungi prodotto </button> </a>
+      <a href="./modificaProdotto.php"> <button name="mod-prod" style="margin: 0 10px;"> Modifica prodotto </button> </a>
+      <a href="./viewUser.php"> <button name="view-user"> Utenti </button> </a>
+      <br><br><hr><br>
+    </div>
 
       <div class="filtri taglia-container2">
         <h1> I tuoi dati </h1>
@@ -91,6 +102,10 @@ include '../dbConfig/dbConfig_dip.php';
           </table>
           <br>
 
+          <a href="http://localhost:8080/elaborato/management/orarioL.jsp" style="background: white;"> Orario lavorativo personale </a>
+
+          <br><br>
+
           <h1> Orario di lavoro </h1>
           <table border="1" class="orari">
             <tr>
@@ -111,13 +126,7 @@ include '../dbConfig/dbConfig_dip.php';
                            $result_oi = $conn2->query($sql_oi);
 
                  while($row_oi = $result_oi->fetch_assoc()) {
-                   if ($row_oi['orario_inizio'] === NULL) {
-                     echo "<td> / </td>";
-
-                   }
-                   else {
                      echo "<td> {$row_oi['orario_inizio']} </td>";
-                   }
                  }
               ?>
             </tr>
@@ -128,13 +137,7 @@ include '../dbConfig/dbConfig_dip.php';
                            $result_of = $conn2->query($sql_of);
 
                  while($row_of = $result_of->fetch_assoc()) {
-                   if ($row_of['orario_fine'] === NULL) {
-                     echo "<td> / </td>";
-
-                   }
-                   else {
                      echo "<td> {$row_of['orario_fine']} </td>";
-                   }
                  }
               ?>
             </tr>

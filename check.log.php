@@ -30,7 +30,7 @@
       }
       else
       {
-        $sql2 = "SELECT * FROM $dipendenti WHERE email_aziendale = '$email'";
+        $sql2 = "SELECT * FROM $dipendenti WHERE email_aziendale = '$email' AND (idmansione = '3' OR idmansione = '4')";
         $result2 = $conn2->query($sql2);
         $conta2 = $result2->num_rows;
 

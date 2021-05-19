@@ -29,20 +29,32 @@ include '../dbConfig/dbConfig_dip.php';
 
   <body >
 
-      <div class="header-page">
-        <div class="header">
-          <p> Accesso effettuato da: <?php echo "{$row_dip["IDdipendente"]} - {$row_dip["nome"]} {$row_dip["cognome"]} - {$row_dip["email_aziendale"]}" ?> </p>
-        </div>
-        <br>
-        <h2> Management area </h2>
-        <br>
-        <a href="./managementPage.php"> <button name="management-page"> Torna alla home </button> </a>
-        <br><br>
-        <a href="./aggiungiProdotto.php"> <button name="agg-prod"> Aggiungi prodotto </button> </a>
-        <a href="./modificaProdotto.php"> <button name="mod-prod" style="margin: 0 10px;"> Modifica prodotto </button> </a>
-        <a href="./viewUser.php"> <button name="view-user"> Utenti </button> </a>
-        <br><br><hr><br>
+    <div class="header-page">
+      <div class="header">
+        <p> Accesso effettuato da: <?php echo "{$row_dip["IDdipendente"]} - {$row_dip["nome"]} {$row_dip["cognome"]} - {$row_dip["email_aziendale"]}" ?> </p>
       </div>
+      <br>
+      <h2> Management area </h2>
+      <br>
+      <a href="../logout.php"> <button type="button" name="button"> Logout </button> </a>
+      <br><br>
+      <?php
+        $sqlC = "SELECT * FROM dipendenti WHERE IDdipendente = '$iddipendente'";
+                 $resultC = $conn2->query($sqlC);
+                 $rowC = $resultC->fetch_assoc();
+        if ($rowC["idmansione"] == 4) {
+          ?>
+            <a href="./aggiungiDipendente.php"> <button name="agg-prod" style="margin-right: 10px;"> Aggiungi dipendente </button> </a>
+            <a href="./visualizzaDipendenti.php"> <button name="agg-prod" style="margin-right: 10px;"> Visualizza dipendenti </button> </a>
+          <?php
+        }
+
+      ?>
+      <a href="./aggiungiProdotto.php"> <button name="agg-prod"> Aggiungi prodotto </button> </a>
+      <a href="./modificaProdotto.php"> <button name="mod-prod" style="margin: 0 10px;"> Modifica prodotto </button> </a>
+      <a href="./viewUser.php"> <button name="view-user"> Utenti </button> </a>
+      <br><br><hr><br>
+    </div>
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
