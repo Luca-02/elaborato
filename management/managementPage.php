@@ -45,6 +45,7 @@ include '../dbConfig/dbConfig_dip.php';
         <a href="./aggiungiProdotto.php"> <button name="agg-prod"> Aggiungi prodotto </button> </a>
         <a href="./modificaProdotto.php"> <button name="mod-prod" style="margin: 0 10px;"> Modifica prodotto </button> </a>
         <a href="./viewUser.php"> <button name="view-user"> Utenti </button> </a>
+        <a href="http://localhost:8080/elaborato/management/orarioL.jsp"> <button name="view-user" style="margin-left: 10px;" > Orario lavorativo personale </button> </a>
         <br><br><hr><br>
       </div>
 
