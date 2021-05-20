@@ -92,7 +92,7 @@ include './dbConfig/dbConfig.php';
                           INNER JOIN $immagine_prodotto
                           ON $prodotto.idimmagine_prodotto  = $immagine_prodotto.IDimmagine_prodotto
                           ORDER BY data_pubblicazione DESC
-                          LIMIT 5";
+                          LIMIT 6";
 
                   $result = $conn->query($sql);
 
@@ -143,7 +143,6 @@ include './dbConfig/dbConfig.php';
                                     }
                                     echo "
                                   </ul>
-                                  <br>
                                   <label> Colore principale </label>
                                   <ul class=colors>
                                     <li style = 'background: {$row['codice_colore']}'></li>

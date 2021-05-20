@@ -477,7 +477,6 @@ include './dbConfig/dbConfig.php';
                                 }
                                 echo "
                                 </ul>
-                                <br>
                                 <label> Colore principale </label>
                                 <ul class=colors>
                                 <li style = 'background: {$row['codice_colore']}'></li>

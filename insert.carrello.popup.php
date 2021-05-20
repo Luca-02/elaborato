@@ -194,7 +194,7 @@
                           INNER JOIN $immagine_prodotto
                           ON $prodotto.idimmagine_prodotto  = $immagine_prodotto.IDimmagine_prodotto
                           ORDER BY data_pubblicazione DESC
-                          LIMIT 10";
+                          LIMIT 12";
 
                   $result = $conn->query($sql);
 
@@ -245,7 +245,6 @@
                                     }
                                     echo "
                                   </ul>
-                                  <br>
                                   <label> Colore principale </label>
                                   <ul class=colors>
                                     <li style = 'background: {$row['codice_colore']}'></li>

@@ -428,7 +428,7 @@ include './dbConfig/dbConfig.php';
                                 <div class = overlay-prodotti>
                                 <div class = over-img>
                                 <button type = button name = valutation>
-                                <img src=./immagini/star.png alt=stars style='filter: saturate(4);' width=16px> $media_recensioni
+                                <img src=./immagini/star.png alt=stars style='filter: saturate(4);' width=14px> $media_recensioni
                                 </button>
                                 </div>
                                 <div class=text-overlay-prodotti>
@@ -442,7 +442,6 @@ include './dbConfig/dbConfig.php';
                                 }
                                 echo "
                                 </ul>
-                                <br>
                                 <label> Colore principale </label>
                                 <ul class=colors>
                                 <li style = 'background: {$row['codice_colore']}'></li>

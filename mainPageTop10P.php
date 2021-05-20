@@ -241,7 +241,7 @@ include './dbConfig/dbConfig.php';
                               <div class = overlay-prodotti>
                               <div class = over-img>
                               <button type = button name = valutation>
-                              <img src=./immagini/star.png alt=stars style='filter: saturate(4);' width=16px> $media_recensioni
+                              <img src=./immagini/star.png alt=stars style='filter: saturate(4);' width=14px> $media_recensioni
                               </button>
                               </div>
                               <div class=text-overlay-prodotti>
@@ -255,12 +255,10 @@ include './dbConfig/dbConfig.php';
                               }
                               echo "
                               </ul>
-                              <br>
                               <label> Colore principale </label>
                               <ul class=colors>
                               <li style = 'background: {$row['codice_colore']}'></li>
                               </ul>
-                              <p> {$row['somma']} Pezzi venduti </p>
                               </div>
                               <div class=btn-visualizza-prodotto>
                                 <a href=./pageProdotto.php?IDprodotto={$row['IDprodotto']} class=btn-visualizza-prodotto-a> Visualizza prodotto </a>
@@ -269,7 +267,7 @@ include './dbConfig/dbConfig.php';
                             <div class = bottom>
                               <div class=bottom-content>
                                 <div class = bottom-title>
-                                  <h2> {$row['produttore']} <span> ({$row_calzatura['tipo']}) </span> </h2>
+                                  <h2> {$row['produttore']} <span> ({$row['somma']} venduti) </span> </h2>
                                   <span> €{$row['costo']} </span>
                                 </div>
                                 <p> {$row['titolo']} </p>
