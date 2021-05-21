@@ -190,7 +190,7 @@ include './dbConfig/dbConfig.php';
 
                                   </div>
                                   <?php
-                                    echo "<button type=submit class=btn-checkout name=btn-conferma-checkout value=$IDutente> Ordina e paga </button>";
+                                    echo "<button type=submit class=btn-checkout name=btn-conferma-checkout value=$IDutente> Avanti </button>";
                                   ?>
                                 <?php
                               }
