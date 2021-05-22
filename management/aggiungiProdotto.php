@@ -12,9 +12,13 @@ include '../dbConfig/dbConfig_dip.php';
 
   <?php
     $email_aziendale = $_SESSION['email_aziendale'];
-    $sql_dip = "SELECT * FROM dipendenti WHERE email_aziendale = '$email_aziendale'";
-            $result_dip = $conn2->query($sql_dip);
-            $row_dip = $result_dip->fetch_assoc();
+    $sql_dip = "SELECT * FROM dipendenti
+                INNER JOIN mansioni ON
+                $dipendenti.idmansione = $mansioni.IDmansione
+                WHERE email_aziendale = '$email_aziendale'";
+                $result_dip = $conn2->query($sql_dip);
+                $row_dip = $result_dip->fetch_assoc();
+                $iddipendente = $row_dip["IDdipendente"];
   ?>
 
   <head>
@@ -75,7 +79,7 @@ include '../dbConfig/dbConfig_dip.php';
             <option value="4"> Accessori </option>
           </select>
         <br><br>
-        <button name="conferma-tipo_oggetto_calzatura"> conferma tipo_calzatura e tipo_calzatura </button>
+        <button name="conferma-tipo_oggetto_calzatura"> conferma tipo_calzatura e tipo_oggetto </button>
       </div>
 
     </form>
