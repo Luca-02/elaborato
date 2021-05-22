@@ -17,9 +17,6 @@
   <body>
 
       <div class="header-page">
-        <div class="header">
-          <p> Accesso effettuato da: <?php echo "{$row_dip["IDdipendente"]} - {$row_dip["nome"]} {$row_dip["cognome"]} - {$row_dip["email_aziendale"]}" ?> </p>
-        </div>
         <br>
         <h2> Management area </h2>
         <br>
@@ -34,38 +31,63 @@
             <th> # </th>
             <%
               PrintWriter out2 = response.getWriter();
-              try
-              {
+              try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/elaboratoluca_dip","root","");
                 Statement st = conn.createStatement();
 
 
-                ResultSet rs = st.executeQuery("show databases");
-                while(rs.next())
-                {
-                  // if (rs) {
-                    out2.println(rs.getString("Database"));
-                //   }
-                //   else {
-                //     out2.println("<td> " + rs.getString("orario_inizio") + "</td>");
-                //   }
+                ResultSet rs = st.executeQuery("SELECT * FROM giorni ORDER BY idgiorno");
+                while(rs.next()) {
+                  %>
+                    <th><%=rs.getString("giorno")%></th>
+                  <%
                 }
-              }
-              catch (Exception e)
-              {
+              } catch (Exception e) {
                 out2.println(e);
               }
             %>
           </tr>
           <tr>
             <td> Ora di inizio </td>
+            <%
+              try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
 
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/elaboratoluca_dip","root","");
+                Statement st = conn.createStatement();
+
+                ResultSet rs = st.executeQuery("SELECT * FROM orari_lavorativi WHERE IDdipendente = '" + request.getParameter("iddipendente") + "' ORDER BY idgiorno");
+                while(rs.next()) {
+                  %>
+                    <td><%=rs.getString("orario_inizio")%></td>
+                  <%
+                }
+              } catch (Exception e) {
+                out2.println(e);
+              }
+            %>
           </tr>
           <tr>
             <td> Ora di fine </td>
+            <%
+              try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
 
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/elaboratoluca_dip","root","");
+                Statement st = conn.createStatement();
+
+                ResultSet rs = st.executeQuery("SELECT * FROM orari_lavorativi WHERE IDdipendente = '" + request.getParameter("iddipendente") + "' ORDER BY idgiorno");
+                while(rs.next()) {
+                  %>
+                    <td><%=rs.getString("orario_fine")%></td>
+                  <%
+                }
+              } catch (Exception e) {
+                out2.println(e);
+              }
+            %>
           </tr>
         </table>
       </div>

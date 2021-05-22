@@ -102,46 +102,46 @@ include '../dbConfig/dbConfig_dip.php';
           </table>
           <br>
 
-          <a href="http://localhost:8080/elaborato/management/orarioL.jsp" style="background: white;"> Orario lavorativo personale </a>
+          <a href="http://localhost:8080/elaborato/management/orarioL.jsp?iddipendente= <?php echo "$iddipendente"; ?>" style="background: white;"> Orario lavorativo personale </a>
 
           <br><br>
 
-          <h1> Orario di lavoro </h1>
+          <!-- <h1> Orario di lavoro </h1>
           <table border="1" class="orari">
             <tr>
               <th> # </th>
               <?php
-                $sql_gg = "SELECT * FROM giorni ORDER BY idgiorno";
-                           $result_gg = $conn2->query($sql_gg);
-
-                 while($row_gg = $result_gg->fetch_assoc()) {
-                   echo "<th> {$row_gg['giorno']} </th>";
-                 }
+                // $sql_gg = "SELECT * FROM giorni ORDER BY idgiorno";
+                //            $result_gg = $conn2->query($sql_gg);
+                //
+                //  while($row_gg = $result_gg->fetch_assoc()) {
+                //    echo "<th> {$row_gg['giorno']} </th>";
+                //  }
               ?>
             </tr>
             <tr>
               <td> Ora di inizio </td>
               <?php
-                $sql_oi = "SELECT * FROM orari_lavorativi WHERE IDdipendente = '$iddipendente' ORDER BY idgiorno";
-                           $result_oi = $conn2->query($sql_oi);
-
-                 while($row_oi = $result_oi->fetch_assoc()) {
-                     echo "<td> {$row_oi['orario_inizio']} </td>";
-                 }
+                // $sql_oi = "SELECT * FROM orari_lavorativi WHERE IDdipendente = '$iddipendente' ORDER BY idgiorno";
+                //            $result_oi = $conn2->query($sql_oi);
+                //
+                //  while($row_oi = $result_oi->fetch_assoc()) {
+                //      echo "<td> {$row_oi['orario_inizio']} </td>";
+                //  }
               ?>
             </tr>
             <tr>
               <td> Ora di fine </td>
               <?php
-                $sql_of = "SELECT * FROM orari_lavorativi WHERE IDdipendente = '$iddipendente' ORDER BY idgiorno";
-                           $result_of = $conn2->query($sql_of);
-
-                 while($row_of = $result_of->fetch_assoc()) {
-                     echo "<td> {$row_of['orario_fine']} </td>";
-                 }
+                // $sql_of = "SELECT * FROM orari_lavorativi WHERE IDdipendente = '$iddipendente' ORDER BY idgiorno";
+                //            $result_of = $conn2->query($sql_of);
+                //
+                //  while($row_of = $result_of->fetch_assoc()) {
+                //      echo "<td> {$row_of['orario_fine']} </td>";
+                //  }
               ?>
             </tr>
-          </table>
+          </table> -->
       </div>
 
   </body>
