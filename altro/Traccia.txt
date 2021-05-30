@@ -48,15 +48,15 @@ Infine, sulla base di tali considerazioni, si sviluppi una possibile soluzione c
 
 2) Raccolta e analisi dei requisiti funzionali sul progetto secondo i principi essenziali di ingegneria del software.
 
-3*) Progettazione del modello concettuale della base di dati.
+3) Progettazione del modello concettuale della base di dati.
 
-4**) Progettazione del modello logico della base di dati.
+4) Progettazione del modello logico della base di dati.
 
-5**) Progettazione del modello fisico della base di dati, con inserimento di almeno 10 dati di prova a scelta del candidato. (DBMS: MariaDB o SQLITE).
+5) Progettazione del modello fisico della base di dati, con inserimento di almeno 10 dati di prova a scelta del candidato. (DBMS: MariaDB o SQLITE).
 
 6) Formulazione di almeno 10 query complesse di comprovata utilità a scelta del candidato e stampa dei relativi output. 
 
-7**) Sviluppo dell'intero sistema software (GUI e tutti i controlli funzionali + infrastruttura middleware per la connessione al database) in un linguaggio 
+7) Sviluppo dell'intero sistema software (GUI e tutti i controlli funzionali + infrastruttura middleware per la connessione al database) in un linguaggio 
 di conoscenza del candidato scelti tra  PHP, HTML5 & CSS,  Java, C++, Swift 5.x, Python 3.x. 
 
 8) Gestione del login utente in funzione delle grant (es. amministratore, tecnico, utente, guest, ecc...) e implementare tutte le strategie opportune sulla sicurezza di tali operazioni.
