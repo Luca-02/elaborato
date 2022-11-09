@@ -1,6 +1,6 @@
 # Elaborato per esame di stato
 
-Sistema gestionale E-Commerce  & Fly (sistema E-Commerce con consegna a domicilio dei abbigliamento, borse, calzature, accessori)
+Sistema gestionale E-Commerce  & Fly (sistema E-Commerce con consegna a domicilio di abbigliamento, borse, calzature, accessori)
 
 # Traccia parte informatica:  
 
